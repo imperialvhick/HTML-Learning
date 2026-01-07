@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Green Haven Residency Application</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="form-wrapper">
+      <h1 id="title">Green Haven Community</h1>
+      <p id="description">
+        Apply to join our eco-friendly urban farming collective.
+      </p>
+
+      <form id="survey-form">
+        <div class="row">
+          <label id="name-label" for="name">Name</label>
+          <input
+            type="text"
+            id="name"
+            placeholder="Enter your full name"
+            required
+          />
+        </div>
+
+        <div class="row">
+          <label id="email-label" for="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            placeholder="you@example.com"
+            required
+          />
+        </div>
+
+        <div class="row">
+          <label id="number-label" for="number">Weekly volunteer hours</label>
+          <input
+            type="number"
+            id="number"
+            min="1"
+            max="40"
+            placeholder="1-40"
+          />
+        </div>
+
+        <div class="row">
+          <label for="dropdown">Primary Interest</label>
+          <select id="dropdown" required>
+            <option value="" disabled selected>Select an area</option>
+            <option value="composting">Composting & Soil</option>
+            <option value="hydroponics">Hydroponics</option>
+            <option value="beekeeping">Beekeeping</option>
+            <option value="community">Community Outreach</option>
+          </select>
+        </div>
+
+        <fieldset class="row">
+          <legend>Previous gardening experience?</legend>
+          <label class="radio-label">
+            <input name="experience" value="beginner" type="radio" checked />
+            Beginner
+          </label>
+          <label class="radio-label">
+            <input name="experience" value="intermediate" type="radio" />
+            Intermediate
+          </label>
+          <label class="radio-label">
+            <input name="experience" value="expert" type="radio" /> Master
+            Gardener
+          </label>
+        </fieldset>
+
+        <fieldset class="row">
+          <legend>Availability</legend>
+          <label class="checkbox-label">
+            <input type="checkbox" value="weekdays" class="check" /> Weekdays
+          </label>
+          <label class="checkbox-label">
+            <input type="checkbox" value="weekends" class="check" /> Weekends
+          </label>
+          <label class="checkbox-label">
+            <input type="checkbox" value="mornings" class="check" /> Mornings
+          </label>
+        </fieldset>
+
+        <div class="row">
+          <label for="comments">Why do you want to join us?</label>
+          <textarea
+            id="comments"
+            name="comments"
+            placeholder="Share your story..."
+          ></textarea>
+        </div>
+
+        <button type="submit" id="submit">Submit Application</button>
+      </form>
+    </main>
+  </body>
+</html>

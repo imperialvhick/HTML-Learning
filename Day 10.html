@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Space Explorer Survey</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1 id="title">Galactic Pioneer Program</h1>
+        <p id="description">
+          Join the next generation of deep-space explorers. Please fill out your
+          credentials below.
+        </p>
+      </header>
+
+      <form id="survey-form">
+        <div class="form-group">
+          <label id="name-label" for="name">Full Name</label>
+          <input type="text" id="name" placeholder="Enter your name" required />
+        </div>
+
+        <div class="form-group">
+          <label id="email-label" for="email">Interstellar Email</label>
+          <input
+            type="email"
+            id="email"
+            placeholder="name@galaxy.com"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label id="number-label" for="number"
+            >Years of Flight Experience</label
+          >
+          <input
+            type="number"
+            id="number"
+            min="0"
+            max="99"
+            placeholder="0-99"
+          />
+        </div>
+
+        <div class="form-group">
+          <p>Preferred Role</p>
+          <select id="dropdown" required>
+            <option disabled selected value>Select a role</option>
+            <option value="pilot">Starship Pilot</option>
+            <option value="engineer">Warp Engineer</option>
+            <option value="scientist">Exobiologist</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <p>Willingness to Relocate?</p>
+          <label
+            ><input name="relocate" value="yes" type="radio" checked /> Yes, to
+            Mars</label
+          >
+          <label
+            ><input name="relocate" value="no" type="radio" /> No, Earth
+            only</label
+          >
+        </div>
+
+        <div class="form-group">
+          <p>Specialized Training (Check all that apply)</p>
+          <label><input type="checkbox" value="zero-g" /> Zero-G Combat</label>
+          <label
+            ><input type="checkbox" value="navigation" /> Nebula
+            Navigation</label
+          >
+          <label
+            ><input type="checkbox" value="survival" /> Alien Planet
+            Survival</label
+          >
+        </div>
+
+        <div class="form-group">
+          <p>Tell us why you want to leave Earth:</p>
+          <textarea
+            id="comments"
+            name="comments"
+            placeholder="Your mission statement..."
+          ></textarea>
+        </div>
+
+        <button type="submit" id="submit">Launch Application</button>
+      </form>
+    </div>
+  </body>
+</html>

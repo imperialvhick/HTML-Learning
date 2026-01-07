@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Premium Checkout</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="checkout-container">
+      <section class="order-summary">
+        <h2>Your Cart</h2>
+        <div class="product-card">
+          <img
+            src="https://cdn.freecodecamp.org/curriculum/labs/cube.jpg"
+            alt="a rubix cube"
+          />
+          <div class="product-info">
+            <h3>Speed Cuber Edition</h3>
+            <p class="price">$19.99</p>
+          </div>
+        </div>
+        <hr />
+        <div class="totals">
+          <p>Subtotal: <span>$19.99</span></p>
+          <p>Shipping: <span>FREE</span></p>
+          <p class="grand-total">Total: <span>$19.99</span></p>
+        </div>
+      </section>
+
+      <section class="payment-portal">
+        <h2>Secure Payment</h2>
+        <form id="payment-form">
+          <div class="input-group">
+            <label for="card-name"
+              ><span aria-hidden="true">*</span>Cardholder Name</label
+            >
+            <input
+              type="text"
+              id="card-name"
+              name="card-name"
+              placeholder="John Doe"
+              required
+            />
+          </div>
+
+          <div class="input-group">
+            <label for="card-number"
+              ><span aria-hidden="true">*</span>Card Number</label
+            >
+            <input
+              type="text"
+              id="card-number"
+              name="card-number"
+              required
+              aria-describedby="card-number-help"
+              placeholder="0000 0000 0000 0000"
+            />
+            <p id="card-number-help">16 digits, no spaces or dashes.</p>
+          </div>
+
+          <div class="expiry-cvv">
+            <div class="input-group">
+              <label for="expiry">Expiry Date</label>
+              <input type="text" id="expiry" placeholder="MM/YY" required />
+            </div>
+            <div class="input-group">
+              <label for="cvv">CVV</label>
+              <input type="text" id="cvv" placeholder="123" required />
+            </div>
+          </div>
+
+          <button type="submit" id="submit-btn">Confirm Purchase</button>
+          <p class="security-note">🔒 SSL Encrypted & Secure</p>
+        </form>
+      </section>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,152 @@
+:root {
+  --terracotta: #c36a4d; /* Earthy Red/Orange */
+  --forest: #2d3e33; /* Deep Green */
+  --cream: #f9f7f2; /* Off-white */
+  --gold: #b39156; /* Accent Gold */
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Lato", sans-serif;
+  background-color: var(--cream);
+  color: var(--forest);
+}
+
+h1,
+h2,
+h3,
+.logo {
+  font-family: "Playfair Display", serif;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 8%;
+  background-color: var(--cream);
+}
+
+.logo {
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.logo span {
+  color: var(--terracotta);
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  align-items: center;
+}
+
+.nav-links li {
+  margin-left: 40px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--forest);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+}
+
+.btn-res {
+  border: 1px solid var(--forest);
+  padding: 12px 25px;
+  transition: 0.3s;
+}
+
+.btn-res:hover {
+  background-color: var(--forest);
+  color: var(--cream);
+}
+
+/* Hero Section */
+.hero {
+  height: 80vh;
+  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+    url("https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&q=80&w=1500");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+}
+
+.sub-title {
+  display: block;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+}
+
+.hero h1 {
+  font-size: 4.5rem;
+  line-height: 1.1;
+  margin-bottom: 30px;
+}
+
+.accent {
+  color: var(--gold);
+  font-style: italic;
+}
+
+.btn-primary {
+  background-color: var(--terracotta);
+  color: white;
+  padding: 18px 40px;
+  text-decoration: none;
+  font-weight: bold;
+  display: inline-block;
+  transition: 0.3s;
+}
+
+.btn-primary:hover {
+  background-color: #a3543b;
+  transform: translateY(-2px);
+}
+
+/* Info Blocks */
+.info-blocks {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 100px 8%;
+  gap: 50px;
+  background-color: white;
+}
+
+.block h3 {
+  color: var(--terracotta);
+  margin-bottom: 15px;
+  font-size: 1.8rem;
+}
+
+.block p {
+  line-height: 1.8;
+  color: #555;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .info-blocks {
+    grid-template-columns: 1fr;
+  }
+  .hero h1 {
+    font-size: 3rem;
+  }
+}

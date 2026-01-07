@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Strict Affiliate Roadmap</title>
+    <script
+      crossorigin
+      src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.5/babel.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+      const { useState, useMemo, useEffect } = React;
+
+      function AffiliateRoadmap() {
+        // Simplified state to match your original logic
+        const [data, setData] = useState({
+          overview: {
+            targetIncome: "",
+            commissionPerSale: "",
+            conversionRate: "",
+            product: "",
+          },
+          leadGeneration: {
+            sources: [
+              { type: "Primary", name: "" },
+              { type: "Supporting", name: "" },
+            ],
+            organicSystem: { dailyVolume: "", contentStyle: "" },
+            paidBudget: { total: "" },
+          },
+          leadNurturing: {
+            funnel: "",
+            thingsInPlace: [""],
+            thingsToFix: [""],
+            contentMarketing: [
+              { platform: "", pillars: "", structure: "", volume: "" },
+            ],
+          },
+          leadConversion: {
+            presentation: { method: "", frequency: "" },
+            followUpSystem: [
+              { platform: "", pillars: "", structure: "", volume: "" },
+            ],
+            offer: {
+              name: "",
+              mainProduct: "",
+              deliverables: [{ item: "", framework: "BF", value: "" }],
+              bonuses: [],
+              structure: "",
+            },
+            closing: { method: "", thingsInPlace: [""], thingsToFix: [""] },
+          },
+        });
+
+        // Re-render icons after React finishes drawing the UI
+        useEffect(() => {
+          lucide.createIcons();
+        });
+
+        const update = (path, value) => {
+          setData((prev) => {
+            const copy = JSON.parse(JSON.stringify(prev));
+            let ref = copy;
+            for (let i = 0; i < path.length - 1; i++) ref = ref[path[i]];
+            ref[path[path.length - 1]] = value;
+            return copy;
+          });
+        };
+
+        const addItem = (path, item) => {
+          const arr = path.reduce((a, c) => a[c], data);
+          update(path, [...arr, item]);
+        };
+
+        const calculations = useMemo(() => {
+          const income = Number(data.overview.targetIncome);
+          const commission = Number(data.overview.commissionPerSale);
+          const cr = Number(data.overview.conversionRate) / 100;
+          if (!income || !commission || !cr) return null;
+
+          const totalSales = Math.ceil(income / commission);
+          const totalLeads = Math.ceil(totalSales / cr);
+          return {
+            totalSales,
+            totalLeads,
+            dailySales: Math.ceil(totalSales / 30),
+            dailyLeads: Math.ceil(totalLeads / 30),
+            weeklyLeads: Math.ceil(totalLeads / 7),
+            monthlyLeads: Math.ceil(totalLeads / 30),
+          };
+        }, [data.overview]);
+
+        const Input = ({ label, value, onChange, placeholder, icon }) => (
+          <div className="mb-4">
+            <label className="text-sm font-bold flex items-center gap-2 mb-1">
+              <i data-lucide={icon} className="w-4 h-4"></i> {label}
+            </label>
+            <input
+              value={value}
+              onChange={(e) => onChange(e.target.value)}
+              placeholder={placeholder}
+              className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-black outline-none transition-all"
+            />
+          </div>
+        );
+
+        return (
+          <div className="min-h-screen bg-gray-50 p-4 md:p-8">
+            <div className="max-w-4xl mx-auto">
+              <header className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 mb-8">
+                <h1 className="text-4xl font-black text-gray-900 tracking-tight">
+                  STRICT AFFILIATE ROADMAP
+                </h1>
+                <p className="text-gray-500 mt-2 text-lg">
+                  Income-driven. System-enforced. No guesswork.
+                </p>
+              </header>
+
+              {/* SECTION: OVERVIEW */}
+              <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 mb-8">
+                <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
+                  <i data-lucide="target" className="text-blue-600"></i>{" "}
+                  High-Level Overview
+                </h2>
+                <div className="grid md:grid-cols-2 gap-4">
+                  <Input
+                    label="Target Income"
+                    value={data.overview.targetIncome}
+                    onChange={(v) => update(["overview", "targetIncome"], v)}
+                    icon="dollar-sign"
+                  />
+                  <Input
+                    label="Commission Per Sale"
+                    value={data.overview.commissionPerSale}
+                    onChange={(v) =>
+                      update(["overview", "commissionPerSale"], v)
+                    }
+                    icon="percent"
+                  />
+                  <Input
+                    label="Conversion Rate (%)"
+                    value={data.overview.conversionRate}
+                    onChange={(v) => update(["overview", "conversionRate"], v)}
+                    icon="trending-up"
+                  />
+                  <Input
+                    label="Product Name"
+                    value={data.overview.product}
+                    onChange={(v) => update(["overview", "product"], v)}
+                    icon="package"
+                  />
+                </div>
+
+                {calculations && (
+                  <div className="mt-6 grid grid-cols-2 gap-4 bg-blue-50 p-6 rounded-xl border border-blue-100">
+                    <div>
+                      <p className="text-sm text-blue-600 font-bold uppercase tracking-wider">
+                        Total Sales Needed
+                      </p>
+                      <p className="text-3xl font-black text-blue-900">
+                        {calculations.totalSales}
+                      </p>
+                    </div>
+                    <div>
+                      <p className="text-sm text-blue-600 font-bold uppercase tracking-wider">
+                        Total Leads Needed
+                      </p>
+                      <p className="text-3xl font-black text-blue-900">
+                        {calculations.totalLeads}
+                      </p>
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* SECTION: LEAD GEN */}
+              <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 mb-8">
+                <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
+                  <i data-lucide="users" className="text-green-600"></i> Lead
+                  Generation System
+                </h2>
+                {calculations && (
+                  <div className="mb-6 flex gap-8 border-b pb-6">
+                    <div>
+                      <span className="block text-xs font-bold text-gray-400">
+                        DAILY LEADS
+                      </span>
+                      <span className="text-xl font-bold">
+                        {calculations.dailyLeads}
+                      </span>
+                    </div>
+                    <div>
+                      <span className="block text-xs font-bold text-gray-400">
+                        WEEKLY LEADS
+                      </span>
+                      <span className="text-xl font-bold">
+                        {calculations.weeklyLeads}
+                      </span>
+                    </div>
+                  </div>
+                )}
+                <h3 className="font-bold mb-3 text-gray-700">
+                  Traffic Sources
+                </h3>
+                {data.leadGeneration.sources.map((s, i) => (
+                  <div key={i} className="flex gap-2 mb-3">
+                    <input
+                      className="flex-1 border rounded-lg px-4 py-2"
+                      placeholder={`${s.type} Source`}
+                      value={s.name}
+                      onChange={(e) =>
+                        update(
+                          ["leadGeneration", "sources", i, "name"],
+                          e.target.value
+                        )
+                      }
+                    />
+                  </div>
+                ))}
+              </div>
+
+              <p className="text-center text-gray-400 text-sm">
+                Fill in the fields to calculate your requirements.
+              </p>
+            </div>
+          </div>
+        );
+      }
+
+      const root = ReactDOM.createRoot(document.getElementById("root"));
+      root.render(<AffiliateRoadmap />);
+    </script>
+  </body>
+</html>

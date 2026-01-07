@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Affiliate Success Roadmap</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: #f0f4f8;
+        color: #1a1a1a;
+        padding: 20px;
+      }
+      .roadmap-container {
+        max-width: 950px;
+        margin: auto;
+        padding: 20px;
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+      }
+      h1 {
+        text-align: center;
+        color: #8b0000; /* Imperial Circle Blue */
+      }
+      h2 {
+        border-bottom: 2px solid #e0e0e0;
+        padding-bottom: 5px;
+        margin-top: 20px;
+      }
+      h3 {
+        margin-bottom: 5px;
+      }
+      label {
+        font-weight: bold;
+        display: block;
+        margin-top: 10px;
+      }
+      input,
+      textarea {
+        width: 100%;
+        padding: 8px;
+        margin-top: 5px;
+        margin-bottom: 12px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        color: #8b0000;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 15px;
+      }
+      table,
+      th,
+      td {
+        border: 1px solid #ccc;
+      }
+      th,
+      td {
+        padding: 8px;
+        text-align: left;
+      }
+      .row {
+        display: flex;
+        gap: 10px;
+      }
+      .row input {
+        flex: 1;
+      }
+      button {
+        background-color: #8b0000;
+        color: white;
+        border: none;
+        padding: 10px 18px;
+        font-size: 16px;
+        border-radius: 6px;
+        cursor: pointer;
+        margin-top: 10px;
+      }
+      button:hover {
+        background-color: #0d2490;
+      }
+      .logo {
+        display: block;
+        margin: 0 auto 20px auto;
+        width: 120px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="roadmap-container">
+      <h1>Affiliate Marketing Roadmap</h1>
+
+      <!-- SECTION 1 -->
+      <div class="section">
+        <h2>1. High-Level Overview</h2>
+        <label>Target Income</label>
+        <input id="income" type="number" placeholder="e.g 500000" />
+        <label>Commission Per Sale</label>
+        <input id="commission" type="number" placeholder="e.g 5000" />
+        <label>Average Conversion Rate (%)</label>
+        <input id="conversion" type="number" placeholder="e.g 5" />
+
+        <button onclick="calculateOverview()">
+          Calculate Required Sales & Leads
+        </button>
+        <p><strong>Total Required Sales:</strong> <span id="sales">-</span></p>
+        <p><strong>Total Required Leads:</strong> <span id="leads">-</span></p>
+        <p><strong>Monthly Sales:</strong> <span id="salesMonth">-</span></p>
+        <p><strong>Weekly Sales:</strong> <span id="salesWeek">-</span></p>
+        <p><strong>Daily Sales:</strong> <span id="salesDay">-</span></p>
+        <p><strong>Monthly Leads:</strong> <span id="leadsMonth">-</span></p>
+        <p><strong>Weekly Leads:</strong> <span id="leadsWeek">-</span></p>
+        <p><strong>Daily Leads:</strong> <span id="leadsDay">-</span></p>
+      </div>
+
+      <!-- SECTION 2 -->
+      <div class="section">
+        <h2>2. Lead Generation System (LGS)</h2>
+        <h3>Lead Targets</h3>
+        <table>
+          <tr>
+            <th>Total</th>
+            <th>Monthly</th>
+            <th>Weekly</th>
+            <th>Daily</th>
+          </tr>
+          <tr>
+            <td><input id="lgTotal" /></td>
+            <td><input id="lgMonthly" /></td>
+            <td><input id="lgWeekly" /></td>
+            <td><input id="lgDaily" /></td>
+          </tr>
+        </table>
+
+        <h3>Lead Sources (Min 2)</h3>
+        <input placeholder="Primary Lead Source" />
+        <input placeholder="Supporting Lead Source" />
+        <input placeholder="Additional Source (Optional)" />
+
+        <h3>Paid Traffic Budget</h3>
+        <div class="row">
+          <input placeholder="Total Budget" />
+          <input placeholder="Monthly" />
+          <input placeholder="Weekly" />
+          <input placeholder="Daily" />
+        </div>
+
+        <h3>Organic Traffic System</h3>
+        <input placeholder="Platform" />
+        <input placeholder="Daily Content Volume" />
+        <input placeholder="Content Style (Talking Head, Text on Screen)" />
+        <input placeholder="Hook / Angle" />
+      </div>
+
+      <!-- SECTION 3 -->
+      <div class="section">
+        <h2>3. Lead Nurturing System (LNS)</h2>
+        <label>Sales Funnel Flow</label>
+        <input placeholder="Traffic → DM → Class → Sale" />
+        <h3>Things in Place</h3>
+        <textarea rows="3"></textarea>
+        <h3>Things to Fix</h3>
+        <textarea rows="3"></textarea>
+        <h3>Content Marketing System</h3>
+        <input placeholder="Platform" />
+        <input placeholder="Content Pillars" />
+        <input placeholder="Structure (VVRRVVRR)" />
+        <input placeholder="Volume" />
+      </div>
+
+      <!-- SECTION 4 -->
+      <div class="section">
+        <h2>4. Lead Conversion System (LCS)</h2>
+        <h3>Sales Targets</h3>
+        <table>
+          <tr>
+            <th>Total</th>
+            <th>Monthly</th>
+            <th>Weekly</th>
+            <th>Daily</th>
+          </tr>
+          <tr>
+            <td><input /></td>
+            <td><input /></td>
+            <td><input /></td>
+            <td><input /></td>
+          </tr>
+        </table>
+
+        <label>Sales Presentation Method</label>
+        <input placeholder="WhatsApp Class / Webinar / VSL" />
+        <label>Frequency</label>
+        <input placeholder="Daily / Weekly / N/A" />
+
+        <h3>Follow-Up System</h3>
+        <input placeholder="Platform" />
+        <input placeholder="Content Pillars" />
+        <input placeholder="Structure" />
+        <input placeholder="Volume" />
+
+        <h3>Offer Creation System</h3>
+        <input placeholder="Offer Name" />
+        <input placeholder="Main Product" />
+
+        <table>
+          <tr>
+            <th>Deliverable</th>
+            <th>Feature</th>
+            <th>Benefit</th>
+            <th>Value</th>
+          </tr>
+          <tr>
+            <td><input /></td>
+            <td><input /></td>
+            <td><input /></td>
+            <td><input /></td>
+          </tr>
+          <tr>
+            <td><input /></td>
+            <td><input /></td>
+            <td><input /></td>
+            <td><input /></td>
+          </tr>
+        </table>
+
+        <label>Offer Structure</label>
+        <input placeholder="Evergreen or Periodic" />
+
+        <h3>Sales Closing System</h3>
+        <input placeholder="Preferred Method (Calls / DM / Voice Notes)" />
+        <textarea placeholder="Things in Place"></textarea>
+        <textarea placeholder="Things to Fix"></textarea>
+      </div>
+
+      <div class="section">
+        <h2>Final Bottleneck</h2>
+        <textarea
+          rows="3"
+          placeholder="Biggest bottleneck in your system"
+        ></textarea>
+      </div>
+
+      <button onclick="exportRoadmap()">Download Roadmap</button>
+    </div>
+  </body>
+</html>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script>
+  // Auto-calc overview
+  function calculateOverview() {
+    const income = Number(document.getElementById("income").value);
+    const commission = Number(document.getElementById("commission").value);
+    const conversion =
+      Number(document.getElementById("conversion").value) / 100;
+
+    if (!income || !commission || !conversion) return;
+
+    const sales = Math.ceil(income / commission);
+    const leads = Math.ceil(sales / conversion);
+
+    const salesMonth = Math.ceil(sales / 12);
+    const salesWeek = Math.ceil(sales / 52);
+    const salesDay = Math.ceil(sales / 365);
+
+    const leadsMonth = Math.ceil(leads / 12);
+    const leadsWeek = Math.ceil(leads / 52);
+    const leadsDay = Math.ceil(leads / 365);
+
+    document.getElementById("sales").innerText = sales;
+    document.getElementById("leads").innerText = leads;
+    document.getElementById("salesMonth").innerText = salesMonth;
+    document.getElementById("salesWeek").innerText = salesWeek;
+    document.getElementById("salesDay").innerText = salesDay;
+    document.getElementById("leadsMonth").innerText = leadsMonth;
+    document.getElementById("leadsWeek").innerText = leadsWeek;
+    document.getElementById("leadsDay").innerText = leadsDay;
+  }
+
+  function exportRoadmap() {
+    // Replace `roadmapContent` with your generated text
+    const roadmapContent = `
+AFFILIATE MARKETING ROADMAP
+Generated: ${new Date().toLocaleDateString()}
+
+Lead Generation System
+Target Audience: Example
+...
+    `;
+
+    const blob = new Blob([roadmapContent], { type: "text/plain" });
+
+    // Create a temporary link
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = "affiliate-roadmap.txt";
+
+    // Append to body
+    document.body.appendChild(link);
+
+    // Trigger download
+    link.click();
+
+    // Clean up
+    document.body.removeChild(link);
+    URL.revokeObjectURL(link.href);
+  }
+</script>

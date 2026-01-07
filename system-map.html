@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Affiliate System Map</title>
+    <script
+      crossorigin
+      src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.5/babel.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+          "Oxygen", "Ubuntu", "Cantarell", sans-serif;
+      }
+      input[type="range"] {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 100%;
+        height: 8px;
+        background: #ddd;
+        border-radius: 5px;
+        outline: none;
+      }
+      input[type="range"]::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 20px;
+        height: 20px;
+        background: #000;
+        cursor: pointer;
+        border-radius: 50%;
+      }
+      input[type="range"]::-moz-range-thumb {
+        width: 20px;
+        height: 20px;
+        background: #000;
+        cursor: pointer;
+        border-radius: 50%;
+        border: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+      const { useState } = React;
+
+      function AffiliateRoadmap() {
+        const [roadmap, setRoadmap] = useState({
+          attention: {
+            trafficSource: "",
+            contentType: "",
+            callToAction: "",
+            leadDestination: "",
+            bottleneck: "",
+            confidence: 5,
+          },
+          trust: {
+            firstTouch: "",
+            trustAsset: "",
+            followUpMethod: "",
+            bottleneck: "",
+            confidence: 5,
+          },
+          decision: {
+            conversionMethod: "",
+            offer: "",
+            pricePoint: "",
+            objection: "",
+            bottleneck: "",
+            confidence: 5,
+          },
+          executionFocus: "",
+        });
+
+        const update = (section, field, value) => {
+          setRoadmap((prev) => ({
+            ...prev,
+            [section]: {
+              ...prev[section],
+              [field]: value,
+            },
+          }));
+        };
+
+        const weakestSystem = () => {
+          const scores = [
+            { name: "Attention Engine", score: roadmap.attention.confidence },
+            { name: "Trust Engine", score: roadmap.trust.confidence },
+            { name: "Decision Engine", score: roadmap.decision.confidence },
+          ];
+          return scores.sort((a, b) => a.score - b.score)[0].name;
+        };
+
+        const exportRoadmap = () => {
+          const content = `
+AFFILIATE SYSTEM MAP
+Generated: ${new Date().toLocaleDateString()}
+
+=====================================
+ATTENTION ENGINE (Lead Generation)
+=====================================
+Traffic Source: ${roadmap.attention.trafficSource}
+Content Type: ${roadmap.attention.contentType}
+Call To Action: ${roadmap.attention.callToAction}
+Lead Destination: ${roadmap.attention.leadDestination}
+Bottleneck: ${roadmap.attention.bottleneck}
+Confidence Score: ${roadmap.attention.confidence}/10
+
+=====================================
+TRUST ENGINE (Lead Nurturing)
+=====================================
+First Touch Experience: ${roadmap.trust.firstTouch}
+Primary Trust Asset: ${roadmap.trust.trustAsset}
+Follow-Up Method: ${roadmap.trust.followUpMethod}
+Bottleneck: ${roadmap.trust.bottleneck}
+Confidence Score: ${roadmap.trust.confidence}/10
+
+=====================================
+DECISION ENGINE (Lead Conversion)
+=====================================
+Conversion Method: ${roadmap.decision.conversionMethod}
+Offer: ${roadmap.decision.offer}
+Price Point: ${roadmap.decision.pricePoint}
+Primary Objection: ${roadmap.decision.objection}
+Bottleneck: ${roadmap.decision.bottleneck}
+Confidence Score: ${roadmap.decision.confidence}/10
+
+=====================================
+SYSTEM DIAGNOSIS
+=====================================
+WEAKEST SYSTEM: ${weakestSystem()}
+
+NEXT 14-DAY EXECUTION FOCUS:
+${roadmap.executionFocus || "Not defined"}
+`;
+
+          const blob = new Blob([content], { type: "text/plain" });
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement("a");
+          a.href = url;
+          a.download = "affiliate-system-map.txt";
+          a.click();
+          URL.revokeObjectURL(url);
+        };
+
+        const Section = ({ title, section, fields }) => (
+          <div className="bg-white rounded-xl shadow-md p-6 mb-6">
+            <h2 className="text-2xl font-bold mb-4">{title}</h2>
+            {fields.map((field) => (
+              <div key={field.key} className="mb-4">
+                <label className="block text-sm font-semibold mb-1">
+                  {field.label}
+                </label>
+                {field.type === "range" ? (
+                  <div>
+                    <input
+                      type="range"
+                      min="1"
+                      max="10"
+                      value={roadmap[section][field.key]}
+                      onChange={(e) =>
+                        update(section, field.key, Number(e.target.value))
+                      }
+                      className="w-full"
+                    />
+                    <div className="text-center text-lg font-bold mt-1">
+                      {roadmap[section][field.key]}/10
+                    </div>
+                  </div>
+                ) : (
+                  <input
+                    type="text"
+                    value={roadmap[section][field.key]}
+                    onChange={(e) => update(section, field.key, e.target.value)}
+                    placeholder={field.placeholder}
+                    className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  />
+                )}
+              </div>
+            ))}
+          </div>
+        );
+
+        return (
+          <div className="min-h-screen bg-slate-100 p-6">
+            <div className="max-w-3xl mx-auto">
+              <div className="bg-white p-6 rounded-xl shadow-lg mb-6">
+                <h1 className="text-4xl font-bold mb-2">
+                  Affiliate System Map
+                </h1>
+                <p className="text-gray-600 mb-4">
+                  One path. One bottleneck. One fix at a time.
+                </p>
+                <button
+                  onClick={exportRoadmap}
+                  className="flex items-center gap-2 px-6 py-3 bg-black text-white rounded-md hover:bg-gray-800 transition-colors"
+                >
+                  <span>⬇</span>
+                  Export System Map
+                </button>
+              </div>
+
+              <Section
+                title="Attention Engine (Lead Generation)"
+                section="attention"
+                fields={[
+                  {
+                    key: "trafficSource",
+                    label: "Primary Traffic Source",
+                    placeholder: "e.g. TikTok Organic",
+                  },
+                  {
+                    key: "contentType",
+                    label: "Primary Content Type",
+                    placeholder: "e.g. Short-form videos",
+                  },
+                  {
+                    key: "callToAction",
+                    label: "Primary CTA",
+                    placeholder: "e.g. DM 'START'",
+                  },
+                  {
+                    key: "leadDestination",
+                    label: "Lead Destination",
+                    placeholder: "e.g. Telegram DM",
+                  },
+                  {
+                    key: "bottleneck",
+                    label: "Biggest Bottleneck",
+                    placeholder: "e.g. Low reach",
+                  },
+                  {
+                    key: "confidence",
+                    label: "Confidence Score (1–10)",
+                    type: "range",
+                  },
+                ]}
+              />
+
+              <Section
+                title="Trust Engine (Lead Nurturing)"
+                section="trust"
+                fields={[
+                  {
+                    key: "firstTouch",
+                    label: "First Touch Experience",
+                    placeholder: "e.g. Welcome message + proof",
+                  },
+                  {
+                    key: "trustAsset",
+                    label: "Primary Trust Asset",
+                    placeholder: "e.g. Daily results channel",
+                  },
+                  {
+                    key: "followUpMethod",
+                    label: "Follow-Up Method",
+                    placeholder: "e.g. Manual DM follow-up",
+                  },
+                  {
+                    key: "bottleneck",
+                    label: "Biggest Bottleneck",
+                    placeholder: "e.g. Leads go cold",
+                  },
+                  {
+                    key: "confidence",
+                    label: "Confidence Score (1–10)",
+                    type: "range",
+                  },
+                ]}
+              />
+
+              <Section
+                title="Decision Engine (Lead Conversion)"
+                section="decision"
+                fields={[
+                  {
+                    key: "conversionMethod",
+                    label: "Conversion Method",
+                    placeholder: "e.g. VSL + DM close",
+                  },
+                  {
+                    key: "offer",
+                    label: "Offer",
+                    placeholder: "e.g. Affiliate course",
+                  },
+                  {
+                    key: "pricePoint",
+                    label: "Price Point",
+                    placeholder: "e.g. ₦50,000",
+                  },
+                  {
+                    key: "objection",
+                    label: "Primary Objection",
+                    placeholder: "e.g. Trust / money",
+                  },
+                  {
+                    key: "bottleneck",
+                    label: "Biggest Bottleneck",
+                    placeholder: "e.g. Price resistance",
+                  },
+                  {
+                    key: "confidence",
+                    label: "Confidence Score (1–10)",
+                    type: "range",
+                  },
+                ]}
+              />
+
+              <div className="bg-white rounded-xl shadow-md p-6">
+                <h2 className="text-2xl font-bold mb-2">
+                  14-Day Execution Focus
+                </h2>
+                <input
+                  type="text"
+                  value={roadmap.executionFocus}
+                  onChange={(e) =>
+                    setRoadmap((prev) => ({
+                      ...prev,
+                      executionFocus: e.target.value,
+                    }))
+                  }
+                  placeholder="The ONE fix that moves revenue"
+                  className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                />
+                <p className="text-sm text-gray-500 mt-2">
+                  Weakest system right now: <strong>{weakestSystem()}</strong>
+                </p>
+              </div>
+            </div>
+          </div>
+        );
+      }
+
+      const root = ReactDOM.createRoot(document.getElementById("root"));
+      root.render(<AffiliateRoadmap />);
+    </script>
+  </body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Affiliate System Map</title>
+    <script
+      crossorigin
+      src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.5/babel.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+          "Oxygen", "Ubuntu", "Cantarell", sans-serif;
+      }
+      input[type="range"] {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 100%;
+        height: 8px;
+        background: #ddd;
+        border-radius: 5px;
+        outline: none;
+      }
+      input[type="range"]::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 20px;
+        height: 20px;
+        background: #000;
+        cursor: pointer;
+        border-radius: 50%;
+      }
+      input[type="range"]::-moz-range-thumb {
+        width: 20px;
+        height: 20px;
+        background: #000;
+        cursor: pointer;
+        border-radius: 50%;
+        border: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+      const { useState } = React;
+
+      function AffiliateRoadmap() {
+        const [roadmap, setRoadmap] = useState({
+          attention: {
+            trafficSource: "",
+            contentType: "",
+            callToAction: "",
+            leadDestination: "",
+            bottleneck: "",
+            confidence: 5,
+          },
+          trust: {
+            firstTouch: "",
+            trustAsset: "",
+            followUpMethod: "",
+            bottleneck: "",
+            confidence: 5,
+          },
+          decision: {
+            conversionMethod: "",
+            offer: "",
+            pricePoint: "",
+            objection: "",
+            bottleneck: "",
+            confidence: 5,
+          },
+          executionFocus: "",
+        });
+
+        const update = (section, field, value) => {
+          setRoadmap((prev) => ({
+            ...prev,
+            [section]: {
+              ...prev[section],
+              [field]: value,
+            },
+          }));
+        };
+
+        const weakestSystem = () => {
+          const scores = [
+            { name: "Attention Engine", score: roadmap.attention.confidence },
+            { name: "Trust Engine", score: roadmap.trust.confidence },
+            { name: "Decision Engine", score: roadmap.decision.confidence },
+          ];
+          return scores.sort((a, b) => a.score - b.score)[0].name;
+        };
+
+        const exportRoadmap = () => {
+          const content = `
+AFFILIATE SYSTEM MAP
+Generated: ${new Date().toLocaleDateString()}
+
+=====================================
+ATTENTION ENGINE (Lead Generation)
+=====================================
+Traffic Source: ${roadmap.attention.trafficSource}
+Content Type: ${roadmap.attention.contentType}
+Call To Action: ${roadmap.attention.callToAction}
+Lead Destination: ${roadmap.attention.leadDestination}
+Bottleneck: ${roadmap.attention.bottleneck}
+Confidence Score: ${roadmap.attention.confidence}/10
+
+=====================================
+TRUST ENGINE (Lead Nurturing)
+=====================================
+First Touch Experience: ${roadmap.trust.firstTouch}
+Primary Trust Asset: ${roadmap.trust.trustAsset}
+Follow-Up Method: ${roadmap.trust.followUpMethod}
+Bottleneck: ${roadmap.trust.bottleneck}
+Confidence Score: ${roadmap.trust.confidence}/10
+
+=====================================
+DECISION ENGINE (Lead Conversion)
+=====================================
+Conversion Method: ${roadmap.decision.conversionMethod}
+Offer: ${roadmap.decision.offer}
+Price Point: ${roadmap.decision.pricePoint}
+Primary Objection: ${roadmap.decision.objection}
+Bottleneck: ${roadmap.decision.bottleneck}
+Confidence Score: ${roadmap.decision.confidence}/10
+
+=====================================
+SYSTEM DIAGNOSIS
+=====================================
+WEAKEST SYSTEM: ${weakestSystem()}
+
+NEXT 14-DAY EXECUTION FOCUS:
+${roadmap.executionFocus || "Not defined"}
+`;
+
+          const blob = new Blob([content], { type: "text/plain" });
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement("a");
+          a.href = url;
+          a.download = "affiliate-system-map.txt";
+          a.click();
+          URL.revokeObjectURL(url);
+        };
+
+        const Section = ({ title, section, fields }) => (
+          <div className="bg-white rounded-xl shadow-md p-6 mb-6">
+            <h2 className="text-2xl font-bold mb-4">{title}</h2>
+            {fields.map((field) => (
+              <div key={field.key} className="mb-4">
+                <label className="block text-sm font-semibold mb-1">
+                  {field.label}
+                </label>
+                {field.type === "range" ? (
+                  <div>
+                    <input
+                      type="range"
+                      min="1"
+                      max="10"
+                      value={roadmap[section][field.key]}
+                      onChange={(e) =>
+                        update(section, field.key, Number(e.target.value))
+                      }
+                      className="w-full"
+                    />
+                    <div className="text-center text-lg font-bold mt-1">
+                      {roadmap[section][field.key]}/10
+                    </div>
+                  </div>
+                ) : (
+                  <input
+                    type="text"
+                    value={roadmap[section][field.key]}
+                    onChange={(e) => update(section, field.key, e.target.value)}
+                    placeholder={field.placeholder}
+                    className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  />
+                )}
+              </div>
+            ))}
+          </div>
+        );
+
+        return (
+          <div className="min-h-screen bg-slate-100 p-6">
+            <div className="max-w-3xl mx-auto">
+              <div className="bg-white p-6 rounded-xl shadow-lg mb-6">
+                <h1 className="text-4xl font-bold mb-2">
+                  Affiliate System Map
+                </h1>
+                <p className="text-gray-600 mb-4">
+                  One path. One bottleneck. One fix at a time.
+                </p>
+                <button
+                  onClick={exportRoadmap}
+                  className="flex items-center gap-2 px-6 py-3 bg-black text-white rounded-md hover:bg-gray-800 transition-colors"
+                >
+                  <span>⬇</span>
+                  Export System Map
+                </button>
+              </div>
+
+              <Section
+                title="Attention Engine (Lead Generation)"
+                section="attention"
+                fields={[
+                  {
+                    key: "trafficSource",
+                    label: "Primary Traffic Source",
+                    placeholder: "e.g. TikTok Organic",
+                  },
+                  {
+                    key: "contentType",
+                    label: "Primary Content Type",
+                    placeholder: "e.g. Short-form videos",
+                  },
+                  {
+                    key: "callToAction",
+                    label: "Primary CTA",
+                    placeholder: "e.g. DM 'START'",
+                  },
+                  {
+                    key: "leadDestination",
+                    label: "Lead Destination",
+                    placeholder: "e.g. Telegram DM",
+                  },
+                  {
+                    key: "bottleneck",
+                    label: "Biggest Bottleneck",
+                    placeholder: "e.g. Low reach",
+                  },
+                  {
+                    key: "confidence",
+                    label: "Confidence Score (1–10)",
+                    type: "range",
+                  },
+                ]}
+              />
+
+              <Section
+                title="Trust Engine (Lead Nurturing)"
+                section="trust"
+                fields={[
+                  {
+                    key: "firstTouch",
+                    label: "First Touch Experience",
+                    placeholder: "e.g. Welcome message + proof",
+                  },
+                  {
+                    key: "trustAsset",
+                    label: "Primary Trust Asset",
+                    placeholder: "e.g. Daily results channel",
+                  },
+                  {
+                    key: "followUpMethod",
+                    label: "Follow-Up Method",
+                    placeholder: "e.g. Manual DM follow-up",
+                  },
+                  {
+                    key: "bottleneck",
+                    label: "Biggest Bottleneck",
+                    placeholder: "e.g. Leads go cold",
+                  },
+                  {
+                    key: "confidence",
+                    label: "Confidence Score (1–10)",
+                    type: "range",
+                  },
+                ]}
+              />
+
+              <Section
+                title="Decision Engine (Lead Conversion)"
+                section="decision"
+                fields={[
+                  {
+                    key: "conversionMethod",
+                    label: "Conversion Method",
+                    placeholder: "e.g. VSL + DM close",
+                  },
+                  {
+                    key: "offer",
+                    label: "Offer",
+                    placeholder: "e.g. Affiliate course",
+                  },
+                  {
+                    key: "pricePoint",
+                    label: "Price Point",
+                    placeholder: "e.g. ₦50,000",
+                  },
+                  {
+                    key: "objection",
+                    label: "Primary Objection",
+                    placeholder: "e.g. Trust / money",
+                  },
+                  {
+                    key: "bottleneck",
+                    label: "Biggest Bottleneck",
+                    placeholder: "e.g. Price resistance",
+                  },
+                  {
+                    key: "confidence",
+                    label: "Confidence Score (1–10)",
+                    type: "range",
+                  },
+                ]}
+              />
+
+              <div className="bg-white rounded-xl shadow-md p-6">
+                <h2 className="text-2xl font-bold mb-2">
+                  14-Day Execution Focus
+                </h2>
+                <input
+                  type="text"
+                  value={roadmap.executionFocus}
+                  onChange={(e) =>
+                    setRoadmap((prev) => ({
+                      ...prev,
+                      executionFocus: e.target.value,
+                    }))
+                  }
+                  placeholder="The ONE fix that moves revenue"
+                  className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                />
+                <p className="text-sm text-gray-500 mt-2">
+                  Weakest system right now: <strong>{weakestSystem()}</strong>
+                </p>
+              </div>
+            </div>
+          </div>
+        );
+      }
+
+      const root = ReactDOM.createRoot(document.getElementById("root"));
+      root.render(<AffiliateRoadmap />);
+    </script>
+  </body>
+</html>

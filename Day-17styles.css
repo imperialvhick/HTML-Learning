@@ -1,0 +1,207 @@
+/* Custom Variables */
+:root {
+  --accent: #e2ff00; /* Neon Yellow */
+  --dark: #1a1a1a;
+  --light: #ffffff;
+  --gray: #f4f4f4;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  background-color: var(--light);
+  color: var(--dark);
+  line-height: 1.6;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 8%;
+  background: var(--dark);
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 900;
+  letter-spacing: -1px;
+}
+
+.logo span {
+  color: var(--accent);
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  align-items: center;
+}
+
+.nav-links li {
+  margin-left: 30px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.btn-nav {
+  background: var(--accent);
+  color: var(--dark) !important;
+  padding: 10px 20px;
+  border-radius: 50px;
+}
+
+/* Hero Section */
+.hero {
+  height: 80vh;
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+    url("https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80&w=1000");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  padding: 0 8%;
+  color: white;
+}
+
+.hero-content h1 {
+  font-size: 4rem;
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+
+.highlight {
+  background: var(--accent);
+  color: var(--dark);
+  padding: 0 10px;
+}
+
+.hero-content p {
+  max-width: 500px;
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  opacity: 0.9;
+}
+
+/* Buttons */
+.btn-primary,
+.btn-secondary {
+  padding: 15px 35px;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 5px;
+  display: inline-block;
+  transition: 0.3s;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: var(--dark);
+  margin-right: 15px;
+}
+
+.btn-secondary {
+  border: 2px solid white;
+  color: white;
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(226, 255, 0, 0.3);
+}
+
+/* Stats Section */
+.stats {
+  display: flex;
+  justify-content: space-around;
+  padding: 60px 8%;
+  background: var(--gray);
+  text-align: center;
+}
+
+.stat-item h2 {
+  font-size: 2.5rem;
+  color: var(--dark);
+}
+
+.stat-item p {
+  color: #666;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+}
+.team-section {
+  padding: 80px 8%;
+  text-align: center;
+}
+
+.team-section h2 {
+  font-size: 3rem;
+  margin-bottom: 50px;
+  text-transform: uppercase;
+}
+
+.text-outline {
+  -webkit-text-stroke: 1px var(--dark);
+  color: transparent;
+}
+
+.team-grid {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap; /* Makes it look good on mobile! */
+}
+
+.team-card {
+  flex: 1;
+  min-width: 250px;
+  max-width: 350px;
+  transition: 0.3s;
+}
+
+.image-wrapper {
+  overflow: hidden;
+  border-radius: 15px;
+  margin-bottom: 15px;
+  background: var(--dark);
+}
+
+.team-card img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  display: block;
+  transition: 0.5s ease;
+  filter: grayscale(100%); /* Makes it look edgy */
+}
+
+.team-card:hover img {
+  filter: grayscale(0%);
+  transform: scale(1.1); /* Zoom effect on hover */
+}
+
+.team-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 5px;
+}
+
+.team-card p {
+  color: #666;
+  font-weight: 500;
+}
