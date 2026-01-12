@@ -1,0 +1,136 @@
+:root {
+  --bg: #f5f5f0; /* Soft Linen/Champagne */
+  --black: #1a1a1a;
+  --accent: #d4a373; /* Muted Gold/Tan */
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg);
+  font-family: "Inter", sans-serif;
+  color: var(--black);
+  overflow-x: hidden;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 30px 5%;
+  position: fixed;
+  width: 100%;
+  z-index: 100;
+}
+
+.logo {
+  font-family: "Syncopate", sans-serif;
+  font-size: 1.5rem;
+  letter-spacing: -1px;
+}
+
+.menu-items a {
+  text-decoration: none;
+  color: var(--black);
+  margin-left: 25px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+/* Hero Section with Overlap */
+.hero {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 5%;
+}
+
+.hero-inner {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  align-items: center;
+  width: 100%;
+}
+
+.hero-image {
+  grid-column: 5 / 12; /* Image sits to the right */
+  height: 80vh;
+  overflow: hidden;
+}
+
+.hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-text {
+  grid-column: 2 / 8; /* Text overlaps the left side of the image */
+  grid-row: 1;
+  z-index: 2;
+}
+
+.hero-text h1 {
+  font-family: "Syncopate", sans-serif;
+  font-size: 8rem;
+  line-height: 0.8;
+  text-transform: uppercase;
+}
+
+.outline-text {
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--black);
+}
+
+.hero-text p {
+  margin: 30px 0;
+  font-size: 1.1rem;
+  max-width: 350px;
+}
+
+.cta-button {
+  display: inline-block;
+  background: var(--black);
+  color: white;
+  padding: 20px 40px;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+/* The Ticker Animation */
+.ticker {
+  background: var(--black);
+  color: white;
+  padding: 15px 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.ticker-wrap {
+  display: inline-block;
+  animation: scroll 20s linear infinite;
+}
+
+.ticker span {
+  font-size: 0.8rem;
+  padding-right: 50px;
+  font-weight: 600;
+}
+
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
