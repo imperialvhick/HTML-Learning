@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Affiliate Sales Bootcamp</title>
+    <meta
+      name="description"
+      content="Join our free 3-day Affiliate Sales Bootcamp. Learn proven systems to generate quality leads, nurture prospects, and close consistent sales. Limited to 40 participants."
+    />
+    <meta property="og:image" content="[your-bootcamp-image-url]" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+          sans-serif;
+        line-height: 1.6;
+        color: #0a0a0a;
+        background: #ffffff;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .hero {
+        background: #0a0a0a;
+        color: #ffffff;
+        padding: 100px 20px 120px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(
+          circle,
+          rgba(139, 0, 0, 0.15) 0%,
+          transparent 70%
+        );
+        pointer-events: none;
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 1;
+        max-width: 900px;
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      .badge {
+        display: inline-block;
+        background: #8b0000;
+        color: #ffffff;
+        padding: 10px 24px;
+        border-radius: 4px;
+        font-size: 14px;
+        font-weight: 700;
+        margin-bottom: 24px;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+      }
+
+      h1 {
+        font-size: clamp(40px, 6vw, 72px);
+        font-weight: 800;
+        line-height: 1.1;
+        margin-bottom: 24px;
+        letter-spacing: -0.02em;
+        color: #ffffff;
+      }
+
+      .hero p {
+        font-size: clamp(18px, 2.5vw, 24px);
+        margin-bottom: 40px;
+        opacity: 0.9;
+        font-weight: 400;
+        line-height: 1.5;
+      }
+
+      .cta-button {
+        display: inline-block;
+        background: #8b0000;
+        color: #ffffff;
+        padding: 20px 48px;
+        border-radius: 4px;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 18px;
+        transition: all 0.3s ease;
+        border: none;
+        cursor: pointer;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .cta-button:hover {
+        background: #a00000;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(139, 0, 0, 0.3);
+      }
+
+      .scarcity {
+        margin-top: 32px;
+        font-size: 16px;
+        opacity: 0.85;
+        font-weight: 500;
+      }
+
+      .scarcity strong {
+        color: #8b0000;
+        font-weight: 700;
+      }
+
+      .section {
+        padding: 100px 20px;
+      }
+
+      .section-alt {
+        background: #fafafa;
+      }
+
+      .section-title {
+        font-size: clamp(32px, 4vw, 48px);
+        font-weight: 800;
+        text-align: center;
+        margin-bottom: 60px;
+        color: #0a0a0a;
+        line-height: 1.2;
+        letter-spacing: -0.02em;
+      }
+
+      .pain-points {
+        max-width: 1000px;
+        margin: 0 auto;
+        display: grid;
+        gap: 16px;
+      }
+
+      .pain-item {
+        background: #ffffff;
+        padding: 28px 32px;
+        border-left: 4px solid #8b0000;
+        display: flex;
+        align-items: start;
+        gap: 20px;
+        transition: all 0.3s ease;
+      }
+
+      .pain-item:hover {
+        transform: translateX(4px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+      }
+
+      .pain-icon {
+        font-size: 24px;
+        flex-shrink: 0;
+      }
+
+      .pain-item strong {
+        color: #0a0a0a;
+        font-weight: 700;
+      }
+
+      .flyer-section {
+        background: #fafafa;
+      }
+
+      .flyer-container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .bootcamp-flyer {
+        width: 100%;
+        height: auto;
+        display: block;
+        border: 3px solid #8b0000;
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+        transition: all 0.3s ease;
+        overflow: hidden;
+      }
+
+      .bootcamp-flyer:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 16px 50px rgba(139, 0, 0, 0.15);
+      }
+
+      .what-youll-learn {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 24px;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .day-card {
+        background: #ffffff;
+        padding: 40px;
+        border: 2px solid #f0f0f0;
+        transition: all 0.3s ease;
+      }
+
+      .day-card:hover {
+        border-color: #8b0000;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+      }
+
+      .day-number {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background: #8b0000;
+        color: #ffffff;
+        width: 56px;
+        height: 56px;
+        font-weight: 800;
+        font-size: 24px;
+        margin-bottom: 24px;
+      }
+
+      .day-title {
+        font-size: 24px;
+        font-weight: 700;
+        margin-bottom: 20px;
+        color: #0a0a0a;
+        line-height: 1.3;
+      }
+
+      .day-card ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .day-card li {
+        padding: 10px 0 10px 32px;
+        position: relative;
+        color: #0a0a0a;
+        font-size: 16px;
+        line-height: 1.6;
+      }
+
+      .day-card li::before {
+        content: "→";
+        position: absolute;
+        left: 0;
+        color: #8b0000;
+        font-weight: 700;
+        font-size: 18px;
+      }
+
+      .speakers-section {
+        background: #0a0a0a;
+        color: #ffffff;
+      }
+
+      .speakers-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 32px;
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+
+      .speaker-card {
+        background: rgba(255, 255, 255, 0.05);
+        padding: 40px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        text-align: center;
+        transition: all 0.3s ease;
+      }
+
+      .speaker-card:hover {
+        background: rgba(255, 255, 255, 0.08);
+        border-color: #8b0000;
+      }
+
+      .speaker-avatar {
+        width: 200px;
+        height: 200px;
+        margin: 0 auto 24px;
+        border-radius: 50%;
+        overflow: hidden;
+        background: #8b0000;
+      }
+
+      .speaker-avatar img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .speaker-name {
+        font-size: 24px;
+        font-weight: 700;
+        margin-bottom: 8px;
+      }
+
+      .speaker-title {
+        font-size: 16px;
+        opacity: 0.7;
+        margin-bottom: 16px;
+        font-weight: 500;
+      }
+
+      .speaker-bio {
+        font-size: 16px;
+        opacity: 0.85;
+        line-height: 1.6;
+      }
+
+      .testimonials {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 24px;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding-bottom: 50px;
+      }
+
+      .testimonial-card {
+        background: #ffffff;
+        padding: 36px;
+        border: 2px solid #f0f0f0;
+        position: relative;
+        transition: all 0.3s ease;
+      }
+
+      .testimonial-card:hover {
+        border-color: #8b0000;
+      }
+
+      .quote-icon {
+        font-size: 48px;
+        color: #8b0000;
+        opacity: 0.2;
+        position: absolute;
+        top: 24px;
+        left: 24px;
+        line-height: 1;
+      }
+
+      .testimonial-text {
+        font-style: italic;
+        color: #0a0a0a;
+        margin-bottom: 24px;
+        padding-top: 32px;
+        font-size: 16px;
+        line-height: 1.7;
+      }
+
+      .testimonial-author {
+        font-weight: 700;
+        color: #0a0a0a;
+        font-size: 16px;
+      }
+
+      .testimonial-role {
+        font-size: 14px;
+        color: #666666;
+        margin-top: 4px;
+      }
+
+      .details-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 24px;
+        max-width: 1100px;
+        margin: 60px auto 0;
+      }
+
+      .detail-box {
+        text-align: center;
+        padding: 40px 24px;
+        background: #ffffff;
+        border: 2px solid #f0f0f0;
+        transition: all 0.3s ease;
+      }
+
+      .detail-box:hover {
+        border-color: #8b0000;
+      }
+
+      .detail-icon {
+        font-size: 48px;
+        margin-bottom: 16px;
+      }
+
+      .detail-label {
+        font-weight: 700;
+        font-size: 18px;
+        margin-bottom: 8px;
+        color: #0a0a0a;
+      }
+
+      .detail-value {
+        color: #8b0000;
+        font-size: 16px;
+        font-weight: 600;
+      }
+
+      .form-section {
+        background: #0a0a0a;
+        color: #ffffff;
+        padding: 50px 0px;
+      }
+
+      .form-container {
+        max-width: 800px;
+        margin: 0 auto;
+        background: #ffffff;
+        padding: 48px;
+        border: 3px solid #8b0000;
+      }
+
+      .form-container h2 {
+        color: #0a0a0a;
+        margin-bottom: 32px;
+        text-align: center;
+        font-size: clamp(24px, 4vw, 36px);
+        font-weight: 800;
+        letter-spacing: -0.02em;
+      }
+
+      .countdown-container {
+        text-align: center;
+        margin-bottom: 30px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid #f0f0f0;
+      }
+
+      .countdown-label {
+        font-size: 14px;
+        font-weight: 700;
+        text-transform: uppercase;
+        color: #8b0000;
+        margin-bottom: 15px;
+        letter-spacing: 1px;
+      }
+
+      #countdown {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+      }
+
+      .time-block {
+        background: #0a0a0a;
+        color: #ffffff;
+        padding: 10px;
+        border-radius: 4px;
+        min-width: 65px;
+      }
+
+      .time-block span {
+        display: block;
+        font-size: 24px;
+        font-weight: 800;
+        line-height: 1;
+      }
+
+      .time-label {
+        font-size: 10px;
+        text-transform: uppercase;
+        opacity: 0.7;
+        margin-top: 5px;
+      }
+
+      #omnisend-embedded-v2-69567c97f121569aa612955d button {
+        width: 100%;
+        background: #8b0000;
+        color: #ffffff;
+        padding: 18px;
+        border: none;
+        font-size: 18px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      #omnisend-embedded-v2-69567c97f121569aa612955d button:hover {
+        background: #a00000;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(139, 0, 0, 0.3);
+      }
+
+      footer {
+        background: #0a0a0a;
+        color: #ffffff;
+        text-align: center;
+        padding: 60px 20px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      footer p {
+        opacity: 0.8;
+      }
+
+      .floating-cta {
+        position: fixed;
+        bottom: 25px;
+        right: 15px;
+        background: #8b0000;
+        color: #ffffff;
+        padding: 16px 28px;
+        border-radius: 50px; /* Rounded pill shape */
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 14px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        z-index: 999; /* Stays above everything */
+        box-shadow: 0 10px 25px rgba(139, 0, 0, 0.4);
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        animation: pulse-red 2s infinite;
+      }
+
+      .floating-cta:hover {
+        background: #a00000;
+        transform: scale(1.05);
+      }
+
+      /* The subtle pulse animation */
+      @keyframes pulse-red {
+        0% {
+          box-shadow: 0 0 0 0 rgba(139, 0, 0, 0.7);
+        }
+        70% {
+          box-shadow: 0 0 0 15px rgba(139, 0, 0, 0);
+        }
+        100% {
+          box-shadow: 0 0 0 0 rgba(139, 0, 0, 0);
+        }
+      }
+
+      @media (max-width: 768px) {
+        .hero {
+          padding: 80px 20px 100px;
+        }
+
+        .section {
+          padding: 80px 20px;
+        }
+
+        .badge {
+          background: transparent;
+          border: 1px solid #8b0000;
+          color: #8b0000;
+          padding: 6px 16px;
+        }
+
+        .cta-button {
+          padding: 12px 28px;
+          font-size: 16px;
+          width: auto;
+        }
+
+        .day-card li {
+          padding: 10px 0 10px 10px;
+        }
+        .day-card li::before {
+          left: -15px;
+        }
+
+        .what-youll-learn {
+          grid-template-columns: 1fr;
+        }
+        #countdown {
+          gap: 8px;
+        }
+        .time-block {
+          min-width: 55px;
+          padding: 8px;
+        }
+        .time-block span {
+          font-size: 20px;
+        }
+        .floating-cta {
+          bottom: 30px;
+          right: 1px;
+          padding: 12px 15px;
+          font-size: 12px;
+        }
+      }
+      /* Premium minimal touches */
+      .divider {
+        width: 60px;
+        height: 3px;
+        background: #8b0000;
+        margin: 0 auto 32px;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="hero">
+      <div class="hero-content">
+        <div class="badge">Affiliate Sales Bootcamp</div>
+        <h1>Stop Guessing. Start Closing.</h1>
+        <p>
+          Learn the exact systems to generate quality leads, nurture them like a
+          pro, and close sales consistently.
+        </p>
+        <a href="#register" class="cta-button">Grant Me Access</a>
+        <p class="scarcity">
+          ⚠️ <strong>Limited to 40 participants only</strong> · Sessions @ 8pm
+          WAT
+        </p>
+      </div>
+    </section>
+
+    <section class="section section-alt">
+      <div class="container">
+        <div class="divider"></div>
+        <h2 class="section-title">
+          You've Been Doing Everything... Except What Actually Works
+        </h2>
+        <div class="pain-points">
+          <div class="pain-item">
+            <div class="pain-icon">❌</div>
+            <div>
+              <strong>Your leads don't convert</strong> — You're getting clicks
+              and DMs, but no one's buying. They keep giving you stories when
+              it's time for payment.
+            </div>
+          </div>
+          <div class="pain-item">
+            <div class="pain-icon">❌</div>
+            <div>
+              <strong>You're throwing money at ads</strong> — You've spent on
+              Facebook and Instagram ads, with little to nothing to show for it.
+            </div>
+          </div>
+          <div class="pain-item">
+            <div class="pain-icon">❌</div>
+            <div>
+              <strong>You don't know how to handle objections</strong> — "Can't
+              you register me for free?" "I've been scammed before," "I'll get
+              back to you," and then... silence.
+            </div>
+          </div>
+          <div class="pain-item">
+            <div class="pain-icon">❌</div>
+            <div>
+              <strong>You're posting every day with zero results</strong> —
+              Consistent effort, inconsistent income. It's almost like the
+              algorithm hates you.
+            </div>
+          </div>
+          <div class="pain-item">
+            <div class="pain-icon">❌</div>
+            <div>
+              <strong>You've consumed everything</strong> — YouTube videos, X
+              Spaces, webinars, courses... but still no breakthrough.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="flyer-section">
+      <div class="container">
+        <div class="divider"></div>
+        <h2 class="section-title">Mark Your Calendar</h2>
+        <div class="flyer-container">
+          <img
+            src="include-image-here"
+            alt="Affiliate Sales Bootcamp Flyer"
+            class="bootcamp-flyer"
+          />
+        </div>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container">
+        <div class="divider"></div>
+        <h2 class="section-title">Here's What You'll Learn in 3 Days</h2>
+        <div class="what-youll-learn">
+          <div class="day-card">
+            <div class="day-number">1</div>
+            <div class="day-title">Day 1: Breaking Free From the Hype</div>
+            <ul>
+              <li>Why “new year, new me” fails for affiliates</li>
+              <li>The lies you must unlearn to make progress in 2026</li>
+              <li>The difference between working hard and building systems</li>
+              <li>
+                What to completely stop doing in 2026 if you want real results
+              </li>
+            </ul>
+          </div>
+          <div class="day-card">
+            <div class="day-number">2</div>
+            <div class="day-title">Day 2: The Systems That Drive Sales</div>
+            <ul>
+              <li>
+                The 3 non-negotiable systems behind consistent affiliate sales
+              </li>
+              <li>How lead generation, nurturing, and closing work together</li>
+              <li>
+                Where most affiliates break the system without realizing it
+              </li>
+              <li>How to build a simple system you can actually maintain</li>
+            </ul>
+          </div>
+          <div class="day-card">
+            <div class="day-number">3</div>
+            <div class="day-title">
+              Day 3: Your 2026 Affiliate Sales Blueprint
+            </div>
+            <ul>
+              <li>
+                How to plan your affiliate business around systems, not hype
+              </li>
+              <li>
+                What to focus on weekly instead of setting unrealistic yearly
+                goals
+              </li>
+              <li>How to diagnose what's wrong when sales slow down</li>
+              <li>
+                How to stay consistent long after January motivation fades
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="speakers-section section" id="speakers">
+      <div class="container">
+        <div class="divider" style="background: #8b0000"></div>
+        <h2 class="section-title" style="color: #ffffff">Meet the Speakers</h2>
+        <div class="speakers-grid">
+          <div class="speaker-card">
+            <div class="speaker-avatar">
+              <img src="" alt="Rare Muneerah" />
+            </div>
+            <div class="speaker-name">Your Name</div>
+            <div class="speaker-title">Sales & Marketing Expert</div>
+            <div class="speaker-bio">
+              Facebook & Instagram Ads Specialist helping affiliates build
+              systems that actually generate ROI and consistent commissions.
+            </div>
+          </div>
+          <div class="speaker-card">
+            <div class="speaker-avatar">
+              <img
+                src="https://swiftmarky.com/wp-content/uploads/2026/01/muzzamil.jpg"
+                alt="Muzzamil Murtala"
+              />
+            </div>
+            <div class="speaker-name">Muzzamil Murtala</div>
+            <div class="speaker-title">
+              Digital Entrepreneur || Online Income Mentor
+            </div>
+            <div class="speaker-bio">
+              I coach individuals to create profitable online income streams and
+              grow digital businesses through strategic Facebook marketing and
+              sales systems.
+            </div>
+          </div>
+          <div class="speaker-card">
+            <div class="speaker-avatar">
+              <img
+                src="https://swiftmarky.com/wp-content/uploads/2026/01/dominic.jpg"
+                alt="Igweshi Dominic"
+              />
+            </div>
+            <div class="speaker-name">Coach Dominic</div>
+            <div class="speaker-title">Sales & Marketing Expert</div>
+            <div class="speaker-bio">
+              Facebook & Instagram Ads Specialist helping affiliates build
+              systems that actually generate ROI and consistent commissions.
+            </div>
+          </div>
+          <!-- Add more speaker cards as needed -->
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt">
+      <div class="container">
+        <div class="divider"></div>
+        <h2 class="section-title">What Past Participants Are Saying</h2>
+        <div class="testimonials">
+          <div class="testimonial-card">
+            <div class="quote-icon">"</div>
+            <div class="testimonial-text">
+              Before this bootcamp, I was getting leads but no sales. Everything
+              finally clicked here. I realized my problem wasn't traffic, it was
+              conversion. After applying what I learned, I closed 3 sales in
+              just one week. This bootcamp helped me see the gaps in my process,
+              and I'd definitely recommend it to others.
+            </div>
+            <div class="testimonial-author">Daniel Jessica</div>
+            <div class="testimonial-role">Affiliate Marketer</div>
+          </div>
+          <div class="testimonial-card">
+            <div class="quote-icon">"</div>
+            <div class="testimonial-text">
+              I was able to convert more leads to sales after the boot camp and
+              learn alot of valuable informations from Victor Bassey that boost
+              my marketing skills. I really appreciate the host and I'll love to
+              keep learning and share this to more people to benefit
+            </div>
+            <div class="testimonial-author">Lawal Jamiu I.</div>
+            <div class="testimonial-role">Digital Marketer</div>
+          </div>
+          <div class="testimonial-card">
+            <div class="quote-icon">"</div>
+            <div class="testimonial-text">
+              Before the bootcamp, I struggled with lead generation and poor
+              positioning as an affiliate marketer. The bootcamp was a real game
+              changer. I learned how to position myself as an authority, close
+              more sales, and build systems that attract leads who are already
+              ready to buy.
+            </div>
+            <div class="testimonial-author">Joshua Nwude</div>
+            <div class="testimonial-role">Affiliate Marketer</div>
+          </div>
+          <div class="testimonial-card">
+            <div class="quote-icon">"</div>
+            <div class="testimonial-text">
+              During the bootcamp, I gained clarity on the type of leads I
+              should be attracting and how to position myself properly to them.
+              I also learned how to generate quality leads that my offer sells
+              to naturally. If you've been struggling, this bootcamp can truly
+              change your story.
+            </div>
+            <div class="testimonial-author">Micah Cletus</div>
+            <div class="testimonial-role">Affiliate Marketer</div>
+          </div>
+          <div class="testimonial-card">
+            <div class="quote-icon">"</div>
+            <div class="testimonial-text">
+              I was generating about 10 leads per week and barely converting any
+              of them. Nurturing and follow-ups were frustrating, and sales felt
+              random. After the bootcamp, I now generate 50-100 leads weekly and
+              close 5-8 sales, and I'm still improving. The difference is clear.
+            </div>
+            <div class="testimonial-author">Khalid Abubakar</div>
+            <div class="testimonial-role">Affiliate Marketer</div>
+          </div>
+          <div class="testimonial-card">
+            <div class="quote-icon">"</div>
+            <div class="testimonial-text">
+              I used to struggle with getting quality leads and closing them
+              consistently. This bootcamp helped me solve that problem. I now
+              know how to attract the right leads for my business, and my
+              conversion rate keeps improving. I'm truly grateful for this
+              opportunity.
+            </div>
+            <div class="testimonial-author">Brume Dylan</div>
+            <div class="testimonial-role">Digital Creator</div>
+          </div>
+          <div class="testimonial-card">
+            <div class="quote-icon">"</div>
+            <div class="testimonial-text">
+              My biggest struggle was conversion. I could get people to see the
+              offer, but I didn't know how to build trust to get them to buy.
+              After attending ASB, I learned the psychology of selling and how
+              to position myself as an authority. My conversion rate has
+              improved significantly. I'd recommend this bootcamp to anyone
+              looking to turn likes into commissions.
+            </div>
+            <div class="testimonial-author">Muhammad Nazeer Muhammad</div>
+            <div class="testimonial-role">Affiliate Marketer</div>
+          </div>
+          <div class="testimonial-card">
+            <div class="quote-icon">"</div>
+            <div class="testimonial-text">
+              Before the bootcamp, generating quality leads was extremely
+              frustrating for me. Attending the bootcamp was a breakthrough. I
+              can now consistently generate hot, quality leads for my products.
+            </div>
+            <div class="testimonial-author">Omotayo A.</div>
+            <div class="testimonial-role">Affiliate Marketer</div>
+          </div>
+          <div class="testimonial-card">
+            <div class="quote-icon">"</div>
+            <div class="testimonial-text">
+              Participating in the Affiliate Sales Bootcamp was a major turning
+              point in my affiliate journey. I gained clarity, practical skills,
+              and a stronger understanding of how affiliate sales really work.
+              More than strategies, it reshaped my mindset and gave me
+              direction. The lessons I learned continue to guide my growth and
+              consistency in affiliate marketing.
+            </div>
+            <div class="testimonial-author">Aniekwe Chioma Vivian</div>
+            <div class="testimonial-role">Affiliate Marketer</div>
+          </div>
+        </div>
+        <div style="text-align: center; margin-top: 10px">
+          <a href="#register" class="cta-button">Join The Next Session</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="divider"></div>
+        <h2 class="section-title">Bootcamp Details</h2>
+        <div class="details-grid">
+          <div class="detail-box">
+            <div class="detail-icon">📅</div>
+            <div class="detail-label">Duration</div>
+            <div class="detail-value">29th to 31st January 2026</div>
+          </div>
+          <div class="detail-box">
+            <div class="detail-icon">⏰</div>
+            <div class="detail-label">Time</div>
+            <div class="detail-value">8:00 PM WAT Daily</div>
+          </div>
+          <div class="detail-box">
+            <div class="detail-icon">📱</div>
+            <div class="detail-label">Platform</div>
+            <div class="detail-value">Live on Telegram + Replays</div>
+          </div>
+          <div class="detail-box">
+            <div class="detail-icon">💰</div>
+            <div class="detail-label">Investment</div>
+            <div class="detail-value">100% FREE</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="form-section" id="register">
+      <div class="container">
+        <div class="form-container">
+          <div class="countdown-container">
+            <p class="countdown-label">Registration Closes In:</p>
+            <div id="countdown">
+              <div class="time-block">
+                <span id="days">00</span>
+                <div class="time-label">Days</div>
+              </div>
+              <div class="time-block">
+                <span id="hours">00</span>
+                <div class="time-label">Hours</div>
+              </div>
+              <div class="time-block">
+                <span id="minutes">00</span>
+                <div class="time-label">Mins</div>
+              </div>
+              <div class="time-block">
+                <span id="seconds">00</span>
+                <div class="time-label">Secs</div>
+              </div>
+            </div>
+          </div>
+          <h2>Secure Your Spot Now</h2>
+          <div id="omnisend-embedded-v2-69567c97f121569aa612955d"></div>
+          <p
+            style="
+              margin-top: 14px;
+              text-align: center;
+              font-size: 14px;
+              color: #666666;
+            "
+          >
+            Limited to 40 participants. Spots fill up fast!
+          </p>
+        </div>
+      </div>
+    </section>
+    <a href="#register" class="floating-cta">Register Now</a>
+    <footer>
+      <div class="container">
+        <p style="font-weight: 600; margin-bottom: 8px">
+          &copy; 2025 Affiliate Sales Bootcamp. All rights reserved.
+        </p>
+        <p style="font-size: 14px">
+          Empowering African affiliates to build sustainable income through
+          proven systems.
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      // Smooth scroll for CTA button
+      document
+        .querySelector(".cta-button")
+        .addEventListener("click", function (e) {
+          e.preventDefault();
+          document.querySelector("#register").scrollIntoView({
+            behavior: "smooth",
+          });
+        });
+
+      // Set the date we're counting down to
+      const countDownDate = new Date("Jan 29, 2026 20:00:00").getTime();
+
+      const x = setInterval(function () {
+        const now = new Date().getTime();
+        const distance = countDownDate - now;
+
+        // Time calculations
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor(
+          (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        );
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        // Output the results
+        document.getElementById("days").innerHTML = days
+          .toString()
+          .padStart(2, "0");
+        document.getElementById("hours").innerHTML = hours
+          .toString()
+          .padStart(2, "0");
+        document.getElementById("minutes").innerHTML = minutes
+          .toString()
+          .padStart(2, "0");
+        document.getElementById("seconds").innerHTML = seconds
+          .toString()
+          .padStart(2, "0");
+
+        // If the count down is over, write some text
+        if (distance < 0) {
+          clearInterval(x);
+          document.querySelector(".countdown-container").innerHTML =
+            "<p class='badge'>Registration Closed</p>";
+        }
+      }, 1000);
+
+      document.addEventListener("DOMContentLoaded", function () {
+        // Targets your specific form ID
+        const formContainer = document.getElementById(
+          "omnisend-embedded-v2-69567c97f121569aa612955d"
+        );
+
+        const checkForm = setInterval(() => {
+          const form = formContainer.querySelector("form");
+          if (form) {
+            clearInterval(checkForm);
+
+            form.addEventListener("submit", function () {
+              // 1.5 second delay is the "Sweet Spot"
+              // It's long enough for the data to send, but short enough that the user doesn't leave
+              setTimeout(() => {
+                window.location.href = "https://tinyurl.com/imperialcircle";
+              }, 1500);
+            });
+          }
+        }, 100);
+      });
+    </script>
+  </body>
+</html>
