@@ -1,0 +1,245 @@
+/* =====================
+   RESET & VARIABLES
+===================== */
+
+:root {
+  --black: #0a0a0a;
+  --white: #ffffff;
+  --red: #8b0000;
+  --gray: #b3b3b3;
+  --soft-gray: #1a1a1a;
+  --border: rgba(255, 255, 255, 0.08);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* =====================
+   BASE
+===================== */
+
+body {
+  font-family: "Satoshi", sans-serif;
+  background-color: var(--black);
+  color: var(--white);
+  line-height: 1.65;
+}
+
+section {
+  padding: 120px 0;
+}
+
+.container {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+h1 {
+  font-size: clamp(42px, 5vw, 56px);
+  max-width: 820px;
+}
+
+h2 {
+  font-size: clamp(30px, 3vw, 36px);
+  margin-bottom: 64px;
+}
+
+p {
+  font-size: 17px;
+  color: var(--gray);
+  max-width: 760px;
+}
+
+/* =====================
+   HERO
+===================== */
+
+#hero {
+  padding-top: 180px;
+  padding-bottom: 160px;
+}
+
+.eyebrow {
+  display: inline-block;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--red);
+  margin-bottom: 24px;
+}
+
+.subtext {
+  font-size: 19px;
+  margin-top: 28px;
+  margin-bottom: 48px;
+  max-width: 720px;
+}
+
+.trust {
+  margin-top: 40px;
+  font-size: 14px;
+  color: var(--gray);
+}
+
+/* =====================
+   BUTTONS
+===================== */
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--red);
+  color: var(--white);
+  padding: 16px 40px;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(139, 0, 0, 0.35);
+}
+
+/* =====================
+   AUDIENCE
+===================== */
+
+#audience {
+  background-color: var(--white);
+  color: var(--black);
+}
+
+#audience p,
+#audience h2 {
+  color: var(--black);
+}
+
+.audience-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 32px;
+}
+
+.audience-card {
+  padding: 40px;
+  border-radius: 12px;
+  background: #f6f6f6;
+  font-weight: 600;
+  transition: transform 0.2s ease;
+}
+
+.audience-card:hover {
+  transform: translateY(-4px);
+}
+
+/* =====================
+   SERVICES
+===================== */
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 48px;
+}
+
+.service-card {
+  padding: 32px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.03),
+    rgba(255, 255, 255, 0.01)
+  );
+}
+
+.service-card h3 {
+  font-size: 20px;
+  margin-bottom: 12px;
+}
+
+.service-card p {
+  font-size: 16px;
+}
+
+/* =====================
+   WHY SWIFTMARKY
+===================== */
+
+#why {
+  background-color: var(--soft-gray);
+}
+
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 32px;
+}
+
+.why-item {
+  padding: 32px;
+  border-radius: 12px;
+  border-left: 4px solid var(--red);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+/* =====================
+   PROCESS
+===================== */
+
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 48px;
+}
+
+.process-step {
+  padding-top: 16px;
+}
+
+.process-step span {
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--red);
+}
+
+.process-step p {
+  margin-top: 14px;
+  font-size: 16px;
+}
+
+/* =====================
+   CTA
+===================== */
+
+#cta {
+  background: radial-gradient(
+    1200px 400px at center top,
+    rgba(139, 0, 0, 0.35),
+    var(--red)
+  );
+  text-align: center;
+}
+
+#cta h2 {
+  color: var(--white);
+}
+
+#cta p {
+  margin: 24px auto 40px;
+  color: rgba(255, 255, 255, 0.85);
+}

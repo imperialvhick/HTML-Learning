@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Swiftmarky - Performance Marketing Agency</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        color: #0a0a0a;
+        overflow-x: hidden;
+      }
+
+      /* Hero Section */
+      .hero {
+        position: relative;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: space-between;
+        background: linear-gradient(
+          135deg,
+          #0a0a0a 0%,
+          #2d0000 50%,
+          #8b0000 100%
+        );
+        overflow: hidden;
+        padding-top: 80px; /* Adjust this based on your nav height */
+        padding-bottom: 50px; /* Space for the trusted-by section */
+      }
+
+      /* Animated Background Pattern */
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 2px,
+            rgba(255, 255, 255, 0.03) 2px,
+            rgba(255, 255, 255, 0.03) 4px
+          ),
+          repeating-linear-gradient(
+            90deg,
+            transparent,
+            transparent 2px,
+            rgba(255, 255, 255, 0.03) 2px,
+            rgba(255, 255, 255, 0.03) 4px
+          );
+        animation: patternMove 20s linear infinite;
+      }
+
+      @keyframes patternMove {
+        0% {
+          transform: translate(0, 0);
+        }
+        100% {
+          transform: translate(50px, 50px);
+        }
+      }
+
+      /* Floating Shapes */
+      .shape {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(60px);
+        opacity: 0.08;
+        animation: float 25s infinite ease-in-out;
+      }
+
+      .shape-1 {
+        width: 400px;
+        height: 400px;
+        background: #8b0000;
+        top: -100px;
+        left: -100px;
+        animation-delay: 0s;
+      }
+
+      .shape-2 {
+        width: 300px;
+        height: 300px;
+        background: #ff4444;
+        bottom: -50px;
+        right: -50px;
+        animation-delay: 5s;
+      }
+
+      .shape-3 {
+        width: 200px;
+        height: 200px;
+        background: #8b0000;
+        top: 50%;
+        right: 10%;
+        animation-delay: 10s;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translate(0, 0) scale(1);
+        }
+        33% {
+          transform: translate(30px, -30px) scale(1.1);
+        }
+        66% {
+          transform: translate(-20px, 20px) scale(0.9);
+        }
+      }
+
+      /* Navigation */
+      .nav {
+        position: fixed; /* Stays at the top of the screen */
+        top: 0;
+        left: 0;
+        right: 0;
+        padding: 1rem 5%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 1000; /* Higher z-index to stay above everything */
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        /* Smooth transition for when we add a scroll effect later */
+        transition: all 0.3s ease;
+      }
+
+      .logo-container {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .logo-container img {
+        height: 50px;
+        width: auto;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 2.5rem;
+        list-style: none;
+        align-items: center;
+      }
+
+      .nav-links a {
+        color: rgba(
+          255,
+          255,
+          255,
+          0.8
+        ); /* Slightly dimmed white for a cleaner look */
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 15px; /* Slightly smaller is often more elegant for navs */
+        letter-spacing: 0.5px;
+        transition: all 0.3s ease;
+        position: relative; /* Needed for the underline effect */
+      }
+
+      /* Hover Effect: Glow and Underline */
+      .nav-links a:hover {
+        color: #ffffff; /* Bright white on hover */
+      }
+
+      /* Adding a modern animated underline */
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: -5px;
+        left: 0;
+        background-color: #ff4444; /* Brighter red to match your brand */
+        transition: width 0.3s ease;
+      }
+
+      .nav-links a:hover::after {
+        width: 100%;
+      }
+
+      .nav-links li:last-child a {
+        /* Inheriting btn-primary styles */
+        background: #8b0000;
+        color: #ffffff;
+        padding: 0.6rem 1.5rem; /* Smaller padding than the hero buttons to fit the nav */
+        border-radius: 8px;
+        font-weight: 600;
+        box-shadow: 0 4px 15px rgba(139, 0, 0, 0.3);
+        transition: all 0.3s ease;
+      }
+
+      .nav-links li:last-child a:hover {
+        background: #a00000;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(139, 0, 0, 0.4);
+        color: #ffffff; /* Ensures text stays white */
+      }
+
+      /* Remove the underline animation from the button link */
+      .nav-links li:last-child a::after {
+        display: none;
+      }
+
+      .nav.scrolled {
+        padding: 0.7rem 5%;
+        background: rgba(10, 10, 10, 0.95);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      }
+      /* Hero Content */
+      .hero-content {
+        margin-top: auto;
+        margin-bottom: auto;
+        z-index: 20;
+        text-align: center;
+        max-width: 1100px;
+        padding: 40px 5%;
+      }
+
+      .hero-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: rgba(139, 0, 0, 0.15);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        padding: 0.55rem 1.4rem;
+        border-radius: 999px;
+        color: #ffffff;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        margin-bottom: 2rem;
+        animation: fadeInDown 0.8s ease;
+      }
+
+      .hero h1 {
+        font-family: "Outfit", sans-serif;
+        font-size: clamp(2.8rem, 6vw, 4.8rem);
+        font-weight: 800;
+        color: #ffffff;
+        line-height: 1; /* tighter = more authority */
+        margin-bottom: 1.5rem;
+        letter-spacing: -0.02em;
+        animation: fadeInUp 0.8s ease 0.2s both;
+      }
+
+      .hero h1 .highlight {
+        background: linear-gradient(135deg, #ff4444 0%, #8b0000 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .hero-subheadline {
+        font-size: clamp(1.1rem, 2vw, 1.35rem);
+        color: rgba(255, 255, 255, 0.9);
+        line-height: 1.55;
+        max-width: 780px;
+        margin: 0 auto 3rem;
+        font-weight: 500; /* less polite, more confident */
+        animation: fadeInUp 0.8s ease 0.4s both;
+      }
+      .hero-cta {
+        display: flex;
+        gap: 1.5rem;
+        justify-content: center;
+        flex-wrap: wrap;
+        animation: fadeInUp 0.8s ease 0.6s both;
+      }
+
+      .hero-proof {
+        color: rgba(255, 255, 255, 0.75);
+        font-size: 14px;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        margin-bottom: 2.5rem;
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 1rem 2.5rem;
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 16px;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        border: none;
+      }
+
+      .btn-primary {
+        background: linear-gradient(135deg, #8b0000, #b00000);
+        color: #ffffff;
+        box-shadow: 0 10px 30px rgba(139, 0, 0, 0.35),
+          inset 0 1px 0 rgba(255, 255, 255, 0.15);
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 18px 45px rgba(139, 0, 0, 0.45),
+          inset 0 1px 0 rgba(255, 255, 255, 0.2);
+      }
+
+      .btn-secondary {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        color: #ffffff;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+      }
+
+      .btn-secondary:hover {
+        background: rgba(255, 255, 255, 0.2);
+        border-color: rgba(255, 255, 255, 0.5);
+        transform: translateY(-2px);
+      }
+
+      /* Trusted By Section */
+      .trusted-by {
+        position: relative; /* Change from absolute to relative */
+        width: 100%;
+        padding-bottom: 30px; /* Space from the very bottom of the screen */
+        z-index: 10;
+        margin-top: auto; /* This is the secret—it pushes the carousel to the bottom */
+        left: 0;
+        right: 0;
+        text-align: center;
+        z-index: 10;
+        animation: fadeIn 1s ease 1s both;
+      }
+
+      .trusted-by p {
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 14px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-bottom: 1rem;
+      }
+
+      .client-logos {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 3rem;
+        flex-wrap: wrap;
+        opacity: 0.7;
+      }
+
+      .logo-carousel {
+        overflow: hidden;
+        padding: 2rem 0;
+        background: rgba(0, 0, 0, 0.2); /* Subtle background for the strip */
+        width: 100%;
+        position: relative;
+      }
+
+      /* Create a fade effect on the left and right edges */
+      .logo-carousel::before,
+      .logo-carousel::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        width: 150px;
+        height: 100%;
+        z-index: 2;
+      }
+      .logo-carousel::before {
+        left: 0;
+        background: linear-gradient(to right, #0a0a0a, transparent);
+      }
+      .logo-carousel::after {
+        right: 0;
+        background: linear-gradient(to left, #0a0a0a, transparent);
+      }
+
+      .logo-track {
+        display: flex;
+        width: calc(
+          250px * 20
+        ); /* Width of 1 logo * total number of logos (including duplicates) */
+        animation: scroll 30s linear infinite;
+        gap: 3rem;
+        align-items: center;
+      }
+
+      .logo-track img {
+        width: 150px; /* Adjust size as needed */
+        height: 50px;
+        filter: grayscale(1) brightness(2); /* Makes all logos uniform white/gray */
+        opacity: 0.6;
+        transition: opacity 0.3s ease;
+      }
+
+      .logo-track img:hover {
+        opacity: 1;
+        transform: scale(1.05); /* Soft pop on hover */
+      }
+
+      .logo-carousel:hover .logo-track {
+        animation-play-state: paused;
+      }
+
+      @keyframes scroll {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(
+            calc(-250px * 5)
+          ); /* Move by exactly half the track width (the first set of logos) */
+        }
+      }
+
+      /* Scroll Indicator */
+      .scroll-indicator {
+        position: absolute;
+        bottom: 2rem;
+        left: 50%;
+        transform: translateX(-50%);
+        animation: bounce 2s infinite;
+      }
+
+      .scroll-indicator::after {
+        content: "";
+        display: block;
+        width: 20px;
+        height: 30px;
+        border: 2px solid rgba(255, 255, 255, 0.5);
+        border-radius: 15px;
+        position: relative;
+      }
+
+      .scroll-indicator::before {
+        content: "";
+        display: block;
+        width: 4px;
+        height: 8px;
+        background: rgba(255, 255, 255, 0.5);
+        border-radius: 2px;
+        position: absolute;
+        top: 8px;
+        left: 50%;
+        transform: translateX(-50%);
+        animation: scrollDot 2s infinite;
+      }
+
+      @keyframes bounce {
+        0%,
+        100% {
+          transform: translateX(-50%) translateY(0);
+        }
+        50% {
+          transform: translateX(-50%) translateY(10px);
+        }
+      }
+
+      @keyframes scrollDot {
+        0% {
+          opacity: 1;
+          transform: translateX(-50%) translateY(0);
+        }
+        100% {
+          opacity: 0;
+          transform: translateX(-50%) translateY(12px);
+        }
+      }
+
+      /* Animations */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes fadeInDown {
+        from {
+          opacity: 0;
+          transform: translateY(-30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .nav {
+          padding: 1.5rem 5%;
+        }
+
+        .nav-links {
+          display: none;
+        }
+
+        .logo-container img {
+          height: 40px;
+        }
+
+        .hero-content {
+          padding: 0 1.5rem;
+        }
+
+        .hero-cta {
+          flex-direction: column;
+          gap: 1rem;
+        }
+
+        .btn {
+          width: 100%;
+          max-width: 300px;
+        }
+
+        .trusted-by {
+          bottom: 2rem;
+          padding: 0 1rem;
+        }
+
+        .client-logos {
+          gap: 1.5rem;
+        }
+
+        .shape-1,
+        .shape-2,
+        .shape-3 {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <section class="hero">
+      <!-- Animated Shapes -->
+      <div class="shape shape-1"></div>
+      <div class="shape shape-2"></div>
+      <div class="shape shape-3"></div>
+
+      <!-- Navigation -->
+      <nav class="nav">
+        <div class="logo-container">
+          <img src="img/Swiftmarky-Logo.png" alt="Swiftmarky Logo" />
+        </div>
+        <ul class="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#case-studies">Case Studies</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li>
+            <a href="https://calendly.com/officialswiftmarky/discoverycall"
+              >Book a Call</a
+            >
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Hero Content -->
+      <div class="hero-content">
+        <div class="hero-badge">Swift Strategies, Powerful Results</div>
+
+        <h1>
+          <span class="highlight">Performance Marketing Agency</span><br />
+          That Turns Ad Spend Into Predictable Revenue
+        </h1>
+
+        <p class="hero-subheadline">
+          We help growth-focused brands scale profitably with strategic paid
+          advertising, high-converting funnels, and data-backed marketing
+          systems.
+        </p>
+
+        <p class="hero-proof">
+          Results-driven. ROI-focused. Built to scale fast.
+        </p>
+
+        <div class="hero-cta">
+          <a
+            href="https://calendly.com/officialswiftmarky/discoverycall"
+            class="btn btn-primary"
+            target="_blank"
+            >Book a Discovery Call</a
+          >
+          <a href="#services" class="btn btn-secondary">Explore Our Services</a>
+        </div>
+      </div>
+
+      <div class="trusted-by">
+        <p>Trusted by 300+ Brands Worldwide</p>
+        <div class="logo-carousel">
+          <div class="logo-track">
+            <img src="img/1.png" alt="Brand 1" />
+            <img src="img/2.png" alt="Brand 2" />
+            <img src="img/3.png" alt="Brand 3" />
+            <img src="img/4.png" alt="Brand 4" />
+            <img src="img/5.png" alt="Brand 5" />
+            <img src="img/6.png" alt="Brand 6" />
+            <img src="img/7.png" alt="Brand 7" />
+            <img src="img/8.png" alt="Brand 8" />
+            <img src="img/9.png" alt="Brand 9" />
+            <img src="img/10.png" alt="Brand 10" />
+
+            <img src="img/1.png" alt="Brand 1" />
+            <img src="img/2.png" alt="Brand 2" />
+            <img src="img/3.png" alt="Brand 3" />
+            <img src="img/4.png" alt="Brand 4" />
+            <img src="img/5.png" alt="Brand 5" />
+            <img src="img/6.png" alt="Brand 6" />
+            <img src="img/7.png" alt="Brand 7" />
+            <img src="img/8.png" alt="Brand 8" />
+            <img src="img/9.png" alt="Brand 9" />
+            <img src="img/10.png" alt="Brand 10" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Scroll Indicator -->
+      <div class="scroll-indicator"></div>
+    </section>
+  </body>
+
+  <script>
+    window.addEventListener("scroll", function () {
+      const nav = document.querySelector(".nav");
+      if (window.scrollY > 50) {
+        nav.classList.add("scrolled");
+      } else {
+        nav.classList.remove("scrolled");
+      }
+    });
+  </script>
+</html>
