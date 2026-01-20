@@ -1,0 +1,43 @@
+body {
+  background-color: burlywood;
+}
+
+.blog-post-card {
+  background-color: white;
+  border-radius: 10px;
+  width: 500px;
+  text-align: center;
+}
+
+.post-img {
+  width: 100%;
+  border-bottom: dashed 3px red;
+}
+
+.post-content {
+  padding: 20px;
+}
+
+.post-title {
+  color: blue;
+  margin: 20px;
+}
+
+.post-excerpt {
+  color: rgb(35, 35, 187);
+  margin: 20px;
+}
+
+.read-more {
+  display: inline-block;
+  background-color: azure;
+  color: crimson;
+  padding: 20px;
+  margin: 25px;
+  border-radius: 10px;
+}
+
+.read-more:hover {
+  background-color: crimson;
+  color: azure;
+}
