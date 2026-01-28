@@ -57,3 +57,134 @@ function animateCounter(element) {
     }
   }, 16);
 }
+
+// Intersection Observer for scroll animations
+const observerOptions = {
+  threshold: 0.2,
+  rootMargin: "0px 0px -100px 0px",
+};
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("visible");
+    }
+  });
+}, observerOptions);
+
+// Observe all steps
+document.querySelectorAll(".step").forEach((step) => {
+  observer.observe(step);
+});
+
+const track = document.getElementById("carouselTrack");
+const prevBtn = document.getElementById("prevBtn");
+const nextBtn = document.getElementById("nextBtn");
+const dotsContainer = document.getElementById("dotsContainer");
+const cards = document.querySelectorAll(".testimonial-card");
+
+let currentIndex = 0;
+let cardsPerView = 3;
+let autoScrollInterval;
+
+// Determine cards per view based on screen size
+function updateCardsPerView() {
+  if (window.innerWidth <= 768) {
+    cardsPerView = 1;
+  } else if (window.innerWidth <= 1024) {
+    cardsPerView = 2;
+  } else {
+    cardsPerView = 3;
+  }
+}
+
+// Create dots
+function createDots() {
+  dotsContainer.innerHTML = "";
+  const totalSlides = Math.ceil(cards.length / cardsPerView);
+  for (let i = 0; i < totalSlides; i++) {
+    const dot = document.createElement("div");
+    dot.classList.add("dot");
+    if (i === 0) dot.classList.add("active");
+    dot.addEventListener("click", () => goToSlide(i));
+    dotsContainer.appendChild(dot);
+  }
+}
+
+// Update carousel position
+function updateCarousel() {
+  const cardWidth = cards[0].offsetWidth;
+  const gap = 32; // 2rem in pixels
+  const offset = -(currentIndex * cardsPerView * (cardWidth + gap));
+  track.style.transform = `translateX(${offset}px)`;
+
+  // Update dots
+  document.querySelectorAll(".dot").forEach((dot, index) => {
+    dot.classList.toggle("active", index === currentIndex);
+  });
+}
+
+// Go to specific slide
+function goToSlide(index) {
+  const totalSlides = Math.ceil(cards.length / cardsPerView);
+  currentIndex = Math.max(0, Math.min(index, totalSlides - 1));
+  updateCarousel();
+  resetAutoScroll();
+}
+
+// Next slide
+function nextSlide() {
+  const totalSlides = Math.ceil(cards.length / cardsPerView);
+  currentIndex = (currentIndex + 1) % totalSlides;
+  updateCarousel();
+}
+
+// Previous slide
+function prevSlide() {
+  const totalSlides = Math.ceil(cards.length / cardsPerView);
+  currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+  updateCarousel();
+}
+
+// Auto scroll
+function startAutoScroll() {
+  autoScrollInterval = setInterval(nextSlide, 5000);
+}
+
+function stopAutoScroll() {
+  clearInterval(autoScrollInterval);
+}
+
+function resetAutoScroll() {
+  stopAutoScroll();
+  startAutoScroll();
+}
+
+// Event listeners
+nextBtn.addEventListener("click", () => {
+  nextSlide();
+  resetAutoScroll();
+});
+
+prevBtn.addEventListener("click", () => {
+  prevSlide();
+  resetAutoScroll();
+});
+
+// Pause on hover
+track.addEventListener("mouseenter", stopAutoScroll);
+track.addEventListener("mouseleave", startAutoScroll);
+
+// Handle resize
+window.addEventListener("resize", () => {
+  updateCardsPerView();
+  createDots();
+  currentIndex = 0;
+  updateCarousel();
+});
+
+// Initialize
+updateCardsPerView();
+createDots();
+updateCarousel();
+startAutoScroll();
