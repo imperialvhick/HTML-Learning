@@ -229,7 +229,7 @@ body {
   padding: 0.55rem 1.4rem;
   border-radius: 999px;
   color: #ffffff;
-  font-size: 14px;
+  font-size: clamp(0.8rem, 3vw, 1rem);
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -323,9 +323,9 @@ body {
 
 /* Trusted By Section */
 .trusted-by {
-  position: relative; /* Change from absolute to relative */
+  position: relative;
   width: 100%;
-  padding-bottom: 30px; /* Space from the very bottom of the screen */
+  padding-bottom: 30px;
   z-index: 10;
   margin-top: auto; /* This is the secret—it pushes the carousel to the bottom */
   left: 0;
@@ -451,6 +451,58 @@ body {
   animation: scrollDot 2s infinite;
 }
 
+/* Mobile Menu Toggle Button */
+.mobile-menu-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  z-index: 1001;
+}
+
+.mobile-menu-toggle span {
+  width: 25px;
+  height: 3px;
+  background: #ffffff;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+/* Hamburger Animation to X */
+.mobile-menu-toggle.active span:nth-child(1) {
+  transform: rotate(45deg) translate(7px, 7px);
+}
+
+.mobile-menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.mobile-menu-toggle.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -7px);
+}
+
+/* Mobile Overlay */
+.mobile-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 999;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.mobile-overlay.active {
+  display: block;
+  opacity: 1;
+}
+
 @keyframes bounce {
   0%,
   100% {
@@ -506,16 +558,8 @@ body {
 
 /* Responsive */
 @media (max-width: 768px) {
-  .nav {
-    padding: 1.5rem 5%;
-  }
-
-  .nav-links {
-    display: none;
-  }
-
   .logo-container img {
-    height: 40px;
+    height: 30px;
   }
 
   .hero-content {
@@ -527,18 +571,40 @@ body {
     gap: 1rem;
   }
 
+  .hero-proof {
+    text-transform: none;
+  }
   .btn {
     width: 100%;
-    max-width: 300px;
+    padding: 0.5rem 1rem;
+    font-size: 14px;
   }
 
   .trusted-by {
-    bottom: 2rem;
-    padding: 0 1rem;
+    bottom: 0rem;
+    padding-top: 1.5rem;
+  }
+
+  .trusted-by p {
+    font-size: 11px;
   }
 
   .client-logos {
-    gap: 1.5rem;
+    gap: 1.2rem;
+  }
+
+  .logo-carousel {
+    overflow: hidden;
+    padding: 1rem 0;
+  }
+
+  .logo-track {
+    gap: 1rem;
+  }
+
+  .logo-track img {
+    width: 90px; /* Adjust size as needed */
+    height: 30px;
   }
 
   .shape-1,
@@ -546,7 +612,48 @@ body {
   .shape-3 {
     display: none;
   }
+  /* Mobile Menu Styles */
+  .mobile-menu-toggle {
+    display: flex;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 280px;
+    height: 100vh;
+    background: rgba(10, 10, 10, 0.98);
+    backdrop-filter: blur(20px);
+    flex-direction: column;
+    padding: 100px 2rem 2rem;
+    gap: 0;
+    transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+  }
+
+  .nav-links.active {
+    right: 0;
+  }
+
+  .nav-links li {
+    width: 100%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .nav-links a {
+    display: block;
+    padding: 1.2rem 0;
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .nav-links a:hover {
+    color: #ff4444;
+  }
 }
+
 /* Stats Section */
 .stats-section {
   position: relative;
@@ -1315,7 +1422,7 @@ body {
 }
 
 .step-icon svg {
-  width: 28x; /* Adjust size as needed */
+  width: 28px; /* Adjust size as needed */
   height: 28px;
   stroke: #8b0000; /* Matches your dark red theme */
   stroke-width: 2.5px;
@@ -1376,60 +1483,109 @@ body {
   flex-shrink: 0;
 }
 
-/* Responsive */
+/* Fully Optimized Mobile Responsive Process Section */
 @media (max-width: 968px) {
   .process-section {
-    padding: 80px 5%;
+    padding: 60px 5%;
   }
 
-  .process-header {
-    margin-bottom: 60px;
-  }
-
+  /* 1. Move the timeline line to the left edge */
   .timeline::before {
-    left: 50px;
+    left: 40px; /* Aligns with the center of the smaller circles */
+    transform: none;
   }
 
+  /* 2. Reset the grid to be Step-Number -> Content */
   .step-content {
-    grid-template-columns: 100px 1fr;
-    gap: 2rem;
+    grid-template-columns: 80px 1fr; /* Explicitly two columns */
+    gap: 1.5rem;
+    display: grid !important; /* Force grid layout */
   }
 
+  /* 3. Ensure ALL content is visible and aligned left */
   .step:nth-child(odd) .step-left,
-  .step:nth-child(even) .step-left {
-    opacity: 0;
-    display: none;
-  }
-
-  .step:nth-child(even) .step-right {
-    opacity: 1;
-  }
-
+  .step:nth-child(even) .step-left,
   .step:nth-child(odd) .step-right,
   .step:nth-child(even) .step-right {
-    text-align: left;
+    opacity: 1 !important;
+    display: block !important;
+    text-align: left !important;
+    grid-column: 2; /* Forces text into the second column */
   }
 
+  /* 4. Position the circle correctly in the first column */
   .step-number {
+    grid-column: 1;
+    grid-row: 1;
     width: 80px;
     height: 80px;
+    margin: 0; /* Remove auto-centering */
   }
 
   .step-number-inner {
-    width: 68px;
-    height: 68px;
+    width: 60px;
+    height: 60px;
   }
 
-  .step-number-digit {
+  /* 5. Clean up the text for smaller screens */
+  .step-details {
+    padding: 1.5rem;
+    width: 100%;
+  }
+
+  .step-details h3 {
     font-size: 1.5rem;
   }
 
-  .step-icon {
-    font-size: 1.2rem;
+  .step-details p {
+    font-size: 1rem;
+  }
+
+  .step-icon svg {
+    width: 20px; /* Adjust size as needed */
+    height: 20px;
+    stroke-width: 2px;
+  }
+
+  .step:nth-child(odd) .step-right,
+  .step:nth-child(even) .step-left {
+    display: none !important;
+  }
+
+  /* Ensure the remaining div takes up the full grid space */
+  .step:nth-child(odd) .step-left,
+  .step:nth-child(even) .step-right {
+    display: block !important;
+    grid-column: 2; /* Move it to the right of the circle */
+    opacity: 1 !important;
+    text-align: left !important;
   }
 }
 
+/* Extra tweak for very small phones */
 @media (max-width: 480px) {
+  .timeline::before {
+    left: 30px;
+  }
+
+  .step-content {
+    grid-template-columns: 60px 1fr;
+    gap: 1rem;
+  }
+
+  .step-number {
+    width: 60px;
+    height: 60px;
+  }
+
+  .step-number-inner {
+    width: 50px;
+    height: 50px;
+  }
+
+  .step-number-digit {
+    font-size: 1.2rem;
+  }
   .process-section {
     padding: 60px 5%;
   }
@@ -1852,6 +2008,7 @@ body {
 
 .stat-item {
   flex: 1;
+  justify-items: center;
 }
 
 .stat-item h4 {
@@ -2040,15 +2197,15 @@ body {
   }
 
   .founder-image-wrapper {
-    order: 2;
-  }
-
-  .founder-content {
     order: 1;
   }
 
+  .founder-content {
+    order: 2;
+  }
+
   .image-stats {
-    gap: 1rem;
+    gap: 0.5rem;
   }
 
   .stat-item h4 {
@@ -2056,14 +2213,19 @@ body {
   }
 
   .stat-item p {
-    font-size: 0.75rem;
+    font-size: 9px;
   }
 }
 
 @media (max-width: 768px) {
   .image-stats {
-    flex-direction: column;
+    flex-direction: row;
     gap: 1rem;
+    align-items: center;
+  }
+
+  .founder-bio {
+    font-size: 1rem;
   }
 
   .achievements {
@@ -2691,7 +2853,11 @@ footer {
 
   .footer-grid {
     grid-template-columns: 1fr 1fr;
-    gap: 2rem;
+    gap: 0.5rem;
+  }
+
+  .footer-column h4 {
+    margin-bottom: 0.7rem;
   }
 
   .footer-brand {
@@ -2706,13 +2872,14 @@ footer {
 
 @media (max-width: 640px) {
   .footer-grid {
-    grid-template-columns: 1fr;
-    gap: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem; /* Consistent vertical spacing between sections */
+    text-align: left; /* Keep it professional and readable */
   }
 
-  .footer-column,
-  .footer-newsletter {
-    grid-column: 1;
+  .footer-column h4 {
+    margin-bottom: 0.5rem;
   }
 
   .footer-bottom-container {
@@ -2721,8 +2888,8 @@ footer {
   }
 
   .footer-legal {
-    flex-direction: column;
-    gap: 1rem;
+    flex-direction: row
+    gap: 0.4rem;
   }
 }
 

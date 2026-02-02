@@ -25,7 +25,16 @@
         <div class="logo-container">
           <img src="img/Swiftmarky-Logo.png" alt="Swiftmarky Logo" />
         </div>
-        <ul class="nav-links">
+        <button
+          class="mobile-menu-toggle"
+          id="mobileMenuToggle"
+          aria-label="Toggle menu"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <ul class="nav-links" id="navLinks">
           <li><a href="https://swiftmarky.com/about/">About</a></li>
           <li><a href="https://swiftmarky.com/services/">Services</a></li>
           <li>
@@ -39,6 +48,7 @@
           </li>
         </ul>
       </nav>
+      <div class="mobile-overlay" id="mobileOverlay"></div>
 
       <!-- Hero Content -->
       <div class="hero-content">
@@ -373,12 +383,12 @@
             </div>
           </div>
 
-          <!-- Step 3: Grow -->
+          <!-- Step 3: Scale -->
           <div class="step">
             <div class="step-content">
               <div class="step-left">
                 <div class="step-details">
-                  <h3>Grow</h3>
+                  <h3>Scale</h3>
                   <p>
                     We continuously optimize and scale your campaigns to ensure
                     sustained growth and maximize ROI.
@@ -401,7 +411,7 @@
               </div>
               <div class="step-right">
                 <div class="step-details">
-                  <h3>Grow</h3>
+                  <h3>Scale</h3>
                   <p>
                     We continuously optimize and scale your campaigns to ensure
                     sustained growth and maximize ROI.
@@ -623,29 +633,7 @@
                 </div>
               </div>
             </div>
-            <div class="social-links">
-              <a
-                href="https://www.linkedin.com/in/imperialvhick/"
-                class="social-link"
-                ><i data-lucide="linkedin"></i
-              ></a>
-              <a
-                href="https://web.facebook.com/imperialvhick1"
-                class="social-link"
-                ><i data-lucide="facebook"></i
-              ></a>
-              <a href="https://x.com/emperorofads" class="social-link"
-                ><i data-lucide="twitter"></i
-              ></a>
-              <a href="https://instagram.com/imperialvhick" class="social-link"
-                ><i data-lucide="instagram"></i
-              ></a>
-              <a href="https://youtube.com/@imperialvhick" class="social-link"
-                ><i data-lucide="youtube"></i
-              ></a>
-            </div>
           </div>
-
           <!-- Content Side -->
           <div class="founder-content">
             <h2>Hi, I'm Victor Bassey</h2>
@@ -701,6 +689,29 @@
                   7-figure revenue
                 </li>
               </ul>
+              <div class="social-links">
+                <a
+                  href="https://www.linkedin.com/in/imperialvhick/"
+                  class="social-link"
+                  ><i data-lucide="linkedin"></i
+                ></a>
+                <a
+                  href="https://web.facebook.com/imperialvhick1"
+                  class="social-link"
+                  ><i data-lucide="facebook"></i
+                ></a>
+                <a href="https://x.com/emperorofads" class="social-link"
+                  ><i data-lucide="twitter"></i
+                ></a>
+                <a
+                  href="https://instagram.com/imperialvhick"
+                  class="social-link"
+                  ><i data-lucide="instagram"></i
+                ></a>
+                <a href="https://youtube.com/@imperialvhick" class="social-link"
+                  ><i data-lucide="youtube"></i
+                ></a>
+              </div>
             </div>
           </div>
         </div>

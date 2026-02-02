@@ -188,3 +188,41 @@ updateCardsPerView();
 createDots();
 updateCarousel();
 startAutoScroll();
+
+// Mobile Menu Toggle
+const mobileMenuToggle = document.getElementById("mobileMenuToggle");
+const navLinks = document.getElementById("navLinks");
+const mobileOverlay = document.getElementById("mobileOverlay");
+const menuItems = navLinks.querySelectorAll("a");
+
+function toggleMobileMenu() {
+  mobileMenuToggle.classList.toggle("active");
+  navLinks.classList.toggle("active");
+  mobileOverlay.classList.toggle("active");
+  // Prevent body scroll when menu is open
+  document.body.style.overflow = navLinks.classList.contains("active")
+    ? "hidden"
+    : "";
+}
+
+// Toggle menu on hamburger click
+mobileMenuToggle.addEventListener("click", toggleMobileMenu);
+
+// Close menu when clicking overlay
+mobileOverlay.addEventListener("click", toggleMobileMenu);
+
+// Close menu when clicking on a link
+menuItems.forEach((item) => {
+  item.addEventListener("click", () => {
+    if (navLinks.classList.contains("active")) {
+      toggleMobileMenu();
+    }
+  });
+});
+
+// Close menu on Escape key
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && navLinks.classList.contains("active")) {
+    toggleMobileMenu();
+  }
+});
