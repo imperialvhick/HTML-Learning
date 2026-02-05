@@ -226,3 +226,22 @@ document.addEventListener("keydown", (e) => {
     toggleMobileMenu();
   }
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+  // 1. Get the current URL path (e.g., "/about/")
+  // We use .replace(/\/$/, "") to remove trailing slashes for better matching
+  const currentPath = window.location.pathname.replace(/\/$/, "") || "/";
+
+  // 2. Grab all your navigation links
+  const navLinks = document.querySelectorAll(".nav-link");
+
+  navLinks.forEach((link) => {
+    // 3. Get the link's destination path
+    const linkPath = link.getAttribute("href").replace(/\/$/, "") || "/";
+
+    // 4. Compare and add the 'active' class
+    if (currentPath === linkPath) {
+      link.classList.add("active");
+    }
+  });
+});

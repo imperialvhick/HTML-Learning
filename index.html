@@ -10,11 +10,11 @@
       href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="style.css" />
     <script src="https://unpkg.com/lucide@latest"></script>
   </head>
   <body>
-    <section class="hero">
+    <section class="hero grid-pattern">
       <!-- Animated Shapes -->
       <div class="shape shape-1"></div>
       <div class="shape shape-2"></div>
@@ -35,12 +35,25 @@
           <span></span>
         </button>
         <ul class="nav-links" id="navLinks">
-          <li><a href="https://swiftmarky.com/about/">About</a></li>
-          <li><a href="https://swiftmarky.com/services/">Services</a></li>
+          <li><a href="https://swiftmarky.com" class="nav-link">Home</a></li>
           <li>
-            <a href="https://swiftmarky.com/case-studies/">Case Studies</a>
+            <a href="https://swiftmarky.com/about/" class="nav-link">About</a>
           </li>
-          <li><a href="https://swiftmarky.com/contact/">Contact</a></li>
+          <li>
+            <a href="https://swiftmarky.com/services/" class="nav-link"
+              >Services</a
+            >
+          </li>
+          <li>
+            <a href="https://swiftmarky.com/case-studies/" class="nav-link"
+              >Case Studies</a
+            >
+          </li>
+          <li>
+            <a href="https://swiftmarky.com/contact/" class="nav-link"
+              >Contact</a
+            >
+          </li>
           <li>
             <a href="https://calendly.com/officialswiftmarky/discoverycall"
               >Book a Call</a
@@ -115,8 +128,8 @@
     <section class="stats-section">
       <div class="stats-container">
         <!-- Header -->
-        <div class="stats-header">
-          <div class="stats-badge">Proven Track Record</div>
+        <div class="section-header stats-header">
+          <div class="badge">Proven Track Record</div>
           <h2>The Numbers That <span class="highlight">Drive Results</span></h2>
           <p>
             Our data-backed approach delivers measurable growth for ambitious
@@ -150,8 +163,8 @@
     <section class="services-section">
       <div class="services-container">
         <!-- Header -->
-        <div class="services-header">
-          <div class="services-badge">What We Do</div>
+        <div class="section-header services-header">
+          <div class="badge">What We Do</div>
           <h2>
             Services That <span class="highlight">Scale Your Growth</span>
           </h2>
@@ -273,7 +286,7 @@
           </p>
           <a
             href="https://calendly.com/officialswiftmarky/discoverycall"
-            class="butn"
+            class="btn btn-white"
             target="_blank"
             >Get Your Free Strategy Session</a
           >
@@ -284,8 +297,8 @@
     <section class="process-section">
       <div class="process-container">
         <!-- Header -->
-        <div class="process-header">
-          <div class="process-badge">How It Works</div>
+        <div class="section-header">
+          <div class="badge">How It Works</div>
           <h2>Our <span class="highlight">3-Step Process</span> to Growth</h2>
           <p>
             From initial strategy to scaling success, we guide you through every
@@ -433,8 +446,8 @@
     <section class="testimonials-section">
       <div class="testimonials-container">
         <!-- Header -->
-        <div class="testimonials-header">
-          <div class="testimonials-badge">Client Success Stories</div>
+        <div class="section-header testimonials-header">
+          <div class="badge badge-light">Client Success Stories</div>
           <h2>What Our Clients Say</h2>
           <p>
             Real results from real businesses. Here's how we've helped brands
@@ -602,7 +615,7 @@
 
         <!-- View All CTA -->
         <div class="view-all-cta">
-          <a href="/testimonials" class="btn-view-all"
+          <a href="/testimonials" class="btn btn-white"
             >View All Success Stories</a
           >
         </div>
@@ -611,8 +624,8 @@
 
     <section class="founder-section">
       <div class="founder-container">
-        <div class="section-top-header">
-          <div class="founder-badge">Meet the Founder</div>
+        <div class="section-header founder-header">
+          <div class="badge">Meet the Founder</div>
         </div>
         <div class="founder-grid">
           <!-- Image Side -->
@@ -726,7 +739,7 @@
         <div class="founder-cta">
           <a
             href="https://calendly.com/officialswiftmarky/discoverycall"
-            class="btn-connect"
+            class="btn btn-primary"
             target="_blank"
             >Let's Work Together</a
           >
@@ -734,14 +747,14 @@
       </div>
     </section>
 
-    <section class="final-cta-section">
+    <section class="final-cta-section grid-pattern">
       <!-- Floating Shapes -->
-      <div class="shape shape-1"></div>
-      <div class="shape shape-2"></div>
+      <div class="shape shape-large-1"></div>
+      <div class="shape shape-large-2"></div>
 
       <div class="cta-container">
         <!-- Badge -->
-        <div class="cta-badge">Ready to Scale?</div>
+        <div class="badge-light badge">Ready to Scale?</div>
 
         <!-- Headline -->
         <h2 class="cta-headline">
