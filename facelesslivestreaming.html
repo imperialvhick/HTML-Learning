@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Exclusive Faceless Livestreaming Masterclass</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #F1F7ED;
+      color: #0D1821;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 00px;
+    }
+
+    header {
+      text-align: center;
+      padding: 20px 20px 40px;
+    }
+
+    .logo {
+        background: #FBE5E7;
+        padding: 10px 20px;
+        font-size: 13px;
+        letter-spacing: 0.5px;
+        border: 1.5px solid #AD1F28;
+        border-radius: 12px;
+      color: #AD1F28;
+      opacity: 0.9;
+      margin-bottom: 30px;
+      font-weight: 700;
+      display: inline-block;
+    }
+
+    h1 {
+      font-size: 40px;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 25px;
+      color: #0D1821;
+    }
+
+    .highlight {
+      color: #AD1F28;
+    }
+
+    .subheadline {
+      font-size: 24px;
+      margin-bottom: 40px;
+      opacity: 0.9;
+      font-weight: 600;
+      max-width: 800px;
+      margin: 0 auto;
+      color: #25303B;
+    }
+
+    .hero-box {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 50px 40px;
+      margin: 40px 0;
+      box-shadow: 0 8px 32px rgba(13, 24, 33, 0.1);
+      border: 1px solid rgba(13, 24, 33, 0.05);
+      text-align: center;
+    }
+
+    .hero-statement {
+      font-size: 25px;
+      line-height: 1.5;
+      margin-bottom: 30px;
+      font-weight: 400;
+    }
+
+    .hero-statement strong {
+      color: #AD1F28;
+      font-weight: 700;
+    }
+
+    .cta-button {
+      display: block;
+      width: 100%;
+      padding: 18px 30px;
+      font-size: 26px;
+      font-weight: 700;
+      color: #F1F7ED;
+      background: linear-gradient(135deg, #AD1F28 0%, #8C181F 100%);
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      transition: all 0.3s;
+      box-shadow: 0 8px 20px rgba(173, 31, 40, 0.4);
+      animation: pulse 2s infinite;
+      margin-top: 30px;
+    }
+
+    .cta-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px rgba(173, 31, 40, 0.6);
+      background: linear-gradient(135deg, #8C181F 0%, #AD1F28 100%);
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        box-shadow: 0 8px 20px rgba(173, 31, 40, 0.4);
+      }
+      50% {
+        box-shadow: 0 8px 30px rgba(173, 31, 40, 0.7);
+      }
+    }
+
+    .urgency {
+      background: rgba(173, 31, 40, 0.08);
+      border: 2px solid #AD1F28;
+      border-radius: 15px;
+      padding: 25px;
+      margin: 30px 0;
+      text-align: center;
+    }
+
+    .urgency-text {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: #AD1F28;
+    }
+
+    .timer {
+      font-size: 42px;
+      font-weight: 800;
+      color: #0D1821;
+      margin: 15px 0;
+      font-family: 'Courier New', monospace;
+    }
+
+    .discover-section {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 50px 40px;
+      margin: 50px 0;
+      box-shadow: 0 8px 20px rgba(13, 24, 33, 0.08);
+    }
+
+    .discover-section h2 {
+      font-size: 38px;
+      margin-bottom: 40px;
+      text-align: center;
+      font-weight: 800;
+      color: #0D1821;
+    }
+
+    .benefit-item {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 30px;
+      padding: 25px;
+      background: #F8FAF5;
+      border-radius: 12px;
+      border-left: 4px solid #AD1F28;
+      transition: all 0.3s;
+    }
+
+    .benefit-item:hover {
+      transform: translateX(10px);
+      background: #E8F0E0;
+    }
+
+    .check-icon {
+      font-size: 32px;
+      margin-right: 25px;
+      color: #AD1F28;
+      flex-shrink: 0;
+    }
+
+    .benefit-text {
+      font-size: 19px;
+      line-height: 1.6;
+    }
+
+    .benefit-text strong {
+      color: #AD1F28;
+      font-weight: 700;
+    }
+
+    .not-for-everyone {
+      background: #FFFFFF;
+      padding: 35px;
+      border-radius: 15px;
+      margin: 50px 0;
+      text-align: center;
+      box-shadow: 0 8px 20px rgba(13, 24, 33, 0.05);
+    }
+
+    .not-for-everyone h3 {
+      font-size: 32px;
+      margin-bottom: 20px;
+      color: #AD1F28;
+    }
+
+    .not-for-everyone p {
+      font-size: 18px;
+      line-height: 1.7;
+      opacity: 0.9;
+      color: #0D1821;
+    }
+
+    .final-cta {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 60px 40px;
+      margin: 60px 0;
+      text-align: center;
+      border: 2px solid rgba(13, 24, 33, 0.1);
+      box-shadow: 0 8px 20px rgba(13, 24, 33, 0.08);
+    }
+
+    .final-cta h2 {
+      font-size: 42px;
+      margin-bottom: 25px;
+      font-weight: 800;
+      color: #AD1F28;
+    }
+
+    .final-cta p {
+      font-size: 20px;
+      margin-bottom: 35px;
+      opacity: 0.95;
+      line-height: 1.7;
+      max-width: 700px;
+      margin: 0 auto 35px;
+      color: #25303B;
+    }
+
+    footer {
+      text-align: center;
+      padding: 50px 20px;
+      font-size: 14px;
+      opacity: 0.7;
+      color: #0D1821;
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 25px;
+      }
+
+      .subheadline {
+        font-size: 18px;
+      }
+
+      .hero-statement {
+        font-size: 17px;
+      }
+
+      .cta-button {
+        font-size: 22px;
+        padding: 20px 30px;
+      }
+    
+      .benefit-text {
+          font-size: 17px;
+      }
+      
+      .not-for-everyone h2 {
+          font-size: 25px
+      }
+      
+      .not-for-everyone p {
+          font-size: 16px;
+      }
+      
+      .hero-box,
+      .discover-section,
+      .final-cta {
+        padding: 35px 25px;
+      }
+
+      .discover-section h2 {
+        font-size: 25px;
+      }
+
+      .final-cta h2 {
+        font-size: 28px;
+      }
+      .final-cta p {
+          font-size: 16px
+      }
+    }
+  </style>
+  <!-- Begin Brevo Form -->
+<!-- START - We recommend to place the below code in head tag of your website html  -->
+<style>
+  @font-face {
+    font-display: block;
+    font-family: Roboto;
+    src: url(https://assets.brevo.com/font/Roboto/Latin/normal/normal/7529907e9eaf8ebb5220c5f9850e3811.woff2) format("woff2"), url(https://assets.brevo.com/font/Roboto/Latin/normal/normal/25c678feafdc175a70922a116c9be3e7.woff) format("woff")
+  }
+
+  @font-face {
+    font-display: fallback;
+    font-family: Roboto;
+    font-weight: 600;
+    src: url(https://assets.brevo.com/font/Roboto/Latin/medium/normal/6e9caeeafb1f3491be3e32744bc30440.woff2) format("woff2"), url(https://assets.brevo.com/font/Roboto/Latin/medium/normal/71501f0d8d5aa95960f6475d5487d4c2.woff) format("woff")
+  }
+
+  @font-face {
+    font-display: fallback;
+    font-family: Roboto;
+    font-weight: 700;
+    src: url(https://assets.brevo.com/font/Roboto/Latin/bold/normal/3ef7cf158f310cf752d5ad08cd0e7e60.woff2) format("woff2"), url(https://assets.brevo.com/font/Roboto/Latin/bold/normal/ece3a1d82f18b60bcce0211725c476aa.woff) format("woff")
+  }
+
+  #sib-container input:-ms-input-placeholder {
+    text-align: left;
+    font-family: Helvetica, sans-serif;
+    color: #c0ccda;
+  }
+
+  #sib-container input::placeholder {
+    text-align: left;
+    font-family: Helvetica, sans-serif;
+    color: #c0ccda;
+  }
+
+  #sib-container textarea::placeholder {
+    text-align: left;
+    font-family: Helvetica, sans-serif;
+    color: #c0ccda;
+  }
+
+  #sib-container a {
+    text-decoration: underline;
+    color: #2BB2FC;
+  }
+</style>
+<link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css">
+<!--  END - We recommend to place the above code in head tag of your website html -->
+
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <div class="logo">
+        ATTENTION: TO ANYONE WHO WANTS TO MAKE THEIR FIRST $10,000 ONLINE BEFORE THE END OF 2026
+      </div>
+
+      <h1>
+        REVEALED: The <span class="highlight">SECRET ONLINE SIDE HUSTLE</span> That Pays
+        <span class="highlight">$15–$30 Daily</span> Just for Livestreaming & Playing Games
+      </h1>
+
+      <p class="subheadline">
+        Without Showing Your Face, Making Any Referrals, Selling Anything, Posting On Social Media Or Even Leaving Your Bedroom
+      </p>
+    </header>
+
+    <div class="hero-box">
+      <p class="hero-statement">
+        Imagine waking up every morning to <strong>$15, $20, even $30</strong> deposited directly into your bank account...
+        <br><br>
+        That's <strong>₦200,000+ weekly</strong>  doing something so simple, you’ll wish you started earlier
+        <br><br> Discover the secret business model that has taken countless youths out of the trenches and made them M!llionaires and how you too can achieve that in no time.
+
+
+      </p>
+   <a id="webinar-scroll-btn" class="cta-button" href="#">GRANT ME ACCESS</a>
+
+    </div>
+
+    <div class="urgency">
+      <p class="urgency-text">⚠️ LIMITED SPOTS REMAINING</p>
+      <div class="timer" id="countdown">23:47:15</div>
+      <p style="font-size: 16px;">Class starts soon. Secure your spot before it's too late.</p>
+    </div>
+
+    <div class="discover-section">
+      <h2>What You'll Discover In This Exclusive Class:</h2>
+
+      <div class="benefit-item">
+        <span class="check-icon">✓</span>
+        <div class="benefit-text">
+          <strong>The exact app</strong> you'll use to earn $15-$30 daily (and how to set it up the RIGHT way so you don't get rejected)
+        </div>
+      </div>
+
+      <div class="benefit-item">
+        <span class="check-icon">✓</span>
+        <div class="benefit-text">
+          <strong>The 3 income streams</strong> within this app - most people only discover 1 and leave serious money on the table
+        </div>
+      </div>
+
+      <div class="benefit-item">
+        <span class="check-icon">✓</span>
+        <div class="benefit-text">
+          <strong>How you can earn without showing your face</strong> - Perfect for introverts or anyone who values privacy
+        </div>
+      </div>
+
+      <div class="benefit-item">
+        <span class="check-icon">✓</span>
+        <div class="benefit-text">
+          <strong>The "Weekend Secret"</strong> that lets you double your earnings every Saturday and Sunday (this alone is worth attending)
+        </div>
+      </div>
+
+      <div class="benefit-item">
+        <span class="check-icon">✓</span>
+        <div class="benefit-text">
+          <strong>How to withdraw to your local bank</strong> - Step-by-step process to get your dollars into your local bank account, mobile money or even crypto
+        </div>
+      </div>
+
+      <div class="benefit-item">
+        <span class="check-icon">✓</span>
+        <div class="benefit-text">
+          <strong>My complete setup guide</strong> - Follow along as I show you exactly what to do from account creation to first withdrawal
+        </div>
+      </div>
+
+      <div class="benefit-item">
+        <span class="check-icon">✓</span>
+        <div class="benefit-text">
+          <strong>Common mistakes to avoid</strong> - These mistakes cost people weeks of progress. I'll show you how to skip them completely
+        </div>
+      </div>
+    </div>
+
+    <div class="not-for-everyone">
+      <h3>⚠️ Warning: This Is NOT For Everyone</h3>
+      <p>
+        This only works if you're willing to show up consistently and follow instructions.<br><br>
+        If you're looking for "get rich overnight" magic - <strong>don't join this class</strong>.<br>
+        If you're searching for "free ways to make money" - <strong>don't join this class</strong>.<br><br>
+        But if you want a legitimate, proven way to earn $10-$15+ daily...<br>
+        Then this exclusive class will change everything for you.
+      </p>
+    </div>
+
+    <div class="final-cta">
+      <h2>Ready To Start Earning In Dollars?</h2>
+      <p>
+        Enter your details and Click the GRANT ME ACCESS button below, which will redirect you to the Whatsapp Community where I will be hosting this Special Training
+      </p>
+
+        <!-- START - We recommend to place the below code where you want the form in your website html  -->
+        <section id="form">
+<div class="sib-form" style="text-align: center;
+         background-color: #EFF2F7;                                 ">
+  <div id="sib-form-container" class="sib-form-container">
+    <div id="error-message" class="sib-form-message-panel" style="font-size:16px; text-align:left; font-family:Helvetica, sans-serif; color:#661d1d; background-color:#ffeded; border-radius:3px; border-color:#ff4949;max-width:540px;">
+      <div class="sib-form-message-panel__text sib-form-message-panel__text--center">
+        <svg viewBox="0 0 512 512" class="sib-icon sib-notification__icon">
+          <path d="M256 40c118.621 0 216 96.075 216 216 0 119.291-96.61 216-216 216-119.244 0-216-96.562-216-216 0-119.203 96.602-216 216-216m0-32C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm-11.49 120h22.979c6.823 0 12.274 5.682 11.99 12.5l-7 168c-.268 6.428-5.556 11.5-11.99 11.5h-8.979c-6.433 0-11.722-5.073-11.99-11.5l-7-168c-.283-6.818 5.167-12.5 11.99-12.5zM256 340c-15.464 0-28 12.536-28 28s12.536 28 28 28 28-12.536 28-28-12.536-28-28-28z" />
+        </svg>
+        <span class="sib-form-message-panel__inner-text">
+                          Your details could not be saved. Please try again.
+                      </span>
+      </div>
+    </div>
+    <div></div>
+    <div id="success-message" class="sib-form-message-panel" style="font-size:16px; text-align:left; font-family:Helvetica, sans-serif; color:#085229; background-color:#e7faf0; border-radius:3px; border-color:#13ce66;max-width:540px;">
+      <div class="sib-form-message-panel__text sib-form-message-panel__text--center">
+        <svg viewBox="0 0 512 512" class="sib-icon sib-notification__icon">
+          <path d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 464c-118.664 0-216-96.055-216-216 0-118.663 96.055-216 216-216 118.664 0 216 96.055 216 216 0 118.663-96.055 216-216 216zm141.63-274.961L217.15 376.071c-4.705 4.667-12.303 4.637-16.97-.068l-85.878-86.572c-4.667-4.705-4.637-12.303.068-16.97l8.52-8.451c4.705-4.667 12.303-4.637 16.97.068l68.976 69.533 163.441-162.13c4.705-4.667 12.303-4.637 16.97.068l8.451 8.52c4.668 4.705 4.637 12.303-.068 16.97z" />
+        </svg>
+        <span class="sib-form-message-panel__inner-text">
+                          Hi! Seems You Have Registered For The Training Already
+                      </span>
+      </div>
+    </div>
+    <div></div>
+    <div id="sib-container" class="sib-container--large sib-container--vertical" style="text-align:center; background-color:rgba(255,255,255,1); max-width:540px; border-radius:10px; border-width:1px; border-color:#000000; border-style:solid; direction:ltr">
+      <form id="sib-form" method="POST" action="https://3028b4a6.sibforms.com/serve/MUIFAAL1G5yoU-BLzLJvfWMr-OhcbQDRaibp6JYJry4-hYeTreCKLyPsh5wo9QWUs3Tgm7jxWIUxZ0VWlhQVphqChS9GDrX4la2ZCFNheypSC9eS_tkm-AoU_SFewuRdclEpOJsh2qDGLBEmFLrezXAAT_COaDVu5q7cud3_FKAcWrdSyoErRxsfvyFCNR_jlpvExr4YGYJEj7yJ9g==" data-type="subscription">
+        <div style="padding: 8px 0;">
+          <div class="sib-form-block" style="font-size:20px; text-align:center; font-weight:700; font-family:Helvetica, sans-serif; color:#8b0000; background-color:transparent; text-align:center">
+            <p><strong>Get Instant Access to the Faceless Livestreaming Masterclass</strong></p>
+          </div>
+        </div>
+        <div style="padding: 8px 0;">
+          <div class="sib-form-block" style="font-size:14px; text-align:center; font-family:Helvetica, sans-serif; color:#000000; background-color:transparent; text-align:center">
+            <div class="sib-text-form-block">
+              <p>Enter your name and email to get your personal access link now.</p>
+            </div>
+          </div>
+        </div>
+        <div style="padding: 8px 0;">
+          <div class="sib-input sib-form-block">
+            <div class="form__entry entry_block">
+              <div class="form__label-row ">
+
+                <div class="entry__field">
+                  <input class="input " maxlength="200" type="text" id="FIRSTNAME" name="FIRSTNAME" autocomplete="off" placeholder="Enter your first name" data-required="true" required />
+                </div>
+              </div>
+
+              <label class="entry__error entry__error--primary" style="font-size:16px; text-align:left; font-family:Helvetica, sans-serif; color:#661d1d; background-color:#ffeded; border-radius:3px; border-color:#ff4949;">
+              </label>
+            </div>
+          </div>
+        </div>
+        <div style="padding: 8px 0;">
+          <div class="sib-input sib-form-block">
+            <div class="form__entry entry_block">
+              <div class="form__label-row ">
+
+                <div class="entry__field">
+                  <input class="input " type="text" id="EMAIL" name="EMAIL" autocomplete="off" placeholder="Enter your email" data-required="true" required />
+                </div>
+              </div>
+
+              <label class="entry__error entry__error--primary" style="font-size:16px; text-align:left; font-family:Helvetica, sans-serif; color:#661d1d; background-color:#ffeded; border-radius:3px; border-color:#ff4949;">
+              </label>
+            </div>
+          </div>
+        </div>
+        <div style="padding: 8px 0;">
+          <div class="sib-form-block" style="text-align: center">
+            <button class="sib-form-block__button sib-form-block__button-with-loader" style="font-size:16px; text-align:center; font-weight:700; font-family:Helvetica, sans-serif; color:#FFFFFF; background-color:#8b0000; border-radius:5px; border-width:0px;" form="sib-form" type="submit">
+              <svg class="icon clickable__icon progress-indicator__icon sib-hide-loader-icon" viewBox="0 0 512 512">
+                <path d="M460.116 373.846l-20.823-12.022c-5.541-3.199-7.54-10.159-4.663-15.874 30.137-59.886 28.343-131.652-5.386-189.946-33.641-58.394-94.896-95.833-161.827-99.676C261.028 55.961 256 50.751 256 44.352V20.309c0-6.904 5.808-12.337 12.703-11.982 83.556 4.306 160.163 50.864 202.11 123.677 42.063 72.696 44.079 162.316 6.031 236.832-3.14 6.148-10.75 8.461-16.728 5.01z" />
+              </svg>
+              GET INSTANT ACCESS
+            </button>
+          </div>
+        </div>
+
+        <input type="text" name="email_address_check" value="" class="input--hidden">
+        <input type="hidden" name="locale" value="en">
+      </form>
+    </div>
+  </div>
+</div>
+<!-- END - We recommend to place the above code where you want the form in your website html  -->
+  
+       <p><br>
+        <strong>What Are You Still Doing Here???</strong><br><br>
+        <strong>Access closes shortly. Hurry up!</strong>
+      </p>
+    </div>
+
+    <footer>
+      <p>&copy; 2025 All Rights Reserved</p>
+      <p style="margin-top: 10px;">This site is not affiliated with Facebook, Google, or any other platform</p>
+      <p style="margin-top: 10px;">Results may vary based on individual effort and consistency</p>
+      
+<!-- START - We recommend to place the below code in footer or bottom of your website html  -->
+<script>
+  window.REQUIRED_CODE_ERROR_MESSAGE = 'Please choose a country code';
+  window.LOCALE = 'en';
+  window.EMAIL_INVALID_MESSAGE = window.SMS_INVALID_MESSAGE = "The information provided is invalid. Please review the field format and try again.";
+
+  window.REQUIRED_ERROR_MESSAGE = "This field cannot be left blank. ";
+
+  window.GENERIC_INVALID_MESSAGE = "The information provided is invalid. Please review the field format and try again.";
+
+
+
+
+  window.translation = {
+    common: {
+      selectedList: '{quantity} list selected',
+      selectedLists: '{quantity} lists selected',
+      selectedOption: '{quantity} selected',
+      selectedOptions: '{quantity} selected',
+    }
+  };
+
+  var AUTOHIDE = Boolean(1);
+</script>
+
+<script defer src="https://sibforms.com/forms/end-form/build/main.js"></script>
+
+
+<!-- END - We recommend to place the above code in footer or bottom of your website html  -->
+<!-- End Brevo Form -->
+    </footer>
+  </div>
+
+  <script>
+document.addEventListener('DOMContentLoaded', function() {
+    // 1. Define your button and target elements
+    const scrollButton = document.getElementById('webinar-scroll-btn');
+    const targetElement = document.getElementById('form'); // <--- CONFIRM THIS ID is correct
+
+    if (scrollButton && targetElement) {
+        scrollButton.addEventListener('click', function(event) {
+            // STOP the browser from changing the URL or performing any default link action.
+            event.preventDefault(); 
+            
+            // Initiate the smooth scroll
+            targetElement.scrollIntoView({
+                behavior: 'smooth', 
+                block: 'start' // Scrolls the target element to the top of the viewport
+            });
+        });
+    }
+});
+</script>
+  <script>
+    let hours = 23;
+    let minutes = 47;
+    let seconds = 15;
+
+    function updateCountdown() {
+      seconds--;
+      if (seconds < 0) {
+        seconds = 59;
+        minutes--;
+      }
+      if (minutes < 0) {
+        minutes = 59;
+        hours--;
+      }
+      if (hours < 0) {
+        hours = 23;
+        minutes = 59;
+        seconds = 59;
+      }
+      const display =
+        String(hours).padStart(2, '0') +
+        ':' +
+        String(minutes).padStart(2, '0') +
+        ':' +
+        String(seconds).padStart(2, '0');
+      document.getElementById('countdown').textContent = display;
+    }
+
+    setInterval(updateCountdown, 1000);
+  </script>
+ 
+</body>
+</html>

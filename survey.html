@@ -1,0 +1,1120 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Earn in Pounds Masterclass</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&family=Space+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <meta
+      name="description"
+      content="Learn how to earn £500-£1,500 monthly from online surveys. Free masterclass."
+    />
+    <meta property="og:title" content="Earn in Pounds Masterclass" />
+    <meta property="og:image" content="your-image-url.jpg" />
+
+    <!-- Brevo Form Styles -->
+    <link
+      rel="stylesheet"
+      href="https://sibforms.com/forms/end-form/build/sib-styles.css"
+    />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --primary: #ff6b35;
+        --secondary: #004e89;
+        --accent: #ffd23f;
+        --dark: #1a1a2e;
+        --light: #f8f9fa;
+        --success: #06d6a0;
+      }
+
+      body {
+        font-family: "Outfit", sans-serif;
+        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+        color: var(--light);
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+
+      .noise {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        opacity: 0.03;
+        z-index: 1;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+        position: relative;
+        z-index: 2;
+      }
+
+      /* Header */
+      header {
+        text-align: center;
+        padding: 20px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .logo {
+        font-family: "Space Mono", monospace;
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--accent);
+        letter-spacing: 2px;
+      }
+
+      /* Hero Section */
+      .hero {
+        text-align: center;
+        padding: 60px 20px 40px;
+        animation: fadeInUp 1s ease-out;
+      }
+
+      .tag {
+        display: inline-block;
+        background: rgba(255, 255, 255, 0.05); /* Very faint background */
+        color: var(--primary); /* Bright text to stand out */
+        padding: 6px 18px; /* Slimmer than a button */
+        border: 1px solid rgba(255, 107, 53, 0.4); /* Thin accent border */
+        border-radius: 6px; /* Subtle rounding, not a pill shape */
+        font-weight: 700;
+        font-size: 0.75rem; /* Smaller font */
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+        /* Remove box-shadow and animation */
+        box-shadow: none;
+        animation: none;
+      }
+
+      .headline {
+        font-size: 3rem;
+        font-weight: 800;
+        line-height: 1.2;
+        margin-bottom: 20px;
+        background: linear-gradient(135deg, var(--accent), #fff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        animation: fadeInUp 1s ease-out 0.2s backwards;
+      }
+
+      .subheadline {
+        font-size: 1.8rem;
+        font-weight: 600;
+        color: var(--success);
+        margin-bottom: 30px;
+        animation: fadeInUp 1s ease-out 0.4s backwards;
+      }
+
+      .description {
+        font-size: 1.2rem;
+        color: rgba(255, 255, 255, 0.8);
+        max-width: 900px;
+        margin: 0 auto 40px;
+        line-height: 1.8;
+        animation: fadeInUp 1s ease-out 0.6s backwards;
+      }
+
+      .description strong {
+        color: var(--accent);
+        font-weight: 700;
+      }
+
+      .cta-primary {
+        display: inline-block;
+        background: var(--primary);
+        color: white;
+        padding: 18px 50px;
+        font-size: 1.2rem;
+        font-weight: 700;
+        text-decoration: none;
+        border-radius: 10px;
+        transition: all 0.3s ease;
+        box-shadow: 0 15px 40px rgba(255, 107, 53, 0.4);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        animation: fadeInUp 1s ease-out 0.8s backwards;
+      }
+
+      .cta-primary:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 20px 50px rgba(255, 107, 53, 0.6);
+        background: #ff8560;
+      }
+
+      /* Countdown Timer */
+      .countdown-section {
+        background: rgba(255, 107, 53, 0.1);
+        border: 2px solid var(--primary);
+        border-radius: 15px;
+        padding: 30px;
+        margin: 40px auto;
+        max-width: 650px;
+        text-align: center;
+        animation: fadeInUp 1s ease-out 1s backwards;
+      }
+
+      .countdown-title {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px; /* Space between icon and text */
+        font-size: 1.1rem;
+        color: var(--accent);
+        margin-bottom: 20px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+      }
+
+      .countdown-icon {
+        width: 20px;
+        height: 20px;
+        color: var(--accent);
+        stroke-width: 3px; /* Makes the icon lines thicker and bolder */
+      }
+
+      .warning-icon {
+        width: 35px;
+        height: 35px;
+        color: var(--accent);
+        stroke-width: 3px; /* Makes the icon lines thicker and bolder */
+      }
+
+      .countdown {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+
+      .countdown-item {
+        background: var(--dark);
+        border: 2px solid var(--primary);
+        border-radius: 10px;
+        padding: 20px;
+        min-width: 100px;
+        box-shadow: 0 5px 20px rgba(255, 107, 53, 0.2);
+      }
+
+      .countdown-value {
+        font-family: "Space Mono", monospace;
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: var(--accent);
+        display: block;
+        line-height: 1;
+      }
+
+      .countdown-label {
+        font-size: 0.9rem;
+        color: rgba(255, 255, 255, 0.6);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-top: 8px;
+      }
+
+      .urgency-text {
+        margin-top: 15px;
+        color: var(--primary);
+        font-weight: 600;
+        font-size: 0.95rem;
+      }
+
+      /* Benefits Section */
+      .benefits-section {
+        padding: 60px 20px;
+        animation: fadeInUp 1s ease-out 1.2s backwards;
+      }
+
+      .section-title {
+        font-size: 2.5rem;
+        font-weight: 800;
+        text-align: center;
+        margin-bottom: 50px;
+        color: var(--accent);
+      }
+
+      .benefits-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        max-width: 1000px;
+        margin: 0 auto;
+      }
+
+      .benefit-card {
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 15px;
+        padding: 30px;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .benefit-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: linear-gradient(90deg, var(--primary), var(--accent));
+      }
+
+      .benefit-card:hover {
+        transform: translateY(-5px);
+        border-color: var(--primary);
+        box-shadow: 0 20px 40px rgba(255, 107, 53, 0.2);
+      }
+
+      .benefit-icon {
+        width: 60px;
+        height: 60px;
+        background: rgba(255, 107, 53, 0.1); /* Soft orange tint */
+        border: 1px solid rgba(255, 107, 53, 0.3);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 20px;
+        color: #ff6b35; /* Your primary orange color */
+        transition: all 0.3s ease;
+      }
+
+      .benefit-card:hover .benefit-icon {
+        background: #ff6b35;
+        color: white;
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(255, 107, 53, 0.3);
+      }
+
+      /* Lucide Icon Size */
+      .benefit-icon i {
+        width: 28px;
+        height: 28px;
+      }
+
+      .benefit-title {
+        font-size: 1.3rem;
+        font-weight: 700;
+        margin-bottom: 15px;
+        color: var(--light);
+      }
+
+      .benefit-description {
+        color: rgba(255, 255, 255, 0.7);
+        line-height: 1.6;
+      }
+
+      /* Warning Section */
+      .warning-section {
+        background: rgba(255, 107, 53, 0.1);
+        border-left: 5px solid var(--primary);
+        padding: 40px;
+        margin: 60px auto;
+        max-width: 900px;
+        border-radius: 10px;
+        animation: fadeInUp 1s ease-out 1.4s backwards;
+      }
+
+      .warning-title {
+        font-size: 2rem;
+        font-weight: 800;
+        color: var(--primary);
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .warning-content {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        color: rgba(255, 255, 255, 0.9);
+      }
+
+      .warning-content strong {
+        color: var(--accent);
+        font-weight: 700;
+      }
+
+      /* Registration Form */
+      .registration-section {
+        background: linear-gradient(135deg, var(--secondary), #003366);
+        padding: 60px 20px;
+        margin: 60px 0;
+        border-radius: 20px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        animation: fadeInUp 1s ease-out 1.6s backwards;
+        z-index: 1;
+      }
+
+      .registration-section::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        right: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(
+          circle,
+          rgba(255, 210, 63, 0.1) 0%,
+          transparent 70%
+        );
+        animation: rotate 20s linear infinite;
+      }
+
+      .registration-content {
+        position: relative;
+        z-index: 2;
+      }
+
+      .form-title {
+        font-size: 2.2rem;
+        font-weight: 800;
+        margin-bottom: 15px;
+        color: var(--accent);
+      }
+
+      .form-subtitle {
+        font-size: 1.1rem;
+        color: rgba(255, 255, 255, 0.8);
+      }
+
+      .registration-form {
+        max-width: 500px;
+        margin: 0 auto;
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      .form-input {
+        width: 100%;
+        padding: 18px 20px;
+        font-size: 1rem;
+        border: 2px solid rgba(255, 255, 255, 0.2);
+        background: rgba(255, 255, 255, 0.1);
+        color: white;
+        border-radius: 10px;
+        transition: all 0.3s ease;
+        font-family: "Outfit", sans-serif;
+      }
+
+      .form-input::placeholder {
+        color: rgba(255, 255, 255, 0.5);
+      }
+
+      .form-input:focus {
+        outline: none;
+        border-color: var(--accent);
+        background: rgba(255, 255, 255, 0.15);
+      }
+
+      /* Brevo form custom overrides */
+      .sib-form-block {
+        margin-bottom: 0 !important;
+      }
+
+      .form__entry {
+        margin-bottom: 0 !important;
+      }
+
+      .entry__field {
+        width: 100% !important;
+      }
+
+      .sib-form-message-panel {
+        animation: fadeInUp 0.5s ease-out;
+      }
+
+      #sib-container {
+        padding-top: 0 !important;
+        margin-top: -15px !important; /* This "pulls" the form upward */
+      }
+
+      /* Target the internal body that often has hidden padding on live sites */
+      .sib-form-body {
+        padding-top: 0 !important;
+        margin-top: -10px !important;
+      }
+
+      /* Force the very first input block to lose all top spacing */
+      .sib-form-block:first-of-type {
+        padding-top: 0 !important;
+        margin-top: 0 !important;
+      }
+      /* 1. Force all wrapper containers to be invisible */
+      #sib-container,
+      #sib-container .sib-input,
+      #sib-container .form__entry,
+      #sib-container .entry__field {
+        background-color: transparent !important;
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+      }
+
+      /* 2. The Glassmorphism Effect on the actual Input */
+      #sib-container .form-input {
+        background: rgba(255, 255, 255, 0.1) !important;
+        backdrop-filter: blur(10px) !important;
+        -webkit-backdrop-filter: blur(10px) !important;
+        border: 1px solid rgba(255, 255, 255, 0.2) !important;
+        border-radius: 12px !important;
+        color: #ffffff !important;
+        padding: 15px 20px !important;
+        width: 100% !important;
+        outline: none !important;
+      }
+
+      /* 3. Placeholder color (so it's readable on glass) */
+      #sib-container .form-input::placeholder {
+        color: rgba(255, 255, 255, 0.7) !important;
+      }
+
+      /* 4. Remove Brevo's default focus ring and add a "glow" */
+      #sib-container .form-input:focus {
+        background: rgba(255, 255, 255, 0.15) !important;
+        border: 1px solid rgba(255, 255, 255, 0.5) !important;
+        box-shadow: 0 0 15px rgba(255, 255, 255, 0.1) !important;
+      }
+      /* Submit button loading state */
+      .sib-form-block__button-with-loader .progress-indicator__icon {
+        display: none !important;
+      }
+
+      .sib-form-block__button-with-loader.sib-form-block__button--active
+        .progress-indicator__icon {
+        display: inline-block !important;
+        width: 20px;
+        height: 20px;
+        margin-right: 10px;
+        animation: rotate 1s linear infinite;
+        fill: white;
+      }
+
+      .submit-btn:disabled {
+        width: 100%;
+        padding: 20px;
+        font-size: 1.2rem;
+        font-weight: 700;
+        background: var(--primary);
+        color: white;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        box-shadow: 0 15px 40px rgba(255, 107, 53, 0.4);
+      }
+
+      .submit-btn:hover {
+        background: #ff8560;
+        transform: translateY(-3px);
+        box-shadow: 0 20px 50px rgba(255, 107, 53, 0.6);
+      }
+
+      .submit-btn:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+      }
+
+      /* Footer */
+      footer {
+        text-align: center;
+        padding: 40px 20px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 0.9rem;
+      }
+
+      .footer-note {
+        margin-top: 15px;
+        font-size: 0.85rem;
+        font-style: italic;
+      }
+
+      /* Animations */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.05);
+        }
+      }
+
+      @keyframes rotate {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .headline {
+          font-size: 2rem;
+        }
+
+        .subheadline {
+          font-size: 1.3rem;
+        }
+
+        .description {
+          font-size: 1rem;
+        }
+
+        .section-title {
+          font-size: 2rem;
+        }
+
+        .countdown-value {
+          font-size: 2rem;
+        }
+
+        .countdown-item {
+          min-width: 80px;
+          padding: 15px;
+        }
+
+        .warning-title {
+          font-size: 1.1rem;
+        }
+
+        .submit-btn.cta-primary {
+          padding: 12px 24px !important;
+          font-size: 1.05rem !important;
+          width: auto !important;
+          min-width: 200px !important;
+          margin: 0 auto !important;
+          display: inline-block !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="noise"></div>
+
+    <header>
+      <div class="container">
+        <div class="logo">EARN IN POUNDS MASTERCLASS</div>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container">
+          <div class="tag">Exclusive Free Training</div>
+
+          <h1 class="headline">
+            REVEALED: The SECRET Business Model That Pays You £500-£1,500
+            Monthly
+          </h1>
+
+          <p class="subheadline">
+            Just For Completing Online Surveys For Foreign Companies From Your
+            Phone
+          </p>
+
+          <div class="description">
+            Imagine earning <strong>£20, £50, even £100+</strong> every week
+            directly in pounds... <br /><br />
+            That's <strong>₦250,000+ monthly</strong> doing something so simple,
+            you'll wish you started years ago. <br /><br />
+            Discover the exact business model that has helped countless people
+            build a reliable side income and how YOU can start earning in the
+            next 7 days.
+          </div>
+
+          <a href="#register" class="cta-primary">Grant Me Access</a>
+        </div>
+      </section>
+
+      <section class="countdown-section">
+        <div class="container">
+          <div class="countdown-title">
+            <i data-lucide="alert-triangle" class="countdown-icon"></i> Limited
+            Spots Remaining
+          </div>
+          <div class="countdown">
+            <div class="countdown-item">
+              <span class="countdown-value" id="hours">23</span>
+              <span class="countdown-label">Hours</span>
+            </div>
+            <div class="countdown-item">
+              <span class="countdown-value" id="minutes">47</span>
+              <span class="countdown-label">Minutes</span>
+            </div>
+            <div class="countdown-item">
+              <span class="countdown-value" id="seconds">15</span>
+              <span class="countdown-label">Seconds</span>
+            </div>
+          </div>
+          <p class="urgency-text">
+            Class starts soon. Secure your spot before it's too late.
+          </p>
+        </div>
+      </section>
+
+      <section class="benefits-section">
+        <div class="container">
+          <h2 class="section-title">
+            What You'll Discover In This Exclusive Class
+          </h2>
+
+          <div class="benefits-grid">
+            <div class="benefit-card">
+              <div class="benefit-icon"><i data-lucide="target"></i></div>
+              <h3 class="benefit-title">
+                The Exact Survey Sites That Pay in Pounds
+              </h3>
+              <p class="benefit-description">
+                The Top Survey Sites you'll use to earn £5 to £10 daily (and how
+                to set it up the RIGHT way so you don't get rejected)
+              </p>
+            </div>
+
+            <div class="benefit-card">
+              <div class="benefit-icon">
+                <i data-lucide="circle-pound-sterling"></i>
+              </div>
+              <h3 class="benefit-title">
+                3 Income Streams Within Survey Sites
+              </h3>
+              <p class="benefit-description">
+                Most people only discover 1 method and leave serious money on
+                the table. I'll reveal all 3 hidden streams for maximum
+                earnings.
+              </p>
+            </div>
+
+            <div class="benefit-card">
+              <div class="benefit-icon"><i data-lucide="shield-alert"></i></div>
+              <h3 class="benefit-title">Common Mistakes To Avoid</h3>
+              <p class="benefit-description">
+                These mistakes cost people weeks of progress. I'll show you how
+                to skip them completely.
+              </p>
+            </div>
+
+            <div class="benefit-card">
+              <div class="benefit-icon">
+                <i data-lucide="chart-no-axes-combined"></i>
+              </div>
+              <h3 class="benefit-title">The Low Key Earnings Strategy</h3>
+              <p class="benefit-description">
+                I'll show you how you can earn up to £100 every week without
+                ever having to refer anyone, post on social media or even show
+                your face.
+              </p>
+            </div>
+
+            <div class="benefit-card">
+              <div class="benefit-icon"><i data-lucide="credit-card"></i></div>
+              <h3 class="benefit-title">How to Withdraw to Your Local Bank</h3>
+              <p class="benefit-description">
+                Step-by-step process to convert your pounds to naira and get
+                paid directly to your local bank account, mobile money, or
+                crypto wallet.
+              </p>
+            </div>
+
+            <div class="benefit-card">
+              <div class="benefit-icon"><i data-lucide="clock"></i></div>
+              <h3 class="benefit-title">The Time-Maximization Strategy</h3>
+              <p class="benefit-description">
+                Learn how to earn £100+ working just 1-2 hours daily. Perfect
+                for students, employees, or anyone with a busy schedule.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="warning-section">
+        <div class="container">
+          <h3 class="warning-title">
+            <i data-lucide="alert-triangle" class="warning-icon"></i>
+            Warning: This Is NOT For Everyone
+          </h3>
+          <div class="warning-content">
+            This only works if you're willing to show up consistently and follow
+            instructions.
+            <br /><br />
+            If you're looking for <strong>"get rich overnight"</strong> magic -
+            <strong>don't join this class</strong>.
+            <br />
+            If you're searching for
+            <strong>"free money with zero effort"</strong> -
+            <strong>don't join this class</strong>. <br />
+            If you're looking for businesses to start with
+            <strong>"zero capital"</strong> -
+            <strong>don't join this class</strong>.<br /><br />
+            But if you want a legitimate, proven way to earn
+            <strong>£500-£1,500+ monthly</strong> with online surveys...
+            <br />
+            Then this exclusive class will change everything for you.
+          </div>
+        </div>
+      </section>
+
+      <section class="registration-section" id="register">
+        <div class="container">
+          <div class="registration-content">
+            <h2 class="form-title">Ready To Start Earning In Pounds?</h2>
+            <p class="form-subtitle">
+              Enter your details below to get instant access to the WhatsApp
+              community where the training will be hosted.
+            </p>
+
+            <!-- Brevo Form Integration -->
+            <div class="sib-form" style="text-align: center">
+              <div id="sib-form-container" class="sib-form-container">
+                <div
+                  id="error-message"
+                  class="sib-form-message-panel"
+                  style="
+                    font-size: 16px;
+                    text-align: center;
+                    font-family: &quot;Outfit&quot;, sans-serif;
+                    color: #fff;
+                    background-color: rgba(255, 107, 53, 0.2);
+                    border-radius: 10px;
+                    border: 2px solid #ff6b35;
+                    max-width: 540px;
+                    margin: 0 auto 20px;
+                    padding: 20px;
+                    display: none;
+                  "
+                >
+                  <div
+                    class="sib-form-message-panel__text sib-form-message-panel__text--center"
+                  >
+                    <svg
+                      viewBox="0 0 512 512"
+                      class="sib-icon sib-notification__icon"
+                      style="
+                        width: 24px;
+                        height: 24px;
+                        fill: #ff6b35;
+                        display: inline-block;
+                        vertical-align: middle;
+                        margin-right: 10px;
+                      "
+                    >
+                      <path
+                        d="M256 40c118.621 0 216 96.075 216 216 0 119.291-96.61 216-216 216-119.244 0-216-96.562-216-216 0-119.203 96.602-216 216-216m0-32C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm-11.49 120h22.979c6.823 0 12.274 5.682 11.99 12.5l-7 168c-.268 6.428-5.556 11.5-11.99 11.5h-8.979c-6.433 0-11.722-5.073-11.99-11.5l-7-168c-.283-6.818 5.167-12.5 11.99-12.5zM256 340c-15.464 0-28 12.536-28 28s12.536 28 28 28 28-12.536 28-28-12.536-28-28-28z"
+                      />
+                    </svg>
+                    <span class="sib-form-message-panel__inner-text">
+                      Your details could not be saved. Please try again.
+                    </span>
+                  </div>
+                </div>
+
+                <div
+                  id="success-message"
+                  class="sib-form-message-panel"
+                  style="
+                    font-size: 16px;
+                    text-align: center;
+                    font-family: &quot;Outfit&quot;, sans-serif;
+                    color: #fff;
+                    background-color: rgba(6, 214, 160, 0.2);
+                    border-radius: 10px;
+                    border: 2px solid #06d6a0;
+                    max-width: 540px;
+                    margin: 0 auto 20px;
+                    padding: 20px;
+                    display: none;
+                  "
+                >
+                  <div
+                    class="sib-form-message-panel__text sib-form-message-panel__text--center"
+                  >
+                    <svg
+                      viewBox="0 0 512 512"
+                      class="sib-icon sib-notification__icon"
+                      style="
+                        width: 24px;
+                        height: 24px;
+                        fill: #06d6a0;
+                        display: inline-block;
+                        vertical-align: middle;
+                        margin-right: 10px;
+                      "
+                    >
+                      <path
+                        d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 464c-118.664 0-216-96.055-216-216 0-118.663 96.055-216 216-216 118.664 0 216 96.055 216 216 0 118.663-96.055 216-216 216zm141.63-274.961L217.15 376.071c-4.705 4.667-12.303 4.637-16.97-.068l-85.878-86.572c-4.667-4.705-4.637-12.303.068-16.97l8.52-8.451c4.705-4.667 12.303-4.637 16.97.068l68.976 69.533 163.441-162.13c4.705-4.667 12.303-4.637 16.97.068l8.451 8.52c4.668 4.705 4.637 12.303-.068 16.97z"
+                      />
+                    </svg>
+                    <span class="sib-form-message-panel__inner-text">
+                      Hi! Seems You Have Registered For The Training Already
+                    </span>
+                  </div>
+                </div>
+
+                <div
+                  id="sib-container"
+                  class="sib-container--large sib-container--vertical"
+                  style="
+                    text-align: center;
+                    background-color: transparent;
+                    max-width: 540px;
+                    margin: 0 auto;
+                    border: none;
+                  "
+                >
+                  <form
+                    id="sib-form"
+                    method="POST"
+                    action="https://3028b4a6.sibforms.com/serve/MUIFAC9SXBKG3QJjRgDj_ZCvucS8uo_9CyZREhbJMLaFeQID_IydUYUndw5vbvb3dF3-0yFqx_8CPm5-mc8ZGrpB1cbNCLPTRwwFWVKQXgJyyDVHHLPI59fDAuzKOk4ZhLF4L7Hpg0QC_m07H9-B4RaWnvkzqBtGub-U7ppwPm9KqKZHJZZvAFLf14xexUTwBcS4jpIz3tlC-MKc6A=="
+                    data-type="subscription"
+                  >
+                    <div class="form-group">
+                      <div class="sib-input sib-form-block">
+                        <div class="form__entry entry_block">
+                          <div class="form__label-row">
+                            <div class="entry__field">
+                              <input
+                                class="form-input"
+                                maxlength="200"
+                                type="text"
+                                id="FIRSTNAME"
+                                name="FIRSTNAME"
+                                autocomplete="off"
+                                placeholder="Your Full Name"
+                                data-required="true"
+                                required
+                              />
+                            </div>
+                          </div>
+                          <label
+                            class="entry__error entry__error--primary"
+                            style="
+                              font-size: 14px;
+                              text-align: left;
+                              font-family: &quot;Outfit&quot;, sans-serif;
+                              color: #ff6b35;
+                              margin-top: 8px;
+                              display: block;
+                            "
+                          >
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <div class="sib-input sib-form-block">
+                        <div class="form__entry entry_block">
+                          <div class="form__label-row">
+                            <div class="entry__field">
+                              <input
+                                class="form-input"
+                                type="text"
+                                id="EMAIL"
+                                name="EMAIL"
+                                autocomplete="off"
+                                placeholder="Your Email Address"
+                                data-required="true"
+                                required
+                              />
+                            </div>
+                          </div>
+                          <label
+                            class="entry__error entry__error--primary"
+                            style="
+                              font-size: 14px;
+                              text-align: left;
+                              font-family: &quot;Outfit&quot;, sans-serif;
+                              color: #ff6b35;
+                              margin-top: 8px;
+                              display: block;
+                            "
+                          >
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <div class="sib-form-block" style="text-align: center">
+                        <button
+                          class="submit-btn sib-form-block__button sib-form-block__button-with-loader cta-primary"
+                          form="sib-form"
+                          type="submit"
+                        >
+                          <svg
+                            class="icon clickable__icon progress-indicator__icon sib-hide-loader-icon"
+                            viewBox="0 0 512 512"
+                            style="display: none"
+                          >
+                            <path
+                              d="M460.116 373.846l-20.823-12.022c-5.541-3.199-7.54-10.159-4.663-15.874 30.137-59.886 28.343-131.652-5.386-189.946-33.641-58.394-94.896-95.833-161.827-99.676C261.028 55.961 256 50.751 256 44.352V20.309c0-6.904 5.808-12.337 12.703-11.982 83.556 4.306 160.163 50.864 202.11 123.677 42.063 72.696 44.079 162.316 6.031 236.832-3.14 6.148-10.75 8.461-16.728 5.01z"
+                            />
+                          </svg>
+                          Get Instant Access
+                        </button>
+                      </div>
+                    </div>
+
+                    <input
+                      type="text"
+                      name="email_address_check"
+                      value=""
+                      class="input--hidden"
+                      style="display: none"
+                    />
+                    <input type="hidden" name="locale" value="en" />
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="hero" style="padding-top: 20px">
+        <div class="container">
+          <h2 class="section-title" style="margin-bottom: 30px">
+            What Are You Waiting For?
+          </h2>
+          <p class="description" style="margin-bottom: 40px">
+            <strong
+              >Access closes shortly. Don't miss out on this
+              opportunity!</strong
+            >
+          </p>
+          <a href="#register" class="cta-primary">Secure My Spot Now</a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        <p>© 2026 Emperor Of Ads. All Rights Reserved</p>
+        <p class="footer-note">
+          This site is not affiliated with Facebook, Google, or any survey
+          platform.
+          <br />
+          Results may vary based on individual effort and consistency.
+        </p>
+      </div>
+    </footer>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+      // Countdown Timer
+      function updateCountdown() {
+        const countdownDate = new Date().getTime() + 24 * 60 * 60 * 1000; // 24 hours from now
+
+        setInterval(function () {
+          const now = new Date().getTime();
+          const distance = countdownDate - now;
+
+          const hours = Math.floor(
+            (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
+          );
+          const minutes = Math.floor(
+            (distance % (1000 * 60 * 60)) / (1000 * 60),
+          );
+          const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+          document.getElementById("hours").textContent = String(hours).padStart(
+            2,
+            "0",
+          );
+          document.getElementById("minutes").textContent = String(
+            minutes,
+          ).padStart(2, "0");
+          document.getElementById("seconds").textContent = String(
+            seconds,
+          ).padStart(2, "0");
+        }, 1000);
+      }
+
+      updateCountdown();
+
+      // Smooth scroll for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+          }
+        });
+      });
+
+      // Brevo form configuration
+      window.REQUIRED_CODE_ERROR_MESSAGE = "Please choose a country code";
+      window.LOCALE = "en";
+      window.EMAIL_INVALID_MESSAGE = window.SMS_INVALID_MESSAGE =
+        "The information provided is invalid. Please review the field format and try again.";
+      window.REQUIRED_ERROR_MESSAGE = "This field cannot be left blank. ";
+      window.GENERIC_INVALID_MESSAGE =
+        "The information provided is invalid. Please review the field format and try again.";
+      window.translation = {
+        common: {
+          selectedList: "{quantity} list selected",
+          selectedLists: "{quantity} lists selected",
+          selectedOption: "{quantity} selected",
+          selectedOptions: "{quantity} selected",
+        },
+      };
+      var AUTOHIDE = Boolean(0);
+
+      lucide.createIcons();
+    </script>
+
+    <!-- Brevo Form Script -->
+    <script
+      defer
+      src="https://sibforms.com/forms/end-form/build/main.js"
+    ></script>
+  </body>
+</html>

@@ -1,0 +1,1593 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Swiftmarky Academy - Master Digital Skills That Pay</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@600;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --primary-dark: #0a0e27;
+        --secondary-dark: #1a1f3a;
+        --accent-blue: #3b82f6;
+        --accent-cyan: #06b6d4;
+        --text-white: #ffffff;
+        --text-gray: #94a3b8;
+        --border-subtle: rgba(255, 255, 255, 0.1);
+        --gradient-primary: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
+        --gradient-accent: linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%);
+      }
+
+      body {
+        font-family: "DM Sans", sans-serif;
+        background: var(--primary-dark);
+        color: var(--text-white);
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+
+      /* Typography */
+      h1,
+      h2,
+      h3,
+      h4 {
+        font-family: "Playfair Display", serif;
+        font-weight: 700;
+        line-height: 1.2;
+      }
+
+      /* Navigation */
+      nav {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background: rgba(10, 14, 39, 0.95);
+        backdrop-filter: blur(20px);
+        border-bottom: 1px solid var(--border-subtle);
+        z-index: 1000;
+        animation: slideDown 0.6s ease-out;
+      }
+
+      @keyframes slideDown {
+        from {
+          transform: translateY(-100%);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      .nav-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 1.5rem 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        font-family: "Playfair Display", serif;
+        font-size: 1.5rem;
+        font-weight: 900;
+        letter-spacing: -0.02em;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 2.5rem;
+        align-items: center;
+      }
+
+      .nav-links a {
+        color: var(--text-gray);
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 0.95rem;
+        transition: color 0.3s ease;
+      }
+
+      .nav-links a:hover {
+        color: var(--text-white);
+      }
+
+      .btn-login {
+        padding: 0.75rem 1.75rem;
+        background: transparent;
+        border: 1px solid var(--border-subtle);
+        color: var(--text-white);
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: 500;
+        transition: all 0.3s ease;
+      }
+
+      .btn-login:hover {
+        background: rgba(255, 255, 255, 0.05);
+        border-color: var(--accent-blue);
+      }
+
+      /* Container */
+      .container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+
+      section {
+        padding: 8rem 0;
+      }
+
+      /* Hero Section */
+      .hero {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+        padding-top: 12rem;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 60%;
+        height: 100%;
+        background: radial-gradient(
+          circle at top right,
+          rgba(59, 130, 246, 0.15),
+          transparent 70%
+        );
+        animation: pulseGlow 8s ease-in-out infinite;
+      }
+
+      @keyframes pulseGlow {
+        0%,
+        100% {
+          opacity: 0.3;
+        }
+        50% {
+          opacity: 0.6;
+        }
+      }
+
+      .hero-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 6rem;
+        align-items: center;
+        position: relative;
+        z-index: 1;
+      }
+
+      .hero-text h1 {
+        font-size: 5rem;
+        margin-bottom: 2rem;
+        font-weight: 900;
+        line-height: 1.1;
+        letter-spacing: -0.03em;
+        animation: fadeInUp 0.8s ease-out 0.2s both;
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .hero-text p {
+        font-size: 1.25rem;
+        color: var(--text-gray);
+        margin-bottom: 3rem;
+        max-width: 540px;
+        line-height: 1.7;
+        animation: fadeInUp 0.8s ease-out 0.4s both;
+      }
+
+      .hero-cta {
+        display: flex;
+        gap: 1.5rem;
+        animation: fadeInUp 0.8s ease-out 0.6s both;
+      }
+
+      .btn-primary {
+        padding: 1.25rem 2.5rem;
+        background: var(--gradient-accent);
+        color: var(--text-white);
+        border: none;
+        border-radius: 10px;
+        font-weight: 700;
+        font-size: 1.05rem;
+        cursor: pointer;
+        transition:
+          transform 0.3s ease,
+          box-shadow 0.3s ease;
+        box-shadow: 0 10px 40px rgba(59, 130, 246, 0.3);
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 15px 50px rgba(59, 130, 246, 0.4);
+      }
+
+      .btn-secondary {
+        padding: 1.25rem 2.5rem;
+        background: transparent;
+        color: var(--text-white);
+        border: 2px solid var(--border-subtle);
+        border-radius: 10px;
+        font-weight: 700;
+        font-size: 1.05rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .btn-secondary:hover {
+        background: rgba(255, 255, 255, 0.05);
+        border-color: var(--accent-cyan);
+      }
+
+      /* Dashboard Mockup */
+      .dashboard-mockup {
+        position: relative;
+        animation: fadeIn 1s ease-out 0.8s both;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      .mockup-container {
+        background: var(--secondary-dark);
+        border: 1px solid var(--border-subtle);
+        border-radius: 16px;
+        padding: 1.5rem;
+        box-shadow: 0 25px 80px rgba(0, 0, 0, 0.5);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .mockup-container::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 50px;
+        background: linear-gradient(
+          to bottom,
+          rgba(59, 130, 246, 0.1),
+          transparent
+        );
+      }
+
+      .mockup-header {
+        display: flex;
+        gap: 0.5rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: var(--border-subtle);
+      }
+
+      .mockup-content {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .progress-bar {
+        background: rgba(255, 255, 255, 0.05);
+        height: 8px;
+        border-radius: 4px;
+        overflow: hidden;
+      }
+
+      .progress-fill {
+        height: 100%;
+        background: var(--gradient-accent);
+        border-radius: 4px;
+        animation: progressFill 2s ease-out 1.5s both;
+      }
+
+      @keyframes progressFill {
+        from {
+          width: 0;
+        }
+        to {
+          width: var(--progress-width);
+        }
+      }
+
+      .course-card {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid var(--border-subtle);
+        border-radius: 12px;
+        padding: 1.5rem;
+        margin-bottom: 0.75rem;
+      }
+
+      .course-title {
+        font-size: 0.95rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+      }
+
+      .course-meta {
+        font-size: 0.85rem;
+        color: var(--text-gray);
+      }
+
+      /* Authority Section */
+      .authority {
+        background: var(--secondary-dark);
+        border-top: 1px solid var(--border-subtle);
+        border-bottom: 1px solid var(--border-subtle);
+      }
+
+      .authority-content {
+        display: grid;
+        grid-template-columns: 350px 1fr;
+        gap: 6rem;
+        align-items: center;
+      }
+
+      .founder-profile {
+        position: relative;
+      }
+
+      .profile-image {
+        width: 100%;
+        aspect-ratio: 3/4;
+        background: linear-gradient(
+          135deg,
+          rgba(59, 130, 246, 0.2),
+          rgba(6, 182, 212, 0.2)
+        );
+        border-radius: 16px;
+        border: 1px solid var(--border-subtle);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 4rem;
+        font-weight: 900;
+        font-family: "Playfair Display", serif;
+      }
+
+      .authority-text h2 {
+        font-size: 3.5rem;
+        margin-bottom: 2rem;
+        letter-spacing: -0.02em;
+      }
+
+      .authority-text p {
+        font-size: 1.15rem;
+        color: var(--text-gray);
+        margin-bottom: 1.5rem;
+        line-height: 1.8;
+      }
+
+      .credentials {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+        margin-top: 3rem;
+      }
+
+      .credential-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 1rem;
+      }
+
+      .credential-icon {
+        width: 48px;
+        height: 48px;
+        border-radius: 10px;
+        background: var(--gradient-accent);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        flex-shrink: 0;
+      }
+
+      .credential-text h4 {
+        font-size: 1.1rem;
+        margin-bottom: 0.25rem;
+        font-family: "DM Sans", sans-serif;
+        font-weight: 700;
+      }
+
+      .credential-text p {
+        font-size: 0.9rem;
+        margin: 0;
+      }
+
+      /* What You'll Learn */
+      .learn h2 {
+        font-size: 3.5rem;
+        text-align: center;
+        margin-bottom: 4rem;
+        letter-spacing: -0.02em;
+      }
+
+      .benefits-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2.5rem;
+      }
+
+      .benefit-card {
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid var(--border-subtle);
+        border-radius: 16px;
+        padding: 3rem 2rem;
+        transition: all 0.4s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .benefit-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: var(--gradient-accent);
+        opacity: 0;
+        transition: opacity 0.4s ease;
+      }
+
+      .benefit-card:hover {
+        transform: translateY(-8px);
+        border-color: var(--accent-blue);
+      }
+
+      .benefit-card:hover::before {
+        opacity: 0.05;
+      }
+
+      .benefit-icon {
+        width: 64px;
+        height: 64px;
+        border-radius: 12px;
+        background: var(--gradient-accent);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+        position: relative;
+        z-index: 1;
+      }
+
+      .benefit-card h3 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        position: relative;
+        z-index: 1;
+        font-family: "DM Sans", sans-serif;
+      }
+
+      .benefit-card p {
+        color: var(--text-gray);
+        line-height: 1.7;
+        position: relative;
+        z-index: 1;
+      }
+
+      /* How It Works */
+      .how-it-works {
+        background: var(--secondary-dark);
+        border-top: 1px solid var(--border-subtle);
+        border-bottom: 1px solid var(--border-subtle);
+      }
+
+      .how-it-works h2 {
+        font-size: 3.5rem;
+        text-align: center;
+        margin-bottom: 5rem;
+        letter-spacing: -0.02em;
+      }
+
+      .steps {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 4rem;
+        position: relative;
+      }
+
+      .steps::before {
+        content: "";
+        position: absolute;
+        top: 60px;
+        left: 16.66%;
+        right: 16.66%;
+        height: 2px;
+        background: linear-gradient(
+          to right,
+          var(--accent-blue),
+          var(--accent-cyan)
+        );
+        opacity: 0.3;
+      }
+
+      .step {
+        text-align: center;
+        position: relative;
+      }
+
+      .step-number {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        background: var(--gradient-accent);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 3rem;
+        font-weight: 900;
+        font-family: "Playfair Display", serif;
+        margin: 0 auto 2rem;
+        box-shadow: 0 15px 40px rgba(59, 130, 246, 0.4);
+        position: relative;
+        z-index: 1;
+      }
+
+      .step h3 {
+        font-size: 1.75rem;
+        margin-bottom: 1rem;
+        font-family: "DM Sans", sans-serif;
+      }
+
+      .step p {
+        color: var(--text-gray);
+        line-height: 1.7;
+        max-width: 280px;
+        margin: 0 auto;
+      }
+
+      /* Featured Program */
+      .featured-program h2 {
+        font-size: 3.5rem;
+        text-align: center;
+        margin-bottom: 4rem;
+        letter-spacing: -0.02em;
+      }
+
+      .program-card {
+        background: var(--secondary-dark);
+        border: 1px solid var(--border-subtle);
+        border-radius: 20px;
+        overflow: hidden;
+        max-width: 900px;
+        margin: 0 auto;
+        transition:
+          transform 0.4s ease,
+          box-shadow 0.4s ease;
+      }
+
+      .program-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+      }
+
+      .program-header {
+        padding: 4rem 4rem 2rem;
+        background: linear-gradient(
+          135deg,
+          rgba(59, 130, 246, 0.1),
+          rgba(6, 182, 212, 0.1)
+        );
+        border-bottom: 1px solid var(--border-subtle);
+      }
+
+      .program-tag {
+        display: inline-block;
+        padding: 0.5rem 1.25rem;
+        background: var(--gradient-accent);
+        border-radius: 20px;
+        font-size: 0.85rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        margin-bottom: 1.5rem;
+      }
+
+      .program-header h3 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .program-header p {
+        font-size: 1.15rem;
+        color: var(--text-gray);
+        line-height: 1.7;
+      }
+
+      .program-body {
+        padding: 4rem;
+      }
+
+      .program-outcomes {
+        margin-bottom: 3rem;
+      }
+
+      .program-outcomes h4 {
+        font-size: 1.3rem;
+        margin-bottom: 1.5rem;
+        font-family: "DM Sans", sans-serif;
+        font-weight: 700;
+      }
+
+      .outcomes-list {
+        display: grid;
+        gap: 1rem;
+      }
+
+      .outcome-item {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.02);
+        border-radius: 10px;
+      }
+
+      .check-icon {
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        background: var(--gradient-accent);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+
+      .outcome-item span {
+        color: var(--text-gray);
+        line-height: 1.6;
+      }
+
+      /* Student Experience */
+      .student-experience {
+        background: var(--secondary-dark);
+        border-top: 1px solid var(--border-subtle);
+        border-bottom: 1px solid var(--border-subtle);
+      }
+
+      .experience-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 6rem;
+        align-items: center;
+      }
+
+      .experience-text h2 {
+        font-size: 3.5rem;
+        margin-bottom: 2rem;
+        letter-spacing: -0.02em;
+      }
+
+      .experience-features {
+        display: grid;
+        gap: 2rem;
+        margin-top: 3rem;
+      }
+
+      .feature-item {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        padding: 1.5rem;
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid var(--border-subtle);
+        border-radius: 12px;
+        transition: all 0.3s ease;
+      }
+
+      .feature-item:hover {
+        background: rgba(255, 255, 255, 0.04);
+        border-color: var(--accent-blue);
+      }
+
+      .feature-icon {
+        width: 56px;
+        height: 56px;
+        border-radius: 10px;
+        background: var(--gradient-accent);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.75rem;
+        flex-shrink: 0;
+      }
+
+      .feature-item span {
+        font-size: 1.1rem;
+        font-weight: 600;
+      }
+
+      .experience-dashboard {
+        position: relative;
+      }
+
+      .dashboard-preview {
+        background: var(--primary-dark);
+        border: 1px solid var(--border-subtle);
+        border-radius: 16px;
+        padding: 2rem;
+        box-shadow: 0 25px 80px rgba(0, 0, 0, 0.5);
+      }
+
+      .preview-stats {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+      }
+
+      .stat-card {
+        background: rgba(59, 130, 246, 0.1);
+        border: 1px solid var(--border-subtle);
+        border-radius: 12px;
+        padding: 1.5rem;
+      }
+
+      .stat-value {
+        font-size: 2.5rem;
+        font-weight: 900;
+        font-family: "Playfair Display", serif;
+        margin-bottom: 0.25rem;
+        background: var(--gradient-accent);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .stat-label {
+        font-size: 0.9rem;
+        color: var(--text-gray);
+      }
+
+      .preview-modules {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .module-item {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid var(--border-subtle);
+        border-radius: 10px;
+        padding: 1.25rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .module-info h5 {
+        font-size: 1rem;
+        font-weight: 600;
+        margin-bottom: 0.25rem;
+        font-family: "DM Sans", sans-serif;
+      }
+
+      .module-info p {
+        font-size: 0.85rem;
+        color: var(--text-gray);
+        margin: 0;
+      }
+
+      .module-status {
+        padding: 0.5rem 1rem;
+        background: rgba(6, 182, 212, 0.2);
+        border-radius: 6px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: var(--accent-cyan);
+      }
+
+      /* Testimonials */
+      .testimonials h2 {
+        font-size: 3.5rem;
+        text-align: center;
+        margin-bottom: 4rem;
+        letter-spacing: -0.02em;
+      }
+
+      .testimonials-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2.5rem;
+      }
+
+      .testimonial-card {
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid var(--border-subtle);
+        border-radius: 16px;
+        padding: 2.5rem;
+        transition: all 0.4s ease;
+      }
+
+      .testimonial-card:hover {
+        background: rgba(255, 255, 255, 0.04);
+        border-color: var(--accent-blue);
+        transform: translateY(-5px);
+      }
+
+      .quote {
+        font-size: 1.05rem;
+        line-height: 1.8;
+        color: var(--text-gray);
+        margin-bottom: 2rem;
+      }
+
+      .student-info {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .student-avatar {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background: var(--gradient-accent);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+      }
+
+      .student-details h5 {
+        font-size: 1rem;
+        font-weight: 700;
+        margin-bottom: 0.25rem;
+        font-family: "DM Sans", sans-serif;
+      }
+
+      .student-details p {
+        font-size: 0.85rem;
+        color: var(--text-gray);
+        margin: 0;
+      }
+
+      /* CTA Section */
+      .cta-section {
+        background: var(--secondary-dark);
+        border-top: 1px solid var(--border-subtle);
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .cta-section::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(
+          circle,
+          rgba(59, 130, 246, 0.2),
+          transparent 70%
+        );
+        animation: pulseGlow 8s ease-in-out infinite;
+      }
+
+      .cta-content {
+        position: relative;
+        z-index: 1;
+      }
+
+      .cta-content h2 {
+        font-size: 4rem;
+        margin-bottom: 3rem;
+        letter-spacing: -0.02em;
+      }
+
+      .cta-buttons {
+        display: flex;
+        gap: 1.5rem;
+        justify-content: center;
+      }
+
+      /* Footer */
+      footer {
+        background: var(--primary-dark);
+        border-top: 1px solid var(--border-subtle);
+        padding: 4rem 0 2rem;
+      }
+
+      .footer-content {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr 1fr;
+        gap: 4rem;
+        margin-bottom: 3rem;
+      }
+
+      .footer-brand h3 {
+        font-size: 1.75rem;
+        font-family: "Playfair Display", serif;
+        margin-bottom: 1rem;
+      }
+
+      .footer-brand p {
+        color: var(--text-gray);
+        line-height: 1.7;
+        max-width: 320px;
+      }
+
+      .footer-links h4 {
+        font-size: 1rem;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        font-family: "DM Sans", sans-serif;
+      }
+
+      .footer-links ul {
+        list-style: none;
+      }
+
+      .footer-links li {
+        margin-bottom: 0.75rem;
+      }
+
+      .footer-links a {
+        color: var(--text-gray);
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+
+      .footer-links a:hover {
+        color: var(--text-white);
+      }
+
+      .footer-bottom {
+        padding-top: 2rem;
+        border-top: 1px solid var(--border-subtle);
+        text-align: center;
+        color: var(--text-gray);
+        font-size: 0.9rem;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 1200px) {
+        .hero-content {
+          grid-template-columns: 1fr;
+          gap: 4rem;
+        }
+
+        .hero-text h1 {
+          font-size: 4rem;
+        }
+
+        .authority-content {
+          grid-template-columns: 1fr;
+          gap: 3rem;
+        }
+
+        .benefits-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .experience-content {
+          grid-template-columns: 1fr;
+          gap: 4rem;
+        }
+
+        .testimonials-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .footer-content {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 768px) {
+        .container {
+          padding: 0 1.5rem;
+        }
+
+        section {
+          padding: 5rem 0;
+        }
+
+        .hero {
+          padding-top: 8rem;
+        }
+
+        .hero-text h1 {
+          font-size: 2.75rem;
+        }
+
+        .hero-text p {
+          font-size: 1.1rem;
+        }
+
+        .hero-cta {
+          flex-direction: column;
+        }
+
+        .btn-primary,
+        .btn-secondary {
+          width: 100%;
+          text-align: center;
+        }
+
+        .nav-links {
+          display: none;
+        }
+
+        .authority-text h2,
+        .learn h2,
+        .how-it-works h2,
+        .featured-program h2,
+        .experience-text h2,
+        .testimonials h2,
+        .cta-content h2 {
+          font-size: 2.5rem;
+        }
+
+        .benefits-grid,
+        .testimonials-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .steps {
+          grid-template-columns: 1fr;
+          gap: 3rem;
+        }
+
+        .steps::before {
+          display: none;
+        }
+
+        .credentials {
+          grid-template-columns: 1fr;
+        }
+
+        .program-header,
+        .program-body {
+          padding: 2.5rem 2rem;
+        }
+
+        .footer-content {
+          grid-template-columns: 1fr;
+          gap: 2.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav>
+      <div class="nav-container">
+        <div class="logo">Swiftmarky</div>
+        <div class="nav-links">
+          <a href="#programs">Programs</a>
+          <a href="#about">About</a>
+          <a href="#support">Support</a>
+          <button class="btn-login">Login</button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <div class="hero-text">
+            <h1>Master Digital Skills That Pay</h1>
+            <p>
+              Structured, practical training designed to help you build real
+              online income streams.
+            </p>
+            <div class="hero-cta">
+              <button class="btn-primary">Access Your Dashboard</button>
+              <button class="btn-secondary">Explore Programs</button>
+            </div>
+          </div>
+          <div class="dashboard-mockup">
+            <div class="mockup-container">
+              <div class="mockup-header">
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+              </div>
+              <div class="mockup-content">
+                <div class="course-card">
+                  <div class="course-title">Digital Product Mastery</div>
+                  <div class="course-meta">8 of 12 modules complete</div>
+                  <div class="progress-bar">
+                    <div
+                      class="progress-fill"
+                      style="--progress-width: 67%"
+                    ></div>
+                  </div>
+                </div>
+                <div class="course-card">
+                  <div class="course-title">Traffic Generation Systems</div>
+                  <div class="course-meta">3 of 10 modules complete</div>
+                  <div class="progress-bar">
+                    <div
+                      class="progress-fill"
+                      style="--progress-width: 30%"
+                    ></div>
+                  </div>
+                </div>
+                <div class="course-card">
+                  <div class="course-title">Monetization Frameworks</div>
+                  <div class="course-meta">Not started</div>
+                  <div class="progress-bar">
+                    <div
+                      class="progress-fill"
+                      style="--progress-width: 0%"
+                    ></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Authority Section -->
+    <section class="authority">
+      <div class="container">
+        <div class="authority-content">
+          <div class="founder-profile">
+            <div class="profile-image">S</div>
+          </div>
+          <div class="authority-text">
+            <h2>Built by a Practitioner, Not a Theorist</h2>
+            <p>
+              Every course in Swiftmarky Academy is created by an active digital
+              entrepreneur with proven results in the online space. This isn't
+              recycled content from the internet — it's real-world experience
+              distilled into structured, actionable training.
+            </p>
+            <p>
+              You're learning from someone who has actually built, tested, and
+              optimized these systems. No theoretical fluff. Just practical
+              frameworks that work.
+            </p>
+            <div class="credentials">
+              <div class="credential-item">
+                <div class="credential-icon">✓</div>
+                <div class="credential-text">
+                  <h4>Active Operator</h4>
+                  <p>Currently running multiple digital income streams</p>
+                </div>
+              </div>
+              <div class="credential-item">
+                <div class="credential-icon">⚡</div>
+                <div class="credential-text">
+                  <h4>Results-Focused</h4>
+                  <p>Training based on actual implementation</p>
+                </div>
+              </div>
+              <div class="credential-item">
+                <div class="credential-icon">🎯</div>
+                <div class="credential-text">
+                  <h4>No Recycled Content</h4>
+                  <p>Original frameworks and systems</p>
+                </div>
+              </div>
+              <div class="credential-item">
+                <div class="credential-icon">📈</div>
+                <div class="credential-text">
+                  <h4>Proven Methods</h4>
+                  <p>Tested and optimized in the real world</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- What You'll Learn -->
+    <section class="learn">
+      <div class="container">
+        <h2>What You'll Master</h2>
+        <div class="benefits-grid">
+          <div class="benefit-card">
+            <div class="benefit-icon">💰</div>
+            <h3>Online Income Systems</h3>
+            <p>
+              Learn proven frameworks for building sustainable digital revenue
+              streams from scratch.
+            </p>
+          </div>
+          <div class="benefit-card">
+            <div class="benefit-icon">🎨</div>
+            <h3>Digital Product Creation</h3>
+            <p>
+              Master the art of creating valuable digital products that people
+              actually want to buy.
+            </p>
+          </div>
+          <div class="benefit-card">
+            <div class="benefit-icon">📊</div>
+            <h3>Traffic & Sales</h3>
+            <p>
+              Understand how to attract the right audience and convert them into
+              paying customers.
+            </p>
+          </div>
+          <div class="benefit-card">
+            <div class="benefit-icon">🔄</div>
+            <h3>Monetization Strategy</h3>
+            <p>
+              Develop strategic thinking around pricing, positioning, and
+              revenue optimization.
+            </p>
+          </div>
+          <div class="benefit-card">
+            <div class="benefit-icon">⚙️</div>
+            <h3>Execution Frameworks</h3>
+            <p>
+              Get step-by-step systems that turn ideas into implemented,
+              profitable projects.
+            </p>
+          </div>
+          <div class="benefit-card">
+            <div class="benefit-icon">🚀</div>
+            <h3>Accountability & Growth</h3>
+            <p>
+              Build the mindset and habits needed to consistently execute and
+              scale your efforts.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works">
+      <div class="container">
+        <h2>How The Academy Works</h2>
+        <div class="steps">
+          <div class="step">
+            <div class="step-number">1</div>
+            <h3>Enroll</h3>
+            <p>
+              Choose your program and get instant access to the complete
+              curriculum and learning dashboard.
+            </p>
+          </div>
+          <div class="step">
+            <div class="step-number">2</div>
+            <h3>Learn</h3>
+            <p>
+              Progress through structured modules at your own pace with clear,
+              actionable lessons.
+            </p>
+          </div>
+          <div class="step">
+            <div class="step-number">3</div>
+            <h3>Apply & Earn</h3>
+            <p>
+              Implement what you learn to build real income streams and achieve
+              tangible results.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Program -->
+    <section class="featured-program">
+      <div class="container">
+        <h2>Featured Program</h2>
+        <div class="program-card">
+          <div class="program-header">
+            <div class="program-tag">Flagship Course</div>
+            <h3>Digital Income Foundations</h3>
+            <p>
+              A comprehensive training program that takes you from zero to your
+              first online income stream.
+            </p>
+          </div>
+          <div class="program-body">
+            <div class="program-outcomes">
+              <h4>What You'll Achieve</h4>
+              <div class="outcomes-list">
+                <div class="outcome-item">
+                  <div class="check-icon">✓</div>
+                  <span
+                    >Build a complete understanding of digital monetization
+                    fundamentals</span
+                  >
+                </div>
+                <div class="outcome-item">
+                  <div class="check-icon">✓</div>
+                  <span
+                    >Create your first digital product from concept to
+                    launch</span
+                  >
+                </div>
+                <div class="outcome-item">
+                  <div class="check-icon">✓</div>
+                  <span
+                    >Implement traffic generation systems that bring buyers to
+                    your offers</span
+                  >
+                </div>
+                <div class="outcome-item">
+                  <div class="check-icon">✓</div>
+                  <span
+                    >Develop repeatable frameworks you can use to scale your
+                    income</span
+                  >
+                </div>
+              </div>
+            </div>
+            <button class="btn-primary">Enroll Now</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Student Experience -->
+    <section class="student-experience">
+      <div class="container">
+        <div class="experience-content">
+          <div class="experience-text">
+            <h2>Designed for Serious Execution</h2>
+            <p>
+              Swiftmarky Academy isn't just about watching videos. It's a
+              complete learning environment built to help you stay focused,
+              track progress, and actually implement what you learn.
+            </p>
+            <div class="experience-features">
+              <div class="feature-item">
+                <div class="feature-icon">📈</div>
+                <span>Progress Tracking</span>
+              </div>
+              <div class="feature-item">
+                <div class="feature-icon">📚</div>
+                <span>Structured Lessons</span>
+              </div>
+              <div class="feature-item">
+                <div class="feature-icon">💻</div>
+                <span>Clean Dashboard</span>
+              </div>
+              <div class="feature-item">
+                <div class="feature-icon">♾️</div>
+                <span>Lifetime Access</span>
+              </div>
+              <div class="feature-item">
+                <div class="feature-icon">📱</div>
+                <span>Mobile Friendly</span>
+              </div>
+            </div>
+          </div>
+          <div class="experience-dashboard">
+            <div class="dashboard-preview">
+              <div class="preview-stats">
+                <div class="stat-card">
+                  <div class="stat-value">87%</div>
+                  <div class="stat-label">Completion Rate</div>
+                </div>
+                <div class="stat-card">
+                  <div class="stat-value">12</div>
+                  <div class="stat-label">Modules Done</div>
+                </div>
+              </div>
+              <div class="preview-modules">
+                <div class="module-item">
+                  <div class="module-info">
+                    <h5>Foundation Principles</h5>
+                    <p>45 minutes</p>
+                  </div>
+                  <div class="module-status">Complete</div>
+                </div>
+                <div class="module-item">
+                  <div class="module-info">
+                    <h5>Product Strategy</h5>
+                    <p>60 minutes</p>
+                  </div>
+                  <div class="module-status">In Progress</div>
+                </div>
+                <div class="module-item">
+                  <div class="module-info">
+                    <h5>Launch Framework</h5>
+                    <p>55 minutes</p>
+                  </div>
+                  <div
+                    class="module-status"
+                    style="
+                      background: rgba(148, 163, 184, 0.2);
+                      color: var(--text-gray);
+                    "
+                  >
+                    Locked
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+      <div class="container">
+        <h2>Student Results</h2>
+        <div class="testimonials-grid">
+          <div class="testimonial-card">
+            <p class="quote">
+              "The clarity and structure here is unmatched. I finally understand
+              how to build a real online business instead of just consuming
+              random YouTube advice."
+            </p>
+            <div class="student-info">
+              <div class="student-avatar">J</div>
+              <div class="student-details">
+                <h5>James K.</h5>
+                <p>Digital Entrepreneur</p>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <p class="quote">
+              "I launched my first digital product within 6 weeks of starting
+              the program. The frameworks actually work when you apply them."
+            </p>
+            <div class="student-info">
+              <div class="student-avatar">S</div>
+              <div class="student-details">
+                <h5>Sarah M.</h5>
+                <p>Content Creator</p>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <p class="quote">
+              "No fluff, no hype. Just practical steps that helped me go from
+              zero to making consistent online income. Worth every penny."
+            </p>
+            <div class="student-info">
+              <div class="student-avatar">A</div>
+              <div class="student-details">
+                <h5>Alex R.</h5>
+                <p>Freelancer</p>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <p class="quote">
+              "The instructor clearly knows what they're doing. You can tell
+              this is based on real experience, not just theory."
+            </p>
+            <div class="student-info">
+              <div class="student-avatar">M</div>
+              <div class="student-details">
+                <h5>Maya P.</h5>
+                <p>Student</p>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <p class="quote">
+              "Best investment I've made in my digital career. The dashboard
+              keeps me accountable and the content is incredibly actionable."
+            </p>
+            <div class="student-info">
+              <div class="student-avatar">D</div>
+              <div class="student-details">
+                <h5>David L.</h5>
+                <p>Online Educator</p>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <p class="quote">
+              "Finally, a course that respects my time. Everything is clear,
+              organized, and designed for people who want to actually execute."
+            </p>
+            <div class="student-info">
+              <div class="student-avatar">E</div>
+              <div class="student-details">
+                <h5>Emma T.</h5>
+                <p>Side Hustler</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+      <div class="container">
+        <div class="cta-content">
+          <h2>Ready to Build Real Income Skills?</h2>
+          <div class="cta-buttons">
+            <button class="btn-primary">Explore Programs</button>
+            <button class="btn-secondary">Login to Dashboard</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-brand">
+            <h3>Swiftmarky Academy</h3>
+            <p>
+              Practical digital skills for real income. A private online academy
+              for serious digital entrepreneurs.
+            </p>
+          </div>
+          <div class="footer-links">
+            <h4>Academy</h4>
+            <ul>
+              <li><a href="#programs">Programs</a></li>
+              <li><a href="#login">Login</a></li>
+              <li><a href="#about">About</a></li>
+            </ul>
+          </div>
+          <div class="footer-links">
+            <h4>Support</h4>
+            <ul>
+              <li><a href="#contact">Contact</a></li>
+              <li><a href="#faq">FAQ</a></li>
+              <li><a href="#help">Help Center</a></li>
+            </ul>
+          </div>
+          <div class="footer-links">
+            <h4>Legal</h4>
+            <ul>
+              <li><a href="#privacy">Privacy Policy</a></li>
+              <li><a href="#terms">Terms of Service</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2026 Swiftmarky Academy. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
