@@ -1,0 +1,681 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jinja Herbal Extract - Nature's Finest Herb</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,700;1,300&family=DM+Sans:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --forest-dark: #1a3a2d;
+        --forest-mid: #2d5f3f;
+        --forest-bright: #4a8c5f;
+        --sage: #9db89b;
+        --cream: #faf9f6;
+        --earth: #8b6a47;
+        --gold: #d4af37;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "DM Sans", sans-serif;
+        line-height: 1.6;
+        color: var(--forest-dark);
+        background: var(--cream);
+        overflow-x: hidden;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0) rotate(0deg);
+        }
+        50% {
+          transform: translateY(-30px) rotate(10deg);
+        }
+      }
+
+      .hero {
+        position: relative;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        background: linear-gradient(
+          135deg,
+          var(--forest-dark) 0%,
+          var(--forest-mid) 50%,
+          var(--forest-bright) 100%
+        );
+        overflow: hidden;
+        z-index: 2;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image:
+          radial-gradient(
+            circle at 20% 80%,
+            rgba(154, 184, 155, 0.2) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 80% 20%,
+            rgba(212, 175, 55, 0.15) 0%,
+            transparent 50%
+          );
+        pointer-events: none;
+      }
+
+      .hero-content {
+        position: relative;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 60px 40px;
+        display: grid;
+        grid-template-columns: 1.2fr 1fr;
+        gap: 80px;
+        align-items: center;
+        z-index: 3;
+      }
+
+      .hero-text h1 {
+        font-family: "Fraunces", serif;
+        font-size: clamp(2.5rem, 6vw, 4.5rem);
+        font-weight: 700;
+        color: var(--cream);
+        line-height: 1.1;
+        margin-bottom: 20px;
+        animation: fadeInUp 1s ease-out;
+      }
+
+      .hero-text h1 span {
+        display: block;
+        font-style: italic;
+        font-weight: 300;
+        color: var(--gold);
+        font-size: 0.7em;
+        margin-top: 10px;
+      }
+
+      .hero-text p {
+        font-size: 1.3rem;
+        color: var(--sage);
+        margin-bottom: 40px;
+        animation: fadeInUp 1s ease-out 0.2s both;
+      }
+
+      .badge-container {
+        display: flex;
+        gap: 15px;
+        flex-wrap: wrap;
+        margin-bottom: 40px;
+        animation: fadeInUp 1s ease-out 0.4s both;
+      }
+
+      .badge {
+        background: rgba(250, 249, 246, 0.15);
+        backdrop-filter: blur(10px);
+        border: 2px solid rgba(250, 249, 246, 0.3);
+        padding: 8px 20px;
+        border-radius: 30px;
+        color: var(--cream);
+        font-size: 0.9rem;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .badge::before {
+        content: "✓";
+        color: var(--gold);
+        font-weight: 700;
+      }
+
+      .cta-button {
+        display: inline-block;
+        background: var(--gold);
+        color: var(--forest-dark);
+        padding: 18px 45px;
+        text-decoration: none;
+        border-radius: 50px;
+        font-size: 1.2rem;
+        font-weight: 700;
+        transition: all 0.3s ease;
+        box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+        animation:
+          fadeInUp 1s ease-out 0.6s both,
+          pulse 2s ease-in-out 2s infinite;
+      }
+
+      .cta-button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 15px 40px rgba(212, 175, 55, 0.4);
+        background: #e6c248;
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.05);
+        }
+      }
+
+      .product-showcase {
+        position: relative;
+        animation: fadeInUp 1s ease-out 0.8s both;
+      }
+
+      .product-image {
+        max-width: 100%;
+        height: auto;
+        filter: drop-shadow(0 20px 60px rgba(0, 0, 0, 0.4));
+        animation: productFloat 4s ease-in-out infinite;
+      }
+
+      @keyframes productFloat {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-20px);
+        }
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Benefits Section */
+      .benefits-section {
+        position: relative;
+        padding: 100px 40px;
+        background: var(--cream);
+        z-index: 2;
+      }
+
+      .section-header {
+        text-align: center;
+        margin-bottom: 70px;
+      }
+
+      .section-header h2 {
+        font-family: "Fraunces", serif;
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        color: var(--forest-dark);
+        margin-bottom: 15px;
+      }
+
+      .section-header p {
+        font-size: 1.2rem;
+        color: var(--forest-mid);
+        font-style: italic;
+      }
+
+      .benefits-grid {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 40px;
+      }
+
+      .benefit-card {
+        background: white;
+        padding: 40px 30px;
+        border-radius: 20px;
+        box-shadow: 0 10px 40px rgba(26, 58, 45, 0.08);
+        transition: all 0.4s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .benefit-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        background: linear-gradient(90deg, var(--forest-bright), var(--gold));
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.4s ease;
+      }
+
+      .benefit-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 60px rgba(26, 58, 45, 0.15);
+      }
+
+      .benefit-card:hover::before {
+        transform: scaleX(1);
+      }
+
+      .benefit-icon {
+        font-size: 3rem;
+        margin-bottom: 20px;
+      }
+
+      .benefit-card h3 {
+        font-family: "Fraunces", serif;
+        font-size: 1.5rem;
+        color: var(--forest-dark);
+        margin-bottom: 15px;
+      }
+
+      .benefit-card p {
+        color: var(--forest-mid);
+        line-height: 1.7;
+      }
+
+      /* Features Section */
+      .features-section {
+        background: linear-gradient(
+          135deg,
+          var(--forest-mid) 0%,
+          var(--forest-bright) 100%
+        );
+        padding: 100px 40px;
+        color: var(--cream);
+        position: relative;
+        z-index: 2;
+      }
+
+      .features-container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+        margin-top: 50px;
+      }
+
+      .feature-item {
+        display: flex;
+        align-items: start;
+        gap: 15px;
+        padding: 20px;
+        background: rgba(250, 249, 246, 0.1);
+        border-radius: 15px;
+        backdrop-filter: blur(10px);
+      }
+
+      .feature-icon {
+        font-size: 2rem;
+        color: var(--gold);
+        flex-shrink: 0;
+      }
+
+      .feature-text h4 {
+        font-size: 1.2rem;
+        margin-bottom: 8px;
+        color: var(--cream);
+      }
+
+      .feature-text p {
+        color: var(--sage);
+        font-size: 0.95rem;
+      }
+
+      /* Opportunity Section */
+      .opportunity-section {
+        background: var(--forest-dark);
+        padding: 100px 40px;
+        color: var(--cream);
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        z-index: 2;
+      }
+
+      .opportunity-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background:
+          radial-gradient(
+            circle at 30% 50%,
+            rgba(212, 175, 55, 0.1) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 70% 50%,
+            rgba(74, 140, 95, 0.1) 0%,
+            transparent 50%
+          );
+        pointer-events: none;
+      }
+
+      .opportunity-content {
+        max-width: 1000px;
+        margin: 0 auto;
+        position: relative;
+      }
+
+      .opportunity-content h2 {
+        font-family: "Fraunces", serif;
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        margin-bottom: 25px;
+        color: var(--gold);
+      }
+
+      .opportunity-content > p {
+        font-size: 1.3rem;
+        margin-bottom: 50px;
+        color: var(--sage);
+      }
+
+      .earning-cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 30px;
+        margin-bottom: 50px;
+      }
+
+      .earning-card {
+        background: rgba(250, 249, 246, 0.08);
+        border: 2px solid rgba(212, 175, 55, 0.3);
+        padding: 30px 20px;
+        border-radius: 20px;
+        backdrop-filter: blur(10px);
+        transition: all 0.3s ease;
+      }
+
+      .earning-card:hover {
+        transform: translateY(-5px);
+        border-color: var(--gold);
+        background: rgba(212, 175, 55, 0.15);
+      }
+
+      .earning-card h3 {
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+        color: var(--gold);
+      }
+
+      .earning-card p {
+        color: var(--cream);
+        font-size: 1.1rem;
+      }
+
+      /* Footer CTA */
+      .footer-cta {
+        background: var(--cream);
+        padding: 80px 40px;
+        text-align: center;
+      }
+
+      .footer-cta h2 {
+        font-family: "Fraunces", serif;
+        font-size: clamp(1.8rem, 4vw, 3rem);
+        color: var(--forest-dark);
+        margin-bottom: 30px;
+      }
+
+      .footer-cta .cta-button {
+        background: var(--forest-bright);
+        color: white;
+        margin-right: 15px;
+        margin-bottom: 15px;
+      }
+
+      .footer-cta .cta-button:hover {
+        background: var(--forest-mid);
+      }
+
+      .footer-cta .cta-button.secondary {
+        background: transparent;
+        border: 2px solid var(--forest-bright);
+        color: var(--forest-bright);
+      }
+
+      .footer-cta .cta-button.secondary:hover {
+        background: var(--forest-bright);
+        color: white;
+      }
+
+      /* Responsive */
+      @media (max-width: 968px) {
+        .hero-content {
+          grid-template-columns: 1fr;
+          text-align: center;
+          gap: 50px;
+        }
+
+        .badge-container {
+          justify-content: center;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .hero-text h1 {
+          font-size: 2rem;
+        }
+
+        .benefits-grid,
+        .features-grid,
+        .earning-cards {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-content">
+        <div class="hero-text">
+          <h1>
+            Stay Healthy with Nature's Finest Herb
+            <span>Jinja Herbal Extract</span>
+          </h1>
+          <p>Revitalize your health the natural way</p>
+
+          <div class="badge-container">
+            <span class="badge">100% Natural</span>
+            <span class="badge">Effective</span>
+            <span class="badge">Affordable</span>
+          </div>
+
+          <a
+            href="https://chat.whatsapp.com/ES3vBwdwJVu0l73oQNiv5B?mode=gi_t"
+            class="cta-button"
+            target="_blank"
+            >Get Jinja Today</a
+          >
+        </div>
+
+        <div class="product-showcase">
+          <img
+            src="https://d1yei2z3i6k35z.cloudfront.net/10808082/699d82b6d5ba6_photo_2026-02-24_11-29-28.jpg"
+            alt="Jinja Herbal Extract Bottle"
+            class="product-image"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits-section">
+      <div class="section-header">
+        <h2>Transform Your Health Naturally</h2>
+        <p>Experience the power of nature's finest ingredients</p>
+      </div>
+
+      <div class="benefits-grid">
+        <div class="benefit-card">
+          <div class="benefit-icon">🛡️</div>
+          <h3>Boost Immunity</h3>
+          <p>
+            Strengthen your body's natural defenses and stay protected against
+            common illnesses year-round.
+          </p>
+        </div>
+
+        <div class="benefit-card">
+          <div class="benefit-icon">✨</div>
+          <h3>Detoxify the Body</h3>
+          <p>
+            Cleanse and purify your system naturally, eliminating harmful toxins
+            for better overall health.
+          </p>
+        </div>
+
+        <div class="benefit-card">
+          <div class="benefit-icon">🌟</div>
+          <h3>Support Digestive Health</h3>
+          <p>
+            Promote healthy digestion and gut function for improved nutrient
+            absorption and comfort.
+          </p>
+        </div>
+
+        <div class="benefit-card">
+          <div class="benefit-icon">⚡</div>
+          <h3>Provide Overall Vitality</h3>
+          <p>
+            Feel more energized, focused, and vibrant throughout your day with
+            sustained natural energy.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section">
+      <div class="features-container">
+        <div class="section-header">
+          <h2>Why Choose Jinja?</h2>
+          <p>Quality you can trust, results you can feel</p>
+        </div>
+
+        <div class="features-grid">
+          <div class="feature-item">
+            <div class="feature-icon">🌿</div>
+            <div class="feature-text">
+              <h4>100% Natural</h4>
+              <p>Pure herbal ingredients with no artificial additives</p>
+            </div>
+          </div>
+
+          <div class="feature-item">
+            <div class="feature-icon">✓</div>
+            <div class="feature-text">
+              <h4>Proven Effective</h4>
+              <p>Backed by traditional wisdom and modern research</p>
+            </div>
+          </div>
+
+          <div class="feature-item">
+            <div class="feature-icon">💰</div>
+            <div class="feature-text">
+              <h4>Affordable Prices</h4>
+              <p>Premium quality at prices everyone can afford</p>
+            </div>
+          </div>
+
+          <div class="feature-item">
+            <div class="feature-icon">🚚</div>
+            <div class="feature-text">
+              <h4>Nationwide Delivery</h4>
+              <p>We deliver to your doorstep anywhere in the country</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Opportunity Section -->
+    <section class="opportunity-section">
+      <div class="opportunity-content">
+        <h2>Looking for a Part-Time Opportunity?</h2>
+        <p>Join Multi Stream Today and Start Earning!</p>
+
+        <div class="earning-cards">
+          <div class="earning-card">
+            <h3>📅 Daily</h3>
+            <p>Earn Every Day</p>
+          </div>
+
+          <div class="earning-card">
+            <h3>📊 Weekly</h3>
+            <p>Earn Every Week</p>
+          </div>
+
+          <div class="earning-card">
+            <h3>💼 Monthly</h3>
+            <p>Earn Every Month</p>
+          </div>
+        </div>
+
+        <p style="font-size: 1.1rem; margin-bottom: 30px">
+          Build a flexible income stream while helping others discover the
+          benefits of Jinja Herbal Extract
+        </p>
+
+        <a
+          href="https://chat.whatsapp.com/ES3vBwdwJVu0l73oQNiv5B?mode=gi_t"
+          class="cta-button"
+          target="_blank"
+          >Join the Team</a
+        >
+      </div>
+    </section>
+
+    <!-- Footer CTA -->
+    <section class="footer-cta" id="order">
+      <h2>Ready to Transform Your Health?</h2>
+      <p
+        style="font-size: 1.2rem; color: var(--forest-mid); margin-bottom: 40px"
+      >
+        Get your Jinja Herbal Extract today and experience the natural
+        difference
+      </p>
+      <a
+        href="https://chat.whatsapp.com/ES3vBwdwJVu0l73oQNiv5B?mode=gi_t"
+        class="cta-button"
+        target="_blank"
+        >Order Now</a
+      >
+      <a
+        href="https://chat.whatsapp.com/ES3vBwdwJVu0l73oQNiv5B?mode=gi_t"
+        class="cta-button secondary"
+        target="_blank"
+        >Contact Us</a
+      >
+    </section>
+  </body>
+</html>
