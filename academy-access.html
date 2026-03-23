@@ -1,0 +1,404 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Swiftmarky Academy Access</title>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+      /* Reset for this section */
+      .course-access-wrapper {
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial, sans-serif;
+        background: #f7f9fc;
+        margin: 0 -20px;
+        padding: 0;
+      }
+
+      .course-access-wrapper * {
+        box-sizing: border-box;
+      }
+
+      /* Header Section */
+      .ca-header {
+        background: linear-gradient(135deg, #8b0000 0%, #c41e1e 100%);
+        color: white;
+        text-align: center;
+        padding: 60px 20px 80px;
+        position: relative;
+        margin: 0;
+      }
+
+      .ca-header::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 60px;
+        background: #f7f9fc;
+        border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+      }
+
+      .ca-header-content {
+        max-width: 800px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 1;
+      }
+
+      .ca-success-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(255, 255, 255, 0.2);
+        padding: 10px 20px;
+        border-radius: 50px;
+        font-size: 14px;
+        font-weight: 600;
+        margin-bottom: 20px;
+        backdrop-filter: blur(10px);
+      }
+
+      .ca-checkmark-circle {
+        width: 22px;
+        height: 22px;
+        background: #10b981;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .ca-header h1 {
+        font-size: 48px;
+        font-weight: 800;
+        margin-bottom: 15px;
+        line-height: 1.2;
+        color: white;
+      }
+
+      .ca-subtitle {
+        font-size: 20px;
+        opacity: 0.95;
+        max-width: 600px;
+        margin: 0 auto;
+        line-height: 1.5;
+      }
+
+      /* Main Content */
+      .ca-main-content {
+        max-width: 1200px;
+        margin: -40px auto 60px;
+        padding: 0 20px;
+        position: relative;
+        z-index: 2;
+      }
+
+      .ca-content-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+        margin-bottom: 40px;
+      }
+
+      /* Info Card */
+      .ca-info-card {
+        background: white;
+        border-radius: 20px;
+        padding: 40px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      }
+
+      .ca-info-card h2 {
+        color: #1f2937;
+        font-size: 28px;
+        margin-bottom: 20px;
+        font-weight: 700;
+      }
+
+      .ca-info-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .ca-info-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 15px;
+        margin-bottom: 20px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid #f3f4f6;
+      }
+
+      .ca-info-item:last-child {
+        margin-bottom: 0;
+        padding-bottom: 0;
+        border-bottom: none;
+      }
+
+      .ca-info-icon {
+        width: 45px;
+        height: 45px;
+        background: linear-gradient(135deg, #8b0000 0%, #c41e1e 100%);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        flex-shrink: 0;
+      }
+
+      .ca-info-text h3 {
+        color: #1f2937;
+        font-size: 18px;
+        margin-bottom: 5px;
+        font-weight: 600;
+        margin-top: 0;
+      }
+
+      .ca-info-text p {
+        color: #6b7280;
+        font-size: 15px;
+        line-height: 1.5;
+        margin: 0;
+      }
+
+      /* Registration Card */
+      .ca-registration-card {
+        background: white;
+        border-radius: 20px;
+        padding: 40px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      }
+
+      .ca-registration-card h2 {
+        color: #1f2937;
+        font-size: 28px;
+        margin-bottom: 10px;
+        margin-top: 0;
+        font-weight: 700;
+      }
+
+      .ca-registration-card .ca-form-subtitle {
+        color: #6b7280;
+        font-size: 15px;
+        margin-bottom: 30px;
+      }
+
+      /* Features Section */
+      .ca-features-section {
+        background: white;
+        border-radius: 20px;
+        padding: 40px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        margin-bottom: 40px;
+      }
+
+      .ca-features-section h2 {
+        color: #1f2937;
+        font-size: 28px;
+        margin-bottom: 30px;
+        margin-top: 0;
+        font-weight: 700;
+        text-align: center;
+      }
+
+      .ca-features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+      }
+
+      .ca-feature-box {
+        text-align: center;
+      }
+
+      .ca-feature-icon-large {
+        width: 70px;
+        height: 70px;
+        background: linear-gradient(135deg, #8b0000 0%, #c41e1e 100%);
+        border-radius: 16px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        margin-bottom: 15px;
+      }
+
+      .ca-feature-box h3 {
+        color: #1f2937;
+        font-size: 18px;
+        margin-bottom: 8px;
+        margin-top: 0;
+        font-weight: 600;
+      }
+
+      .ca-feature-box p {
+        color: #6b7280;
+        font-size: 14px;
+        line-height: 1.6;
+        margin: 0;
+      }
+
+      .ca-footer-note {
+        text-align: center;
+        color: #9ca3af;
+        font-size: 14px;
+        padding: 20px;
+      }
+
+      @media (max-width: 968px) {
+        .ca-content-grid {
+          grid-template-columns: 1fr;
+        }
+        .ca-header h1 {
+          font-size: 36px;
+        }
+        .ca-subtitle {
+          font-size: 18px;
+        }
+        .ca-header {
+          padding: 40px 20px 60px;
+        }
+        .ca-info-card,
+        .ca-registration-card,
+        .ca-features-section {
+          padding: 30px 25px;
+        }
+        .ca-features-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="course-access-wrapper">
+      <div class="ca-header">
+        <div class="ca-header-content">
+          <div class="ca-success-badge">
+            <span class="ca-checkmark-circle">
+              <i
+                data-lucide="check"
+                style="width: 14px; height: 14px; color: white"
+              ></i>
+            </span>
+            Payment Successful
+          </div>
+          <h1>Welcome to Your Course!</h1>
+          <p class="ca-subtitle">
+            Your payment has been confirmed. Create your account below to access
+            all course materials instantly.
+          </p>
+        </div>
+      </div>
+
+      <div class="ca-main-content">
+        <div class="ca-content-grid">
+          <div class="ca-info-card">
+            <h2>What You Get:</h2>
+            <ul class="ca-info-list">
+              <li class="ca-info-item">
+                <div class="ca-info-icon">
+                  <i data-lucide="graduation-cap"></i>
+                </div>
+                <div class="ca-info-text">
+                  <h3>Lifetime Access</h3>
+                  <p>
+                    Unlimited access to all course videos, resources, and future
+                    updates
+                  </p>
+                </div>
+              </li>
+              <li class="ca-info-item">
+                <div class="ca-info-icon">
+                  <i data-lucide="book-open"></i>
+                </div>
+                <div class="ca-info-text">
+                  <h3>Course Materials</h3>
+                  <p>
+                    Downloadable worksheets, templates, and reference guides
+                  </p>
+                </div>
+              </li>
+              <li class="ca-info-item">
+                <div class="ca-info-icon">
+                  <i data-lucide="message-circle"></i>
+                </div>
+                <div class="ca-info-text">
+                  <h3>Community Access</h3>
+                  <p>
+                    Join our private student community for support and
+                    networking
+                  </p>
+                </div>
+              </li>
+              <li class="ca-info-item">
+                <div class="ca-info-icon">
+                  <i data-lucide="award"></i>
+                </div>
+                <div class="ca-info-text">
+                  <h3>Certificate</h3>
+                  <p>
+                    Earn a certificate of completion to showcase your
+                    achievement
+                  </p>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="ca-registration-card">
+            <h2>Create Your Account</h2>
+            <p class="ca-form-subtitle">
+              Set up your login credentials to get started
+            </p>
+            [user_registration_form id="324"]
+          </div>
+        </div>
+
+        <div class="ca-features-section">
+          <h2>Start Learning Today</h2>
+          <div class="ca-features-grid">
+            <div class="ca-feature-box">
+              <div class="ca-feature-icon-large">
+                <i data-lucide="smartphone"></i>
+              </div>
+              <h3>Learn Anywhere</h3>
+              <p>
+                Access your course on any device - desktop, tablet, or mobile
+              </p>
+            </div>
+            <div class="ca-feature-box">
+              <div class="ca-feature-icon-large">
+                <i data-lucide="target"></i>
+              </div>
+              <h3>Self-Paced</h3>
+              <p>Learn at your own speed with no deadlines or pressure</p>
+            </div>
+            <div class="ca-feature-box">
+              <div class="ca-feature-icon-large">
+                <i data-lucide="refresh-cw"></i>
+              </div>
+              <h3>Regular Updates</h3>
+              <p>Get free access to new content and course improvements</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="ca-footer-note">
+          Need help? Contact us at courses@academy.swiftmarky.com
+        </div>
+      </div>
+    </div>
+  </body>
+
+  <script>
+    // Initialize icons
+    lucide.createIcons();
+  </script>
+</html>

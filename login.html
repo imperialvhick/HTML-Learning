@@ -1,0 +1,583 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Auth — Login & Sign Up</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      :root {
+        --ink: #0f0e0d;
+        --cream: #f5f0e8;
+        --sand: #e8dfc8;
+        --rust: #c4561a;
+        --rust-hover: #a84415;
+        --muted: #7a7060;
+        --border: #d0c8b5;
+        --card: #fdfaf4;
+        --shadow: 0 8px 40px rgba(15, 14, 13, 0.12);
+      }
+
+      html,
+      body {
+        height: 100%;
+        font-family: "DM Sans", sans-serif;
+        background: var(--cream);
+        color: var(--ink);
+      }
+
+      /* ─── Background texture ─── */
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        z-index: 0;
+        background-image:
+          radial-gradient(
+            ellipse 80% 60% at 20% 10%,
+            rgba(196, 86, 26, 0.08) 0%,
+            transparent 60%
+          ),
+          radial-gradient(
+            ellipse 60% 70% at 80% 90%,
+            rgba(196, 86, 26, 0.06) 0%,
+            transparent 60%
+          );
+        pointer-events: none;
+      }
+
+      /* ─── Page wrapper ─── */
+      .page {
+        display: none;
+        min-height: 100vh;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem 1rem;
+        position: relative;
+        z-index: 1;
+      }
+      .page.active {
+        display: flex;
+      }
+
+      /* ─── Card ─── */
+      .card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        box-shadow: var(--shadow);
+        width: 100%;
+        max-width: 420px;
+        padding: 2.5rem 2.5rem 2rem;
+        animation: slideUp 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+      }
+      @keyframes slideUp {
+        from {
+          opacity: 0;
+          transform: translateY(28px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* ─── Logo mark ─── */
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 2rem;
+      }
+      .logo-icon {
+        width: 36px;
+        height: 36px;
+        background: var(--rust);
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .logo-icon svg {
+        width: 20px;
+        height: 20px;
+        fill: #fff;
+      }
+      .logo-name {
+        font-family: "Playfair Display", serif;
+        font-size: 1.2rem;
+        letter-spacing: 0.02em;
+        color: var(--ink);
+      }
+
+      /* ─── Heading ─── */
+      .heading {
+        margin-bottom: 0.35rem;
+      }
+      .heading h1 {
+        font-family: "Playfair Display", serif;
+        font-size: 1.75rem;
+        font-weight: 700;
+        line-height: 1.2;
+        color: var(--ink);
+      }
+      .heading p {
+        margin-top: 0.4rem;
+        font-size: 0.88rem;
+        color: var(--muted);
+        font-weight: 300;
+      }
+
+      /* ─── Divider ─── */
+      .divider {
+        height: 1px;
+        background: var(--border);
+        margin: 1.5rem 0;
+      }
+
+      /* ─── Form ─── */
+      .form-group {
+        margin-bottom: 1rem;
+      }
+      label {
+        display: block;
+        font-size: 0.78rem;
+        font-weight: 500;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin-bottom: 0.45rem;
+      }
+      .input-wrap {
+        position: relative;
+      }
+      .input-wrap svg {
+        position: absolute;
+        left: 13px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 16px;
+        height: 16px;
+        stroke: var(--muted);
+        stroke-width: 1.8;
+        fill: none;
+        pointer-events: none;
+        transition: stroke 0.2s;
+      }
+      input {
+        width: 100%;
+        padding: 0.65rem 0.9rem 0.65rem 2.4rem;
+        font-family: "DM Sans", sans-serif;
+        font-size: 0.93rem;
+        color: var(--ink);
+        background: var(--cream);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        outline: none;
+        transition:
+          border-color 0.2s,
+          box-shadow 0.2s;
+      }
+      input::placeholder {
+        color: #b0a898;
+      }
+      input:focus {
+        border-color: var(--rust);
+        box-shadow: 0 0 0 3px rgba(196, 86, 26, 0.12);
+      }
+      input:focus + svg,
+      .input-wrap:focus-within svg {
+        stroke: var(--rust);
+      }
+
+      /* Eye toggle */
+      .eye-btn {
+        position: absolute;
+        right: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 2px;
+        color: var(--muted);
+        display: flex;
+        align-items: center;
+      }
+      .eye-btn svg {
+        width: 17px;
+        height: 17px;
+        stroke: currentColor;
+        stroke-width: 1.8;
+        fill: none;
+      }
+      .eye-btn:hover {
+        color: var(--rust);
+      }
+
+      /* ─── Submit button ─── */
+      .btn-primary {
+        width: 100%;
+        margin-top: 1.4rem;
+        padding: 0.78rem;
+        background: var(--rust);
+        color: #fff;
+        border: none;
+        border-radius: 10px;
+        font-family: "DM Sans", sans-serif;
+        font-size: 0.95rem;
+        font-weight: 500;
+        letter-spacing: 0.03em;
+        cursor: pointer;
+        transition:
+          background 0.2s,
+          transform 0.15s,
+          box-shadow 0.2s;
+        box-shadow: 0 4px 18px rgba(196, 86, 26, 0.25);
+      }
+      .btn-primary:hover {
+        background: var(--rust-hover);
+        transform: translateY(-1px);
+        box-shadow: 0 6px 22px rgba(196, 86, 26, 0.32);
+      }
+      .btn-primary:active {
+        transform: translateY(0);
+      }
+
+      /* ─── Footer link ─── */
+      .card-footer {
+        margin-top: 1.6rem;
+        text-align: center;
+        font-size: 0.85rem;
+        color: var(--muted);
+      }
+      .card-footer a {
+        color: var(--rust);
+        font-weight: 500;
+        text-decoration: none;
+        border-bottom: 1px solid transparent;
+        transition: border-color 0.2s;
+      }
+      .card-footer a:hover {
+        border-color: var(--rust);
+      }
+
+      /* ─── Password strength (signup) ─── */
+      .strength-bar {
+        display: flex;
+        gap: 4px;
+        margin-top: 7px;
+      }
+      .strength-seg {
+        height: 3px;
+        flex: 1;
+        border-radius: 99px;
+        background: var(--border);
+        transition: background 0.3s;
+      }
+      .strength-label {
+        font-size: 0.72rem;
+        color: var(--muted);
+        margin-top: 4px;
+        min-height: 1em;
+      }
+
+      /* ─── Terms ─── */
+      .terms {
+        font-size: 0.78rem;
+        color: var(--muted);
+        margin-top: 1rem;
+        text-align: center;
+        line-height: 1.5;
+      }
+      .terms a {
+        color: var(--rust);
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ══════════════ LOGIN PAGE ══════════════ -->
+    <div class="page active" id="loginPage">
+      <div class="card">
+        <div class="logo">
+          <div class="logo-icon">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"
+              />
+            </svg>
+          </div>
+          <span class="logo-name">Horizon</span>
+        </div>
+
+        <div class="heading">
+          <h1>Welcome back</h1>
+          <p>Sign in to continue to your account</p>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- Username -->
+        <div class="form-group">
+          <label for="login-username">Username</label>
+          <div class="input-wrap">
+            <input
+              type="text"
+              id="login-username"
+              placeholder="your_username"
+              autocomplete="username"
+            />
+            <svg viewBox="0 0 24 24">
+              <circle cx="12" cy="8" r="4" />
+              <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" />
+            </svg>
+          </div>
+        </div>
+
+        <!-- Email -->
+        <div class="form-group">
+          <label for="login-email">Email</label>
+          <div class="input-wrap">
+            <input
+              type="email"
+              id="login-email"
+              placeholder="hello@example.com"
+              autocomplete="email"
+            />
+            <svg viewBox="0 0 24 24">
+              <rect x="2" y="4" width="20" height="16" rx="2" />
+              <path d="M2 8l10 6 10-6" />
+            </svg>
+          </div>
+        </div>
+
+        <!-- Password -->
+        <div class="form-group">
+          <label for="login-password">Password</label>
+          <div class="input-wrap">
+            <input
+              type="password"
+              id="login-password"
+              placeholder="••••••••"
+              autocomplete="current-password"
+            />
+            <svg viewBox="0 0 24 24">
+              <rect x="5" y="11" width="14" height="10" rx="2" />
+              <path d="M8 11V7a4 4 0 018 0v4" />
+            </svg>
+            <button
+              class="eye-btn"
+              type="button"
+              onclick="togglePw('login-password', this)"
+              aria-label="Show password"
+            >
+              <svg viewBox="0 0 24 24">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                <circle cx="12" cy="12" r="3" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <button class="btn-primary" type="button">Sign In</button>
+
+        <div class="card-footer">
+          Don't have an account?
+          <a href="#" onclick="showPage('signupPage')">Create one</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════════ SIGN UP PAGE ══════════════ -->
+    <div class="page" id="signupPage">
+      <div class="card">
+        <div class="logo">
+          <div class="logo-icon">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"
+              />
+            </svg>
+          </div>
+          <span class="logo-name">Horizon</span>
+        </div>
+
+        <div class="heading">
+          <h1>Create account</h1>
+          <p>Join Horizon — it only takes a minute</p>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- Username -->
+        <div class="form-group">
+          <label for="su-username">Username</label>
+          <div class="input-wrap">
+            <input
+              type="text"
+              id="su-username"
+              placeholder="choose_a_username"
+              autocomplete="username"
+            />
+            <svg viewBox="0 0 24 24">
+              <circle cx="12" cy="8" r="4" />
+              <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" />
+            </svg>
+          </div>
+        </div>
+
+        <!-- Email -->
+        <div class="form-group">
+          <label for="su-email">Email</label>
+          <div class="input-wrap">
+            <input
+              type="email"
+              id="su-email"
+              placeholder="hello@example.com"
+              autocomplete="email"
+            />
+            <svg viewBox="0 0 24 24">
+              <rect x="2" y="4" width="20" height="16" rx="2" />
+              <path d="M2 8l10 6 10-6" />
+            </svg>
+          </div>
+        </div>
+
+        <!-- Password -->
+        <div class="form-group">
+          <label for="su-password">Password</label>
+          <div class="input-wrap">
+            <input
+              type="password"
+              id="su-password"
+              placeholder="••••••••"
+              autocomplete="new-password"
+              oninput="checkStrength(this.value)"
+            />
+            <svg viewBox="0 0 24 24">
+              <rect x="5" y="11" width="14" height="10" rx="2" />
+              <path d="M8 11V7a4 4 0 018 0v4" />
+            </svg>
+            <button
+              class="eye-btn"
+              type="button"
+              onclick="togglePw('su-password', this)"
+              aria-label="Show password"
+            >
+              <svg viewBox="0 0 24 24">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                <circle cx="12" cy="12" r="3" />
+              </svg>
+            </button>
+          </div>
+          <div class="strength-bar">
+            <div class="strength-seg" id="s1"></div>
+            <div class="strength-seg" id="s2"></div>
+            <div class="strength-seg" id="s3"></div>
+            <div class="strength-seg" id="s4"></div>
+          </div>
+          <div class="strength-label" id="strengthLabel"></div>
+        </div>
+
+        <!-- Confirm Password -->
+        <div class="form-group">
+          <label for="su-confirm">Confirm Password</label>
+          <div class="input-wrap">
+            <input
+              type="password"
+              id="su-confirm"
+              placeholder="••••••••"
+              autocomplete="new-password"
+            />
+            <svg viewBox="0 0 24 24">
+              <rect x="5" y="11" width="14" height="10" rx="2" />
+              <path d="M8 11V7a4 4 0 018 0v4" />
+            </svg>
+            <button
+              class="eye-btn"
+              type="button"
+              onclick="togglePw('su-confirm', this)"
+              aria-label="Show password"
+            >
+              <svg viewBox="0 0 24 24">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                <circle cx="12" cy="12" r="3" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <button class="btn-primary" type="button">Create Account</button>
+
+        <p class="terms">
+          By signing up you agree to our <a href="#">Terms of Service</a> and
+          <a href="#">Privacy Policy</a>
+        </p>
+
+        <div class="card-footer">
+          Already have an account?
+          <a href="#" onclick="showPage('loginPage')">Sign in</a>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function showPage(id) {
+        document
+          .querySelectorAll(".page")
+          .forEach((p) => p.classList.remove("active"));
+        document.getElementById(id).classList.add("active");
+        // Re-trigger animation
+        const card = document.getElementById(id).querySelector(".card");
+        card.style.animation = "none";
+        card.offsetHeight; // reflow
+        card.style.animation = "";
+      }
+
+      function togglePw(inputId, btn) {
+        const inp = document.getElementById(inputId);
+        const showing = inp.type === "text";
+        inp.type = showing ? "password" : "text";
+        btn.innerHTML = showing
+          ? `<svg viewBox="0 0 24 24" style="width:17px;height:17px;stroke:currentColor;stroke-width:1.8;fill:none"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>`
+          : `<svg viewBox="0 0 24 24" style="width:17px;height:17px;stroke:currentColor;stroke-width:1.8;fill:none"><path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19m-6.72-1.07a3 3 0 11-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>`;
+      }
+
+      function checkStrength(pw) {
+        const segs = [
+          document.getElementById("s1"),
+          document.getElementById("s2"),
+          document.getElementById("s3"),
+          document.getElementById("s4"),
+        ];
+        const label = document.getElementById("strengthLabel");
+        const colors = ["#e05252", "#e09c52", "#52a9e0", "#52c07a"];
+        const labels = ["Weak", "Fair", "Good", "Strong"];
+
+        let score = 0;
+        if (pw.length >= 8) score++;
+        if (/[A-Z]/.test(pw)) score++;
+        if (/[0-9]/.test(pw)) score++;
+        if (/[^A-Za-z0-9]/.test(pw)) score++;
+
+        segs.forEach((s, i) => {
+          s.style.background = i < score ? colors[score - 1] : "var(--border)";
+        });
+        label.textContent = pw.length ? labels[score - 1] || "" : "";
+        label.style.color = score ? colors[score - 1] : "var(--muted)";
+      }
+    </script>
+  </body>
+</html>

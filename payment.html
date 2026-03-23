@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Complete Your Payment</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial, sans-serif;
+        background: linear-gradient(135deg, #8b0000 0%, #c41e1e 100%);
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+      }
+
+      .payment-container {
+        background: white;
+        border-radius: 20px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        max-width: 500px;
+        width: 100%;
+        padding: 50px 40px;
+        animation: slideUp 0.5s ease-out;
+      }
+
+      @keyframes slideUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .logo-section {
+        text-align: center;
+        margin-bottom: 30px;
+      }
+
+      .logo-circle {
+        width: 80px;
+        height: 80px;
+        background: linear-gradient(135deg, #8b0000 0%, #c41e1e 100%);
+        border-radius: 50%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 36px;
+        font-weight: bold;
+        margin-bottom: 15px;
+      }
+
+      h1 {
+        color: #1f2937;
+        font-size: 28px;
+        text-align: center;
+        margin-bottom: 10px;
+        font-weight: 700;
+      }
+
+      .subtitle {
+        color: #6b7280;
+        text-align: center;
+        margin-bottom: 35px;
+        font-size: 15px;
+      }
+
+      .product-info {
+        background: #f9fafb;
+        border-radius: 12px;
+        padding: 25px;
+        margin-bottom: 30px;
+      }
+
+      .product-name {
+        font-size: 20px;
+        font-weight: 600;
+        color: #1f2937;
+        margin-bottom: 15px;
+      }
+
+      .price-section {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 15px;
+        border-top: 2px solid #e5e7eb;
+      }
+
+      .price-label {
+        color: #6b7280;
+        font-size: 14px;
+        font-weight: 500;
+      }
+
+      .price-amount {
+        font-size: 32px;
+        font-weight: 700;
+        color: #8b0000;
+      }
+
+      .currency {
+        font-size: 18px;
+        font-weight: 600;
+        color: #6b7280;
+      }
+
+      .pay-button {
+        width: 100%;
+        padding: 18px;
+        background: linear-gradient(135deg, #8b0000 0%, #c41e1e 100%);
+        color: white;
+        border: none;
+        border-radius: 12px;
+        font-size: 18px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 10px 25px rgba(139, 0, 0, 0.3);
+      }
+
+      .pay-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 15px 35px rgba(139, 0, 0, 0.4);
+      }
+
+      .pay-button:active {
+        transform: translateY(0);
+      }
+
+      .pay-button:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+      }
+
+      .security-note {
+        text-align: center;
+        color: #9ca3af;
+        font-size: 13px;
+        margin-top: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+      }
+
+      .features-list {
+        list-style: none;
+        margin-bottom: 25px;
+      }
+
+      .feature-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 12px;
+        color: #4b5563;
+        font-size: 14px;
+      }
+
+      .feature-item::before {
+        content: "✓";
+        color: #10b981;
+        font-weight: bold;
+        font-size: 16px;
+      }
+
+      @media (max-width: 576px) {
+        .payment-container {
+          padding: 35px 25px;
+        }
+
+        h1 {
+          font-size: 24px;
+        }
+
+        .price-amount {
+          font-size: 28px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="payment-container">
+      <div class="logo-section">
+        <div class="logo-circle">💳</div>
+      </div>
+
+      <h1>Complete Your Payment</h1>
+      <p class="subtitle">Secure checkout powered by Paystack</p>
+
+      <div class="product-info">
+        <div class="product-name" id="productName">Course Name</div>
+
+        <ul class="features-list">
+          <li class="feature-item">Lifetime access to course</li>
+          <li class="feature-item">Downloadable resources</li>
+          <li class="feature-item">Certificate of completion</li>
+        </ul>
+
+        <div class="price-section">
+          <span class="price-label">Total Amount:</span>
+          <div>
+            <span class="currency">₦</span>
+            <span class="price-amount" id="amount">10,000</span>
+          </div>
+        </div>
+      </div>
+
+      <button class="pay-button" id="payButton" onclick="payWithPaystack()">
+        Pay Now
+      </button>
+
+      <div class="security-note">🔒 Secure payment with 256-bit encryption</div>
+    </div>
+
+    <!-- Paystack Inline JS -->
+    <script src="https://js.paystack.co/v1/inline.js"></script>
+
+    <script>
+      // ============================================
+      // CONFIGURATION - UPDATE THESE VALUES
+      // ============================================
+      const PAYSTACK_PUBLIC_KEY =
+        "pk_test_6daae7aaa3d06c700984b8cafec0bc1271dbbfe8"; // Replace with your Paystack public key
+      const PRODUCT_NAME = "Simplified Online Survey Guide"; // Your course name
+      const AMOUNT = 12500; // Amount in Naira (without kobo)
+      const CUSTOMER_EMAIL = "customer@example.com"; // Can be dynamic from URL or form
+      const REDIRECT_URL = "https://wa.link/rnuldr"; // Where to redirect after payment
+
+      // Update display
+      document.getElementById("productName").textContent = PRODUCT_NAME;
+      document.getElementById("amount").textContent = AMOUNT.toLocaleString();
+
+      // Paystack Payment Function
+      function payWithPaystack() {
+        const payButton = document.getElementById("payButton");
+        payButton.disabled = true;
+        payButton.textContent = "Processing...";
+
+        const handler = PaystackPop.setup({
+          key: PAYSTACK_PUBLIC_KEY,
+          email: CUSTOMER_EMAIL,
+          amount: AMOUNT * 100, // Paystack expects amount in kobo (multiply by 100)
+          currency: "NGN",
+          ref: "TXN_" + Math.floor(Math.random() * 1000000000 + 1), // Generate unique reference
+          metadata: {
+            custom_fields: [
+              {
+                display_name: "Course Name",
+                variable_name: "course_name",
+                value: PRODUCT_NAME,
+              },
+            ],
+          },
+          callback: function (response) {
+            // Payment successful
+            console.log("Payment successful!", response);
+            alert("Payment successful! Reference: " + response.reference);
+
+            // Redirect to access page
+            window.location.href =
+              REDIRECT_URL + "?reference=" + response.reference;
+          },
+          onClose: function () {
+            // User closed payment modal
+            payButton.disabled = false;
+            payButton.textContent = "Pay Now";
+            alert("Payment cancelled");
+          },
+        });
+
+        handler.openIframe();
+      }
+
+      // Optional: Get parameters from URL
+      function getUrlParameter(name) {
+        name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+        const regex = new RegExp("[\\?&]" + name + "=([^&#]*)");
+        const results = regex.exec(location.search);
+        return results === null
+          ? ""
+          : decodeURIComponent(results[1].replace(/\+/g, " "));
+      }
+
+      // Example: Get email from URL if provided
+      // const urlEmail = getUrlParameter('email');
+      // if (urlEmail) {
+      //     CUSTOMER_EMAIL = urlEmail;
+      // }
+    </script>
+  </body>
+</html>
