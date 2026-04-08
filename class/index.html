@@ -3,11 +3,48 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Earn in Pounds From Survey Masterclass</title>
+    <title>Earn in Pounds From Surveys Masterclass</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&family=Space+Mono:wght@400;700&display=swap"
       rel="stylesheet"
     />
+
+    <!-- Meta Pixel Code -->
+    <script>
+      !(function (f, b, e, v, n, t, s) {
+        if (f.fbq) return;
+        n = f.fbq = function () {
+          n.callMethod
+            ? n.callMethod.apply(n, arguments)
+            : n.queue.push(arguments);
+        };
+        if (!f._fbq) f._fbq = n;
+        n.push = n;
+        n.loaded = !0;
+        n.version = "2.0";
+        n.queue = [];
+        t = b.createElement(e);
+        t.async = !0;
+        t.src = v;
+        s = b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t, s);
+      })(
+        window,
+        document,
+        "script",
+        "https://connect.facebook.net/en_US/fbevents.js",
+      );
+      fbq("init", "1104467838048858");
+      fbq("track", "PageView");
+    </script>
+    <noscript
+      ><img
+        height="1"
+        width="1"
+        style="display: none"
+        src="https://www.facebook.com/tr?id=1104467838048858&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
 
     <style>
       * {
@@ -347,6 +384,113 @@
         font-weight: 700;
       }
 
+      /* Testimonials Section */
+      .testimonials-section {
+        padding: 80px 20px;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .testimonials-title {
+        font-size: 2.5rem;
+        font-weight: 800;
+        text-align: center;
+        margin-bottom: 60px;
+        color: var(--accent);
+      }
+
+      .carousel-container {
+        position: relative;
+        width: 100%;
+        margin-bottom: 30px;
+      }
+
+      .carousel-track {
+        display: flex;
+        gap: 20px;
+        width: fit-content;
+      }
+
+      /* Scroll right animation */
+      .scroll-right .carousel-track {
+        animation: scrollRight 40s linear infinite;
+      }
+
+      /* Scroll left animation */
+      .scroll-left .carousel-track {
+        animation: scrollLeft 40s linear infinite;
+      }
+
+      /* Pause on hover */
+      .carousel-container:hover .carousel-track {
+        animation-play-state: paused;
+      }
+
+      @keyframes scrollRight {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-50%);
+        }
+      }
+
+      @keyframes scrollLeft {
+        0% {
+          transform: translateX(-50%);
+        }
+        100% {
+          transform: translateX(0);
+        }
+      }
+
+      .testimonial-card {
+        flex-shrink: 0;
+        width: 400px;
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 15px;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
+
+      .testimonial-card:hover {
+        transform: translateY(-5px);
+        border-color: var(--primary);
+        box-shadow: 0 20px 40px rgba(255, 107, 53, 0.2);
+      }
+
+      .testimonial-image {
+        width: 100%;
+        height: auto;
+        display: block;
+        object-fit: cover;
+      }
+
+      /* Gradient overlays to fade edges */
+      .carousel-container::before,
+      .carousel-container::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        width: 150px;
+        height: 100%;
+        z-index: 2;
+        pointer-events: none;
+      }
+
+      .carousel-container::before {
+        left: 0;
+        background: linear-gradient(to right, #16213e, transparent);
+      }
+
+      .carousel-container::after {
+        right: 0;
+        background: linear-gradient(to left, #16213e, transparent);
+      }
+
       /* Registration Form */
       .registration-section {
         background: linear-gradient(135deg, var(--secondary), #003366);
@@ -508,7 +652,7 @@
           <div class="tag">Exclusive Free Training</div>
 
           <h1 class="headline">
-            REVEALED: The SECRET Business Model That Pays You £500-£1,500
+            REVEALED: The SECRET Business Model That Pays You £500-£1,000
             Monthly
           </h1>
 
@@ -632,6 +776,171 @@
         </div>
       </section>
 
+      <!-- Testimonials Section -->
+      <section class="testimonials-section">
+        <div class="container">
+          <h2 class="testimonials-title">What People Are Saying</h2>
+        </div>
+
+        <!-- First Carousel - Scrolling Right -->
+        <div class="carousel-container scroll-right">
+          <div class="carousel-track">
+            <!-- First set of testimonials -->
+            <div class="testimonial-card">
+              <img
+                src="Testimonial-1.jpg"
+                alt="Testimonial 1"
+                class="testimonial-image"
+              />
+            </div>
+            <div class="testimonial-card">
+              <img
+                src="Testimonial-2.jpg"
+                alt="Testimonial 2"
+                class="testimonial-image"
+              />
+            </div>
+            <div class="testimonial-card">
+              <img
+                src="Testimonial-3.jpg"
+                alt="Testimonial 3"
+                class="testimonial-image"
+              />
+            </div>
+            <div class="testimonial-card">
+              <img
+                src="Testimonial-4.jpg"
+                alt="Testimonial 4"
+                class="testimonial-image"
+              />
+            </div>
+            <div class="testimonial-card">
+              <img
+                src="Testimonial-5.jpg"
+                alt="Testimonial 5"
+                class="testimonial-image"
+              />
+            </div>
+
+            <!-- Duplicate set for infinite loop -->
+            <div class="testimonial-card">
+              <img
+                src="Testimonial-1.jpg"
+                alt="Testimonial 1"
+                class="testimonial-image"
+              />
+            </div>
+            <div class="testimonial-card">
+              <img
+                src="Testimonial-2.jpg"
+                alt="Testimonial 2"
+                class="testimonial-image"
+              />
+            </div>
+            <div class="testimonial-card">
+              <img
+                src="Testimonial-3.jpg"
+                alt="Testimonial 3"
+                class="testimonial-image"
+              />
+            </div>
+            <div class="testimonial-card">
+              <img
+                src="Testimonial-4.jpg"
+                alt="Testimonial 4"
+                class="testimonial-image"
+              />
+            </div>
+            <div class="testimonial-card">
+              <img
+                src="Testimonial-5.jpg"
+                alt="Testimonial 5"
+                class="testimonial-image"
+              />
+            </div>
+          </div>
+        </div>
+
+        <!-- Second Carousel - Scrolling Left -->
+        <div class="carousel-container scroll-left">
+          <div class="carousel-track">
+            <!-- First set of testimonials -->
+            <div class="testimonial-card">
+              <img
+                src="Testimonial-6.jpg"
+                alt="Testimonial 6"
+                class="testimonial-image"
+              />
+            </div>
+            <div class="testimonial-card">
+              <img
+                src="Testimonial-7.jpg"
+                alt="Testimonial 7"
+                class="testimonial-image"
+              />
+            </div>
+            <div class="testimonial-card">
+              <img
+                src="Testimonial-8.jpg"
+                alt="Testimonial 8"
+                class="testimonial-image"
+              />
+            </div>
+            <div class="testimonial-card">
+              <img
+                src="Testimonial-9.jpg"
+                alt="Testimonial 9"
+                class="testimonial-image"
+              />
+            </div>
+            <div class="testimonial-card">
+              <img
+                src="Testimonial-10.jpg"
+                alt="Testimonial 10"
+                class="testimonial-image"
+              />
+            </div>
+
+            <!-- Duplicate set for infinite loop -->
+            <div class="testimonial-card">
+              <img
+                src="Testimonial-6.jpg"
+                alt="Testimonial 6"
+                class="testimonial-image"
+              />
+            </div>
+            <div class="testimonial-card">
+              <img
+                src="Testimonial-7.jpg"
+                alt="Testimonial 7"
+                class="testimonial-image"
+              />
+            </div>
+            <div class="testimonial-card">
+              <img
+                src="Testimonial-8.jpg"
+                alt="Testimonial 8"
+                class="testimonial-image"
+              />
+            </div>
+            <div class="testimonial-card">
+              <img
+                src="Testimonial-9.jpg"
+                alt="Testimonial 9"
+                class="testimonial-image"
+              />
+            </div>
+            <div class="testimonial-card">
+              <img
+                src="Testimonial-10.jpg"
+                alt="Testimonial 10"
+                class="testimonial-image"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section class="warning-section">
         <div class="container">
           <h3 class="warning-title">
@@ -650,9 +959,13 @@
             <strong>don't join this class</strong>. <br />
             If you're looking for businesses to start with
             <strong>"zero capital"</strong> -
-            <strong>don't join this class</strong>.<br /><br />
+            <strong>don't join this class</strong>.<br />
+            If you've sworn that you can
+            <strong>"never invest in starting an online business"</strong> -
+            <strong>don't join this class</strong>. <br />
+            <br />
             But if you want a legitimate, proven way to earn
-            <strong>£500-£1,500+ monthly</strong> with online surveys...
+            <strong>£500-£1,000+ monthly</strong> with online surveys...
             <br />
             Then this exclusive class will change everything for you.
           </div>
@@ -671,7 +984,7 @@
             <!-- WhatsApp Button -->
             <div class="whatsapp-btn">
               <a
-                href="https://chat.whatsapp.com/LL2ea3WfqVTFWYLDU7dsIH?mode=hqctcla"
+                href="https://chat.whatsapp.com/HKHmqiBuH1B0u2p4TZGLze?mode=gi_t"
                 target="_blank"
                 rel="noopener"
                 class="cta-primary"
@@ -700,14 +1013,14 @@
     <script>
       // Countdown Timer
       function updateCountdown() {
-        const countdownDate = new Date().getTime() + 24 * 60 * 60 * 1000; // 24 hours from now
+        const countdownDate = new Date().getTime() + 12 * 60 * 60 * 1000; // 12 hours from now
 
         setInterval(function () {
           const now = new Date().getTime();
           const distance = countdownDate - now;
 
           const hours = Math.floor(
-            (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
+            (distance % (1000 * 60 * 60 * 12)) / (1000 * 60 * 60),
           );
           const minutes = Math.floor(
             (distance % (1000 * 60 * 60)) / (1000 * 60),

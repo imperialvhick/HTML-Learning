@@ -1,0 +1,418 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>You're In! - Strategy Call Confirmation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --primary: #ff3b30;
+        --primary-dark: #d32f2f;
+        --secondary: #ffd60a;
+        --dark: #0a0e27;
+        --dark-secondary: #1a1f3a;
+        --light: #f5f5f7;
+        --text: #ffffff;
+        --text-muted: #b0b0b8;
+        --success: #34c759;
+      }
+
+      body {
+        font-family: "Syne", sans-serif;
+        background: var(--dark);
+        color: var(--text);
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem;
+        position: relative;
+        overflow-x: hidden;
+      }
+
+      .grain-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+        pointer-events: none;
+        z-index: 1000;
+        mix-blend-mode: overlay;
+      }
+
+      .background-glow {
+        position: fixed;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(
+          circle,
+          rgba(52, 199, 89, 0.15) 0%,
+          transparent 70%
+        );
+        animation: pulse 8s ease-in-out infinite;
+        z-index: 0;
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: scale(1) rotate(0deg);
+          opacity: 0.3;
+        }
+        50% {
+          transform: scale(1.2) rotate(180deg);
+          opacity: 0.5;
+        }
+      }
+
+      .thank-you-container {
+        max-width: 700px;
+        width: 100%;
+        text-align: center;
+        position: relative;
+        z-index: 1;
+        animation: fadeInUp 1s ease-out;
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(40px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .success-icon {
+        width: 100px;
+        height: 100px;
+        margin: 0 auto 2rem;
+        background: var(--success);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        animation: scaleIn 0.5s ease-out 0.3s both;
+        box-shadow: 0 20px 60px rgba(52, 199, 89, 0.4);
+      }
+
+      @keyframes scaleIn {
+        from {
+          transform: scale(0);
+        }
+        to {
+          transform: scale(1);
+        }
+      }
+
+      .success-icon svg {
+        width: 60px;
+        height: 60px;
+        stroke: white;
+        stroke-width: 3;
+        fill: none;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .checkmark {
+        stroke-dasharray: 100;
+        stroke-dashoffset: 100;
+        animation: drawCheck 0.8s ease-out 0.8s forwards;
+      }
+
+      @keyframes drawCheck {
+        to {
+          stroke-dashoffset: 0;
+        }
+      }
+
+      h1 {
+        font-family: "Bebas Neue", sans-serif;
+        font-size: clamp(2.5rem, 6vw, 4rem);
+        line-height: 1.1;
+        margin-bottom: 1rem;
+        letter-spacing: 2px;
+        background: linear-gradient(135deg, #ffffff 0%, #34c759 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        animation: fadeInUp 1s ease-out 0.4s both;
+      }
+
+      .subtitle {
+        font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+        color: var(--text-muted);
+        margin-bottom: 3rem;
+        line-height: 1.7;
+        animation: fadeInUp 1s ease-out 0.6s both;
+      }
+
+      .main-message {
+        background: var(--dark-secondary);
+        padding: 3rem 2.5rem;
+        border-radius: 1.5rem;
+        border: 2px solid rgba(52, 199, 89, 0.3);
+        margin-bottom: 2.5rem;
+        animation: fadeInUp 1s ease-out 0.8s both;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .main-message::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: linear-gradient(90deg, var(--success), var(--secondary));
+      }
+
+      .main-message h2 {
+        font-family: "Bebas Neue", sans-serif;
+        font-size: clamp(1.75rem, 4vw, 2.5rem);
+        color: var(--secondary);
+        margin-bottom: 1rem;
+        letter-spacing: 1px;
+      }
+
+      .main-message p {
+        font-size: clamp(1rem, 2vw, 1.2rem);
+        line-height: 1.8;
+        color: var(--text-muted);
+      }
+
+      .cta-button {
+        background: var(--success);
+        color: var(--text);
+        font-size: 1.25rem;
+        font-weight: 700;
+        padding: 1.25rem 3rem;
+        border: none;
+        border-radius: 3rem;
+        cursor: pointer;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        transition: all 0.3s ease;
+        animation: fadeInUp 1s ease-out 1s both;
+        box-shadow: 0 15px 50px rgba(52, 199, 89, 0.5);
+        position: relative;
+        overflow: hidden;
+        text-decoration: none;
+        display: inline-block;
+      }
+
+      .cta-button::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        transition:
+          width 0.6s,
+          height 0.6s;
+      }
+
+      .cta-button:hover::before {
+        width: 300px;
+        height: 300px;
+      }
+
+      .cta-button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 20px 60px rgba(52, 199, 89, 0.7);
+      }
+
+      .next-steps {
+        background: rgba(255, 214, 10, 0.05);
+        padding: 2rem;
+        border-radius: 1rem;
+        border: 1px solid rgba(255, 214, 10, 0.2);
+        margin-top: 2.5rem;
+        animation: fadeInUp 1s ease-out 1.2s both;
+      }
+
+      .next-steps h3 {
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 1.5rem;
+        color: var(--secondary);
+        margin-bottom: 1.5rem;
+        letter-spacing: 1px;
+      }
+
+      .steps-list {
+        text-align: left;
+        max-width: 500px;
+        margin: 0 auto;
+      }
+
+      .step-item {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 1.25rem;
+        align-items: start;
+      }
+
+      .step-number {
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 1.5rem;
+        color: var(--success);
+        background: rgba(52, 199, 89, 0.2);
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+
+      .step-content {
+        font-size: 1rem;
+        color: var(--text-muted);
+        line-height: 1.6;
+        padding-top: 0.3rem;
+      }
+
+      .social-proof {
+        margin-top: 3rem;
+        padding-top: 2rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        animation: fadeInUp 1s ease-out 1.4s both;
+      }
+
+      .social-proof p {
+        font-size: 0.95rem;
+        color: var(--text-muted);
+      }
+
+      .social-proof strong {
+        color: var(--success);
+      }
+
+      @media (max-width: 768px) {
+        .main-message {
+          padding: 2rem 1.5rem;
+        }
+
+        .next-steps {
+          padding: 1.5rem;
+        }
+
+        .cta-button {
+          padding: 1rem 2rem;
+          font-size: 1rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="grain-overlay"></div>
+    <div class="background-glow"></div>
+
+    <div class="thank-you-container">
+      <div class="success-icon">
+        <svg viewBox="0 0 50 50">
+          <path class="checkmark" d="M 10 25 L 20 35 L 40 15" />
+        </svg>
+      </div>
+
+      <h1>YOU'RE IN!</h1>
+
+      <p class="subtitle">
+        Your request has been received. We're excited to help you transform your
+        customer acquisition!
+      </p>
+
+      <div class="main-message">
+        <h2>You're in the final part</h2>
+        <p>
+          Book your strategy call now to secure your spot. We'll analyze your
+          business and show you exactly how we can help you get quality
+          customers that actually buy.
+        </p>
+      </div>
+
+      <a href="https://wa.link/k4k9xq" target="_blank">
+        <button class="cta-button">BOOK YOUR STRATEGY CALL NOW</button>
+      </a>
+
+      <div class="next-steps">
+        <h3>What Happens Next?</h3>
+        <div class="steps-list">
+          <div class="step-item">
+            <div class="step-number">1</div>
+            <div class="step-content">
+              Click the button above to book your FREE 30-minute strategy call
+              via WhatsApp
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-number">2</div>
+            <div class="step-content">
+              We'll confirm your preferred time and send you the meeting details
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-number">3</div>
+            <div class="step-content">
+              On the call, we'll dive deep into your business and create a
+              custom ads strategy for you
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-number">4</div>
+            <div class="step-content">
+              If we're a good fit, we'll handle your ads professionally and get
+              you quality customers
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="social-proof">
+        <p>
+          Join <strong>150+ business owners</strong> who have transformed their
+          customer acquisition with our proven ads strategies
+        </p>
+      </div>
+    </div>
+
+    <script>
+      // Add a subtle floating animation to the success icon
+      const successIcon = document.querySelector(".success-icon");
+
+      setInterval(() => {
+        successIcon.style.transform = "translateY(-10px)";
+        setTimeout(() => {
+          successIcon.style.transform = "translateY(0)";
+        }, 1000);
+      }, 3000);
+
+      successIcon.style.transition = "transform 1s ease-in-out";
+    </script>
+  </body>
+</html>
