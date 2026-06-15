@@ -1,0 +1,166 @@
+{
+  "product": {
+    "name": "The Income Generator Program",
+    "tagline": "Start Earning Online Using Just Your Phone",
+    "description": "A beginner-friendly, step-by-step affiliate marketing program designed for complete beginners. No experience. No laptop. No guesswork — just a clear system that works.",
+    "long_description": "A step-by-step affiliate marketing program you can follow entirely from your smartphone. Every module is built around one goal: getting you from zero to your first commission as fast as possible. Learn how affiliate marketing really works, how to find products that already sell, how to get traffic without running ads, how to create simple content that converts, and how to turn conversations into consistent commissions.",
+    "category": "Digital Education",
+    "subcategory": "Affiliate Marketing",
+    "type": "Online Course",
+    "language": "English",
+    "target_market": "Nigeria",
+    "currency": "NGN",
+
+    "pricing": {
+      "original_price": 15000,
+      "current_price": 7000,
+      "discount_amount": 8000,
+      "discount_percentage": 53,
+      "currency_code": "NGN",
+      "currency_symbol": "₦",
+      "payment_type": "one_time",
+      "recurring": false
+    },
+
+    "instructor": {
+      "name": "[Your Full Name]",
+      "title": "Affiliate Marketing Instructor",
+      "bio": "Started affiliate marketing with nothing but a phone. Helped over 300 students go from zero to earning their first commissions online.",
+      "students_enrolled": 300,
+      "teaching_experience_months": 24,
+      "total_earnings_affiliate": "₦10M+"
+    },
+
+    "contents": [
+      {
+        "type": "Video Modules",
+        "description": "Step-by-step lessons you watch and implement immediately"
+      },
+      {
+        "type": "Action Checklists",
+        "description": "Know exactly what to do each day, no guessing"
+      },
+      {
+        "type": "Private Community",
+        "description": "Ask questions, share wins, stay accountable"
+      },
+      {
+        "type": "Lifetime Updates",
+        "description": "Content stays current as strategies evolve"
+      },
+      {
+        "type": "Bonus",
+        "description": "[Your bonus name here — e.g. Caption Templates]"
+      }
+    ],
+
+    "curriculum": [
+      {
+        "module": 1,
+        "title": "How Affiliate Marketing Actually Works",
+        "description": "Understand the full picture — from picking a niche to getting paid — so you never feel lost or confused about the process."
+      },
+      {
+        "module": 2,
+        "title": "Finding Products That Already Sell",
+        "description": "The exact criteria to identify high-converting offers so you are not wasting time promoting products nobody wants to buy."
+      },
+      {
+        "module": 3,
+        "title": "Getting Traffic Without Running Ads",
+        "description": "A 3-platform organic strategy that brings buyers to you consistently — no ad budget required to get started."
+      },
+      {
+        "module": 4,
+        "title": "Simple Content That Converts",
+        "description": "How to create short posts, stories, and messages that move people from curious to ready-to-buy — without being pushy."
+      },
+      {
+        "module": 5,
+        "title": "Turning Conversations Into Commissions",
+        "description": "A simple DM and follow-up framework that turns everyday conversations into consistent, repeatable income."
+      },
+      {
+        "module": 6,
+        "title": "Scaling Once You Get Results",
+        "description": "What to do after your first commission to multiply your income without multiplying your workload."
+      }
+    ],
+
+    "target_audience": {
+      "ideal_for": [
+        "Anyone who wants to build an extra income stream online from scratch",
+        "Students, workers, or side-hustlers with limited time but real commitment",
+        "Complete beginners with zero experience",
+        "Anyone willing to put in 30 to 60 minutes a day for at least 30 days",
+        "People who want to learn a skill they can use for life"
+      ],
+      "not_for": [
+        "People who expect to make money without putting in any work",
+        "Anyone not willing to spend 30 to 60 minutes daily",
+        "People who give up after one week if things are not instantly working",
+        "Anyone looking for a magic button and not a learnable skill"
+      ]
+    },
+
+    "outcomes": [
+      "Understand how affiliate marketing works end to end",
+      "Identify and promote high-converting products",
+      "Generate consistent traffic without paid ads",
+      "Create content that converts followers into buyers",
+      "Earn your first commission within 4 to 8 weeks of consistent effort",
+      "Build a scalable income stream from your phone"
+    ],
+
+    "requirements": [
+      "A smartphone with internet access",
+      "30 to 60 minutes of free time daily",
+      "Willingness to learn and take consistent action",
+      "No prior marketing or tech experience needed"
+    ],
+
+    "access": {
+      "type": "Lifetime",
+      "delivery": "Instant",
+      "delivery_method": "Online",
+      "platform": "Private Community + Video Modules",
+      "device_compatibility": ["Mobile", "Tablet", "Desktop"]
+    },
+
+    "guarantee": {
+      "offered": false,
+      "note": "Results depend on individual effort and consistency. Most beginners see their first commissions within 4 to 8 weeks of consistent application."
+    },
+
+    "seo": {
+      "meta_title": "Income Generator Program — Learn Affiliate Marketing From Your Phone",
+      "meta_description": "A beginner-friendly, step-by-step affiliate marketing program. Learn exactly how to earn consistently online using just your smartphone — no experience needed.",
+      "keywords": [
+        "affiliate marketing Nigeria",
+        "make money online Nigeria",
+        "affiliate marketing for beginners",
+        "earn money with phone",
+        "online income Nigeria",
+        "affiliate marketing course",
+        "income generator program",
+        "make money online beginner"
+      ],
+      "og_title": "Income Generator Program — Affiliate Marketing From Your Phone",
+      "og_description": "A beginner-friendly step-by-step system to help you start affiliate marketing using just your smartphone. Real skills. Real results."
+    },
+
+    "legal": {
+      "disclaimer": "This program teaches affiliate marketing skills that require consistent effort and time to produce results. Student earnings shown are real examples and not guarantees. Individual results depend on the effort invested, your niche, and market conditions. This program is not a get-rich-quick scheme.",
+      "earnings_disclosure": true,
+      "affiliate_disclaimer": "Results vary based on individual effort, consistency, and market conditions."
+    },
+
+    "publisher": {
+      "business_name": "Income Generator Program",
+      "country": "Nigeria",
+      "contact_email": "[your-email@example.com]",
+      "website": "[your-website-url]",
+      "year_established": 2025
+    }
+  }
+}

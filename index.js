@@ -35,7 +35,9 @@ const scrollObserver = new IntersectionObserver((entries) => {
 
 // 4. Start Observing Elements
 document
-  .querySelectorAll(".stat-card, .service-card, .pain-card, .step, .aboutstep")
+  .querySelectorAll(
+    ".stat-card, .service-card, .pain-card, .step, .aboutstep, .service-card-large, .why-card, .industry-card, .comparison-table",
+  )
   .forEach((el) => {
     scrollObserver.observe(el);
   });
