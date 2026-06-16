@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# 0. Teleport straight to your project repository
+cd ~/Documents/HTML-Learning
+
 # 1. Stage all changes
 git add .
 
