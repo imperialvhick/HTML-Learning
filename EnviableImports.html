@@ -1,0 +1,731 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Enviables Imports & Logistics</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet" />
+
+    <style>
+      /* ─── TOKENS ────────────────────────────────── */
+      :root {
+        --black: #0a0a0a;
+        --black-2: #141414;
+        --black-3: #1c1c1c;
+        --yellow: #ffcc00;
+        --yellow-dim: rgba(255, 204, 0, 0.1);
+        --yellow-mid: rgba(255, 204, 0, 0.28);
+        --white: #ffffff;
+        --muted: #888888;
+        --faint: rgba(255, 255, 255, 0.06);
+
+        --display: "Barlow Condensed", sans-serif;
+        --body: "Plus Jakarta Sans", sans-serif;
+      }
+
+      /* ─── RESET ─────────────────────────────────── */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        background: var(--black);
+        color: var(--white);
+        font-family: var(--body);
+        -webkit-font-smoothing: antialiased;
+        overflow-x: hidden;
+      }
+      a {
+        text-decoration: none;
+      }
+
+      /* ─── NAV ────────────────────────────────────── */
+      nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1.1rem 1.4rem;
+        border-bottom: 1px solid var(--yellow-mid);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: var(--black);
+      }
+      .nav-logo {
+        font-family: var(--display);
+        font-size: 1.25rem;
+        font-weight: 900;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: var(--white);
+      }
+      .nav-logo span {
+        color: var(--yellow);
+      }
+      .nav-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        background: var(--yellow);
+        color: var(--black);
+        font-family: var(--body);
+        font-size: 0.72rem;
+        font-weight: 700;
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        transition: opacity 0.15s;
+      }
+      .nav-btn:hover {
+        opacity: 0.88;
+      }
+      .nav-btn svg {
+        width: 14px;
+        height: 14px;
+      }
+
+      /* ─── HERO ───────────────────────────────────── */
+      .hero {
+        padding: 4rem 1.4rem 3rem;
+        max-width: 640px;
+        margin: 0 auto;
+        text-align: center;
+      }
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        background: var(--yellow-dim);
+        border: 1px solid var(--yellow-mid);
+        border-radius: 999px;
+        padding: 0.3rem 0.85rem;
+        font-size: 0.68rem;
+        font-weight: 700;
+        color: var(--yellow);
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        margin-bottom: 1.6rem;
+      }
+      .pill-dot {
+        width: 5px;
+        height: 5px;
+        background: var(--yellow);
+        border-radius: 50%;
+        animation: pulse-dot 2s ease-in-out infinite;
+      }
+      @keyframes pulse-dot {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.3;
+        }
+      }
+
+      .hero h1 {
+        font-family: var(--display);
+        font-size: clamp(3.4rem, 16vw, 5.8rem);
+        font-weight: 900;
+        line-height: 0.92;
+        text-transform: uppercase;
+        letter-spacing: -0.01em;
+        margin-bottom: 1.4rem;
+      }
+      .hero h1 em {
+        font-style: normal;
+        color: var(--yellow);
+        display: block;
+      }
+
+      .hero-sub {
+        font-size: 0.96rem;
+        line-height: 1.68;
+        color: #aaaaaa;
+        max-width: 340px;
+        margin: 0 auto 2.2rem;
+      }
+      .hero-sub strong {
+        color: var(--white);
+      }
+
+      /* main CTA */
+      .btn-wa {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.6rem;
+        background: var(--yellow);
+        color: var(--black);
+        font-family: var(--body);
+        font-weight: 700;
+        font-size: 1rem;
+        padding: 1rem 2rem;
+        border-radius: 6px;
+        letter-spacing: 0.01em;
+        box-shadow: 0 0 0 0 rgba(255, 204, 0, 0.5);
+        animation: wa-glow 2.4s ease-in-out infinite;
+        transition: transform 0.15s;
+      }
+      .btn-wa:hover {
+        transform: translateY(-2px);
+      }
+      .btn-wa svg {
+        width: 22px;
+        height: 22px;
+        flex-shrink: 0;
+      }
+      @keyframes wa-glow {
+        0%,
+        100% {
+          box-shadow: 0 0 0 0 rgba(255, 204, 0, 0.45);
+        }
+        50% {
+          box-shadow: 0 0 0 10px rgba(255, 204, 0, 0);
+        }
+      }
+
+      .hero-note {
+        margin-top: 0.85rem;
+        font-size: 0.72rem;
+        color: var(--muted);
+        letter-spacing: 0.02em;
+      }
+      .hero-note::before {
+        content: "⚡ ";
+      }
+
+      /* ─── TICKER ─────────────────────────────────── */
+      .ticker-wrap {
+        margin: 2.8rem 0 0;
+        border-top: 1px solid var(--yellow-mid);
+        border-bottom: 1px solid var(--yellow-mid);
+        background: var(--black-2);
+        padding: 0.8rem 0;
+        overflow: hidden;
+      }
+      .ticker-track {
+        display: inline-flex;
+        white-space: nowrap;
+        animation: scroll 30s linear infinite;
+      }
+      .ticker-track:hover {
+        animation-play-state: paused;
+      }
+      @keyframes scroll {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-50%);
+        }
+      }
+      .ti {
+        display: inline-flex;
+        align-items: center;
+        font-family: var(--display);
+        font-size: 0.88rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--muted);
+        padding: 0 1.4rem;
+      }
+      .ti-dot {
+        width: 5px;
+        height: 5px;
+        background: var(--yellow);
+        border-radius: 50%;
+        margin-right: 1.4rem;
+        flex-shrink: 0;
+      }
+
+      /* ─── SECTION SHARED ─────────────────────────── */
+      .sec {
+        padding: 3.6rem 1.4rem;
+        max-width: 640px;
+        margin: 0 auto;
+      }
+      .sec-label {
+        font-size: 0.67rem;
+        font-weight: 700;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: var(--yellow);
+        margin-bottom: 0.5rem;
+      }
+      .sec-title {
+        font-family: var(--display);
+        font-size: clamp(2rem, 9vw, 3.2rem);
+        font-weight: 900;
+        text-transform: uppercase;
+        line-height: 1;
+        margin-bottom: 2.4rem;
+      }
+
+      /* ─── BENEFITS ───────────────────────────────── */
+      .grid-2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.85rem;
+      }
+      .card {
+        background: var(--black-2);
+        border: 1px solid var(--faint);
+        border-radius: 10px;
+        padding: 1.4rem 1.1rem;
+        transition: border-color 0.2s;
+      }
+      .card:hover {
+        border-color: var(--yellow-mid);
+      }
+      .card-icon {
+        font-size: 1.5rem;
+        margin-bottom: 0.75rem;
+      }
+      .card-title {
+        font-family: var(--display);
+        font-size: 1.05rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.03em;
+        margin-bottom: 0.35rem;
+      }
+      .card-body {
+        font-size: 0.79rem;
+        line-height: 1.58;
+        color: var(--muted);
+      }
+
+      /* ─── CATEGORIES ─────────────────────────────── */
+      .cats-wrap {
+        background: var(--black-2);
+        border-top: 1px solid var(--faint);
+        border-bottom: 1px solid var(--faint);
+      }
+      .chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.55rem;
+        margin-top: 2rem;
+      }
+      .chip {
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        color: var(--white);
+        font-size: 0.76rem;
+        font-weight: 600;
+        padding: 0.45rem 0.95rem;
+        border-radius: 999px;
+        letter-spacing: 0.02em;
+      }
+      .chip.hi {
+        background: var(--yellow-dim);
+        border-color: var(--yellow-mid);
+        color: var(--yellow);
+      }
+      .cats-note {
+        margin-top: 1.5rem;
+        font-size: 0.82rem;
+        color: var(--muted);
+        line-height: 1.65;
+      }
+      .cats-note strong {
+        color: var(--white);
+      }
+
+      /* ─── STEPS ──────────────────────────────────── */
+      .steps {
+        margin-top: 2.2rem;
+      }
+      .step {
+        display: flex;
+        gap: 1.2rem;
+        padding-bottom: 2.2rem;
+        position: relative;
+      }
+      .step:not(:last-child)::after {
+        content: "";
+        position: absolute;
+        left: 17px;
+        top: 36px;
+        bottom: 0;
+        width: 1px;
+        background: linear-gradient(to bottom, var(--yellow-mid), transparent);
+      }
+      .step-num {
+        flex-shrink: 0;
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background: var(--yellow-dim);
+        border: 1px solid var(--yellow-mid);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: var(--display);
+        font-size: 0.9rem;
+        font-weight: 900;
+        color: var(--yellow);
+      }
+      .step-title {
+        font-family: var(--display);
+        font-size: 1.05rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.03em;
+        margin-bottom: 0.3rem;
+        padding-top: 0.4rem;
+      }
+      .step-desc {
+        font-size: 0.81rem;
+        color: var(--muted);
+        line-height: 1.58;
+      }
+
+      /* ─── TRUST BAR ──────────────────────────────── */
+      .trust-bar {
+        background: var(--black-3);
+        border-top: 1px solid var(--faint);
+        border-bottom: 1px solid var(--faint);
+        padding: 1.6rem 1.4rem;
+      }
+      .trust-inner {
+        max-width: 640px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        gap: 1.2rem;
+      }
+      .trust-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.3rem;
+        text-align: center;
+      }
+      .trust-item span:first-child {
+        font-size: 1.3rem;
+      }
+      .trust-item span:last-child {
+        font-size: 0.68rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+
+      /* ─── FINAL CTA ──────────────────────────────── */
+      .final-cta {
+        background: var(--yellow);
+        padding: 4.5rem 1.4rem;
+        text-align: center;
+      }
+      .final-cta h2 {
+        font-family: var(--display);
+        font-size: clamp(2.6rem, 12vw, 4.5rem);
+        font-weight: 900;
+        color: var(--black);
+        text-transform: uppercase;
+        line-height: 0.95;
+        margin-bottom: 0.9rem;
+      }
+      .final-cta p {
+        font-size: 0.95rem;
+        color: rgba(0, 0, 0, 0.6);
+        margin-bottom: 2.2rem;
+        line-height: 1.65;
+        max-width: 320px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .btn-dark {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.6rem;
+        background: var(--black);
+        color: var(--yellow);
+        font-family: var(--body);
+        font-weight: 700;
+        font-size: 1rem;
+        padding: 1rem 2rem;
+        border-radius: 6px;
+        letter-spacing: 0.01em;
+        transition: transform 0.15s;
+        margin-bottom: 2.2rem;
+      }
+      .btn-dark:hover {
+        transform: translateY(-2px);
+      }
+      .btn-dark svg {
+        width: 22px;
+        height: 22px;
+      }
+
+      /* ─── FOOTER ─────────────────────────────────── */
+      footer {
+        padding: 1.4rem;
+        text-align: center;
+        font-size: 0.7rem;
+        color: var(--muted);
+        letter-spacing: 0.03em;
+        border-top: 1px solid var(--faint);
+      }
+
+      /* ─── RESPONSIVE ─────────────────────────────── */
+      @media (max-width: 380px) {
+        .grid-2 {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ══ NAV ══════════════════════════════════════ -->
+    <nav>
+      <div class="nav-logo">Enviables <span>Imports</span></div>
+      <a href="https://wa.link/iac08t" class="nav-btn">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path
+            d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+          <path
+            d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.116 1.523 5.845L.057 23.427a.5.5 0 00.606.61l5.695-1.533A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.894a9.894 9.894 0 01-5.036-1.375l-.36-.214-3.733 1.005 1.04-3.624-.234-.374A9.894 9.894 0 1112 21.894z" />
+        </svg>
+        Chat Us
+      </a>
+    </nav>
+
+    <!-- ══ HERO ══════════════════════════════════════ -->
+    <section class="hero">
+      <div class="pill">
+        <span class="pill-dot"></span>
+        Direct from China &nbsp;🇨🇳
+      </div>
+
+      <h1>
+        China's Best.
+        <em>At Your Door.</em>
+      </h1>
+
+      <p class="hero-sub">
+        Premium household items, gadgets, smartwatches & more —
+        <strong>imported straight from the source</strong> and delivered across
+        Nigeria.
+      </p>
+
+      <a
+        href="https://wa.link/iac08t"
+        class="btn-wa"
+        aria-label="Chat on WhatsApp">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path
+            d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+          <path
+            d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.116 1.523 5.845L.057 23.427a.5.5 0 00.606.61l5.695-1.533A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.894a9.894 9.894 0 01-5.036-1.375l-.36-.214-3.733 1.005 1.04-3.624-.234-.374A9.894 9.894 0 1112 21.894z" />
+        </svg>
+        Chat Us on WhatsApp
+      </a>
+
+      <p class="hero-note">We reply fast — usually within minutes</p>
+    </section>
+
+    <!-- ══ TICKER ════════════════════════════════════ -->
+    <div class="ticker-wrap" aria-hidden="true">
+      <div class="ticker-track">
+        <!-- set A -->
+        <span class="ti"><span class="ti-dot"></span>Smart Watches</span>
+        <span class="ti"><span class="ti-dot"></span>Ring Lights</span>
+        <span class="ti"><span class="ti-dot"></span>Kitchen Gadgets</span>
+        <span class="ti"><span class="ti-dot"></span>Wireless Earbuds</span>
+        <span class="ti"><span class="ti-dot"></span>Microphones</span>
+        <span class="ti"><span class="ti-dot"></span>Phone Stands</span>
+        <span class="ti"
+          ><span class="ti-dot"></span>Content Creation Tools</span
+        >
+        <span class="ti"><span class="ti-dot"></span>Home Appliances</span>
+        <span class="ti"><span class="ti-dot"></span>Portable Fans</span>
+        <span class="ti"><span class="ti-dot"></span>Storage Solutions</span>
+        <span class="ti"><span class="ti-dot"></span>Phone Accessories</span>
+        <span class="ti"><span class="ti-dot"></span>Household Essentials</span>
+        <!-- set B (duplicate for seamless loop) -->
+        <span class="ti"><span class="ti-dot"></span>Smart Watches</span>
+        <span class="ti"><span class="ti-dot"></span>Ring Lights</span>
+        <span class="ti"><span class="ti-dot"></span>Kitchen Gadgets</span>
+        <span class="ti"><span class="ti-dot"></span>Wireless Earbuds</span>
+        <span class="ti"><span class="ti-dot"></span>Microphones</span>
+        <span class="ti"><span class="ti-dot"></span>Phone Stands</span>
+        <span class="ti"
+          ><span class="ti-dot"></span>Content Creation Tools</span
+        >
+        <span class="ti"><span class="ti-dot"></span>Home Appliances</span>
+        <span class="ti"><span class="ti-dot"></span>Portable Fans</span>
+        <span class="ti"><span class="ti-dot"></span>Storage Solutions</span>
+        <span class="ti"><span class="ti-dot"></span>Phone Accessories</span>
+        <span class="ti"><span class="ti-dot"></span>Household Essentials</span>
+      </div>
+    </div>
+
+    <!-- ══ BENEFITS ══════════════════════════════════ -->
+    <section class="sec">
+      <div class="sec-label">Why Enviables?</div>
+      <h2 class="sec-title">We Make It Simple</h2>
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-icon">🏭</div>
+          <div class="card-title">Source Direct</div>
+          <p class="card-body">
+            We deal straight with manufacturers — no middlemen, no inflated
+            markups.
+          </p>
+        </div>
+        <div class="card">
+          <div class="card-icon">✅</div>
+          <div class="card-title">Quality Checked</div>
+          <p class="card-body">
+            Every item is verified before it ships. No surprises when it
+            arrives.
+          </p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🚚</div>
+          <div class="card-title">Reliable Delivery</div>
+          <p class="card-body">
+            We manage logistics end-to-end. Your products land safely in
+            Nigeria.
+          </p>
+        </div>
+        <div class="card">
+          <div class="card-icon">💬</div>
+          <div class="card-title">Real Support</div>
+          <p class="card-body">
+            Talk to a real person on WhatsApp. No bots, no runaround, just
+            answers.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ TRUST BAR ══════════════════════════════════ -->
+    <div class="trust-bar">
+      <div class="trust-inner">
+        <div class="trust-item">
+          <span>🇨🇳</span>
+          <span>China Direct</span>
+        </div>
+        <div class="trust-item">
+          <span>⚡</span>
+          <span>Fast Replies</span>
+        </div>
+        <div class="trust-item">
+          <span>🔒</span>
+          <span>Quality Guaranteed</span>
+        </div>
+        <div class="trust-item">
+          <span>📦</span>
+          <span>Nationwide Delivery</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ CATEGORIES ═════════════════════════════════ -->
+    <div class="cats-wrap">
+      <section class="sec">
+        <div class="sec-label">What We Carry</div>
+        <h2 class="sec-title">More Than You'd Expect</h2>
+        <div class="chips">
+          <span class="chip hi">Smart Watches</span>
+          <span class="chip hi">Content Creation Tools</span>
+          <span class="chip">Kitchen Gadgets</span>
+          <span class="chip">Wireless Earbuds</span>
+          <span class="chip">Ring Lights & Stands</span>
+          <span class="chip">Home Appliances</span>
+          <span class="chip">Phone Accessories</span>
+          <span class="chip">Portable Fans</span>
+          <span class="chip">Microphones</span>
+          <span class="chip">Storage Solutions</span>
+          <span class="chip">Household Essentials</span>
+          <span class="chip">& Much More</span>
+        </div>
+        <p class="cats-note">
+          Don't see what you need? <strong>Just ask us.</strong> If it can be
+          sourced from China, chances are we can get it.
+        </p>
+      </section>
+    </div>
+
+    <!-- ══ HOW IT WORKS ═══════════════════════════════ -->
+    <section class="sec">
+      <div class="sec-label">How It Works</div>
+      <h2 class="sec-title">3 Steps to Your Order</h2>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div>
+            <div class="step-title">Send Us a Message</div>
+            <p class="step-desc">
+              Tap the WhatsApp button and tell us what you're looking for. We'll
+              take it from there.
+            </p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div>
+            <div class="step-title">Get Your Quote</div>
+            <p class="step-desc">
+              We'll send you product options, pricing, and timelines — no
+              guessing, no hidden fees.
+            </p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div>
+            <div class="step-title">We Handle the Rest</div>
+            <p class="step-desc">
+              We source, ship, and deliver your order to Nigeria. Sit back and
+              wait for it to arrive.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ FINAL CTA ══════════════════════════════════ -->
+    <section class="final-cta">
+      <h2>Ready to Order?</h2>
+      <p>
+        Tell us what you need — we'll find it, ship it, and get it to you across
+        Nigeria.
+      </p>
+      <a
+        href="https://wa.link/iac08t"
+        class="btn-dark"
+        aria-label="Chat on WhatsApp">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path
+            d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+          <path
+            d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.116 1.523 5.845L.057 23.427a.5.5 0 00.606.61l5.695-1.533A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.894a9.894 9.894 0 01-5.036-1.375l-.36-.214-3.733 1.005 1.04-3.624-.234-.374A9.894 9.894 0 1112 21.894z" />
+        </svg>
+        Chat Us on WhatsApp
+      </a>
+    </section>
+
+    <!-- ══ FOOTER ═════════════════════════════════════ -->
+    <footer>
+      © 2025 Enviables Imports &amp; Logistics &nbsp;·&nbsp; All rights reserved
+      <br />Built with ❤️ by Emperor of Ads
+    </footer>
+  </body>
+</html>

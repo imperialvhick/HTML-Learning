@@ -1,0 +1,1785 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SIM Sales Challenge 1.0</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet" />
+
+    <style>
+      /* ── Reset ── */
+      .sc-wrap,
+      .sc-wrap * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      .sc-wrap {
+        font-family:
+          system-ui,
+          -apple-system,
+          "Segoe UI",
+          Roboto,
+          sans-serif;
+        background: #f9f5f0;
+        margin: 0 -20px;
+      }
+
+      /* ─────────────────────────────
+     HERO
+  ───────────────────────────── */
+      .sc-hero {
+        background: #1a0505;
+        padding: 64px 24px 90px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .sc-hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          ellipse 80% 60% at 50% 0%,
+          rgba(139, 0, 0, 0.5) 0%,
+          transparent 70%
+        );
+        pointer-events: none;
+      }
+
+      .sc-hero::after {
+        content: "";
+        position: absolute;
+        bottom: -1px;
+        left: 0;
+        right: 0;
+        height: 60px;
+        background: #f9f5f0;
+        border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+      }
+
+      .sc-hero-inner {
+        position: relative;
+        z-index: 1;
+        max-width: 720px;
+        margin: 0 auto;
+      }
+
+      .sc-eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: #c9a84c;
+        margin-bottom: 18px;
+      }
+
+      .sc-hero h1 {
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: clamp(30px, 5.5vw, 52px);
+        font-weight: 700;
+        color: #fff;
+        line-height: 1.15;
+        margin-bottom: 8px;
+      }
+
+      .sc-hero h1 span {
+        color: #c9a84c;
+      }
+
+      .sc-tagline {
+        font-size: clamp(14px, 2vw, 18px);
+        color: rgba(255, 255, 255, 0.65);
+        margin-bottom: 30px;
+        line-height: 1.6;
+      }
+
+      /* Date pill */
+      .sc-date-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: rgba(201, 168, 76, 0.12);
+        border: 1px solid rgba(201, 168, 76, 0.35);
+        border-radius: 50px;
+        padding: 10px 22px;
+        color: #f5dfa0;
+        font-size: 14px;
+        font-weight: 600;
+        margin-bottom: 36px;
+      }
+
+      /* Countdown */
+      .sc-countdown {
+        display: flex;
+        justify-content: center;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+
+      .sc-count-unit {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .sc-count-num {
+        background: rgba(139, 0, 0, 0.6);
+        border: 1px solid rgba(139, 0, 0, 0.8);
+        color: #fff;
+        font-family: Georgia, serif;
+        font-size: clamp(28px, 5vw, 42px);
+        font-weight: 700;
+        width: 80px;
+        height: 72px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 10px;
+        letter-spacing: 0.05em;
+      }
+
+      .sc-count-label {
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.5);
+      }
+
+      .sc-count-sep {
+        font-size: 36px;
+        color: rgba(201, 168, 76, 0.5);
+        font-weight: 700;
+        align-self: flex-start;
+        margin-top: 14px;
+      }
+
+      /* ─────────────────────────────
+     BODY
+  ───────────────────────────── */
+      .sc-body {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 52px 24px 64px;
+      }
+
+      .sc-section-label {
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: #8b0000;
+        margin-bottom: 22px;
+        display: flex;
+        align-items: center;
+        gap: 7px;
+      }
+
+      /* ─────────────────────────────
+     INTRO LETTER
+  ───────────────────────────── */
+      .sc-intro {
+        background: #fff;
+        border-radius: 16px;
+        padding: 36px 40px;
+        box-shadow: 0 2px 16px rgba(26, 5, 5, 0.07);
+        margin-bottom: 36px;
+        border-left: 4px solid #8b0000;
+      }
+
+      .sc-intro p {
+        font-size: 15px;
+        color: #4b3b38;
+        line-height: 1.8;
+        margin-bottom: 14px;
+      }
+
+      .sc-intro p:last-child {
+        margin-bottom: 0;
+      }
+
+      .sc-intro strong {
+        color: #2c1810;
+      }
+
+      .sc-highlight-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: #fdf6ec;
+        border: 1px solid rgba(201, 168, 76, 0.35);
+        border-radius: 8px;
+        padding: 10px 16px;
+        font-size: 14px;
+        font-weight: 600;
+        color: #7a5c00;
+        margin: 4px 0 10px;
+      }
+
+      /* ─────────────────────────────
+     PRIZE TIERS
+  ───────────────────────────── */
+      .sc-prizes-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 18px;
+        margin-bottom: 18px;
+      }
+
+      /* Base card */
+      .sc-prize-card {
+        background: #fff;
+        border-radius: 14px;
+        box-shadow: 0 2px 14px rgba(26, 5, 5, 0.07);
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        transition:
+          transform 0.2s ease,
+          box-shadow 0.2s ease;
+      }
+
+      .sc-prize-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 24px rgba(26, 5, 5, 0.13);
+      }
+
+      .sc-card-top {
+        padding: 20px 22px 16px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid #f3ede8;
+      }
+
+      .sc-sales-num {
+        font-family: Georgia, serif;
+        font-size: 22px;
+        font-weight: 700;
+      }
+
+      .sc-sales-label {
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        margin-top: 2px;
+      }
+
+      .sc-tier-badge {
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        padding: 4px 10px;
+        border-radius: 20px;
+      }
+
+      .sc-card-body {
+        padding: 18px 22px 22px;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .sc-prize-cash {
+        font-family: Georgia, serif;
+        font-size: 26px;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        line-height: 1.1;
+        margin-bottom: 4px;
+      }
+
+      .sc-prize-tag {
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+      }
+
+      .sc-or-row {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-top: 10px;
+      }
+
+      .sc-or-line {
+        flex: 1;
+        height: 1px;
+        background: #e8ddd8;
+      }
+
+      .sc-or-label {
+        font-size: 10px;
+        font-weight: 800;
+        letter-spacing: 0.12em;
+        color: #a89690;
+      }
+
+      .sc-prize-item {
+        font-size: 13.5px;
+        font-weight: 600;
+        line-height: 1.45;
+        margin-top: 10px;
+      }
+
+      /* ── TIER VARIANTS ── */
+
+      /* Entry (cash only): crimson */
+      .sc-tier--entry .sc-sales-num {
+        color: #8b0000;
+      }
+      .sc-tier--entry .sc-sales-label {
+        color: #c4b5b0;
+      }
+      .sc-tier--entry .sc-tier-badge {
+        background: #fde8e8;
+        color: #8b0000;
+      }
+      .sc-tier--entry .sc-prize-cash {
+        color: #2c1810;
+      }
+      .sc-tier--entry .sc-prize-tag {
+        color: #8b0000;
+      }
+
+      /* Mid (cash OR gadget): gold */
+      .sc-tier--mid {
+        border-top: 3px solid #c9a84c;
+      }
+      .sc-tier--mid .sc-sales-num {
+        color: #7a5c00;
+      }
+      .sc-tier--mid .sc-sales-label {
+        color: #c4b5b0;
+      }
+      .sc-tier--mid .sc-tier-badge {
+        background: #fdf6ec;
+        color: #7a5c00;
+      }
+      .sc-tier--mid .sc-prize-cash {
+        color: #2c1810;
+      }
+      .sc-tier--mid .sc-prize-tag {
+        color: #c9a84c;
+      }
+      .sc-tier--mid .sc-prize-item {
+        color: #5a4535;
+      }
+
+      /* Elite (big gadget prizes): dark crimson header */
+      .sc-tier--elite {
+        border-top: 3px solid #8b0000;
+      }
+      .sc-tier--elite .sc-card-top {
+        background: #8b0000;
+        border-bottom-color: rgba(255, 255, 255, 0.1);
+      }
+      .sc-tier--elite .sc-sales-num {
+        color: #fff;
+      }
+      .sc-tier--elite .sc-sales-label {
+        color: rgba(255, 255, 255, 0.6);
+      }
+      .sc-tier--elite .sc-tier-badge {
+        background: rgba(255, 255, 255, 0.15);
+        color: #fff;
+      }
+      .sc-tier--elite .sc-prize-cash {
+        color: #8b0000;
+      }
+      .sc-tier--elite .sc-prize-tag {
+        color: #c9a84c;
+      }
+      .sc-tier--elite .sc-prize-item {
+        color: #4b3b38;
+      }
+
+      /* ── CHAMPION CARD (1000 sales) — full width, featured ── */
+      .sc-champion-card {
+        background: linear-gradient(135deg, #1a0505 0%, #3d0a0a 100%);
+        border-radius: 16px;
+        box-shadow: 0 4px 30px rgba(139, 0, 0, 0.35);
+        padding: 36px 40px;
+        margin-bottom: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 30px;
+        border: 1px solid rgba(201, 168, 76, 0.2);
+      }
+
+      .sc-champion-left {
+        flex: 1;
+      }
+
+      .sc-champion-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: rgba(201, 168, 76, 0.15);
+        border: 1px solid rgba(201, 168, 76, 0.4);
+        border-radius: 20px;
+        padding: 5px 14px;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: #c9a84c;
+        margin-bottom: 14px;
+      }
+
+      .sc-champion-sales {
+        font-family: Georgia, serif;
+        font-size: 48px;
+        font-weight: 700;
+        color: #fff;
+        line-height: 1;
+        margin-bottom: 4px;
+      }
+
+      .sc-champion-sales-label {
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.5);
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+      }
+
+      .sc-champion-prize-cash {
+        font-family: Georgia, serif;
+        font-size: 34px;
+        font-weight: 700;
+        color: #c9a84c;
+        line-height: 1.1;
+        margin-bottom: 4px;
+      }
+
+      .sc-champion-prize-tag {
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.4);
+        margin-bottom: 12px;
+      }
+
+      .sc-champion-or {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin: 10px 0;
+      }
+
+      .sc-champion-or-line {
+        flex: 1;
+        height: 1px;
+        background: rgba(255, 255, 255, 0.15);
+      }
+
+      .sc-champion-or-label {
+        font-size: 10px;
+        font-weight: 800;
+        letter-spacing: 0.12em;
+        color: rgba(255, 255, 255, 0.3);
+      }
+
+      .sc-champion-prize-item {
+        font-size: 15px;
+        font-weight: 600;
+        color: rgba(255, 255, 255, 0.85);
+        line-height: 1.4;
+      }
+
+      .sc-champion-right {
+        text-align: center;
+        flex-shrink: 0;
+      }
+
+      .sc-champion-icon {
+        width: 90px;
+        height: 90px;
+        background: rgba(201, 168, 76, 0.1);
+        border: 2px solid rgba(201, 168, 76, 0.3);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto;
+      }
+
+      /* ── MEGA CARD (2800 sales) ── */
+      .sc-mega-card {
+        background: #f9f5f0;
+        border-radius: 16px;
+        border: 2px solid #c9a84c;
+        overflow: hidden;
+        margin-bottom: 36px;
+        box-shadow: 0 4px 30px rgba(201, 168, 76, 0.2);
+      }
+
+      .sc-mega-header {
+        background: linear-gradient(135deg, #c9a84c 0%, #b6913a 100%);
+        padding: 20px 36px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .sc-mega-header-left {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      }
+
+      .sc-mega-icon {
+        width: 44px;
+        height: 44px;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .sc-mega-title {
+        font-family: Georgia, serif;
+        font-size: 20px;
+        font-weight: 700;
+        color: #1a0505;
+      }
+
+      .sc-mega-sub {
+        font-size: 12px;
+        color: rgba(26, 5, 5, 0.6);
+        font-weight: 600;
+        letter-spacing: 0.08em;
+      }
+
+      .sc-mega-sales-badge {
+        font-family: Georgia, serif;
+        font-size: 28px;
+        font-weight: 700;
+        color: #1a0505;
+        text-align: right;
+        line-height: 1;
+      }
+
+      .sc-mega-sales-badge span {
+        display: block;
+        font-family: system-ui, sans-serif;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: rgba(26, 5, 5, 0.5);
+        margin-top: 3px;
+      }
+
+      .sc-mega-body {
+        padding: 30px 36px;
+        display: flex;
+        align-items: center;
+        gap: 40px;
+      }
+
+      .sc-mega-cash {
+        font-family: Georgia, serif;
+        font-size: 40px;
+        font-weight: 700;
+        color: #8b0000;
+        line-height: 1;
+        margin-bottom: 4px;
+      }
+
+      .sc-mega-cash-tag {
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: #a89690;
+        margin-bottom: 14px;
+      }
+
+      .sc-mega-or {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin: 8px 0;
+      }
+
+      .sc-mega-or-line {
+        flex: 1;
+        height: 1px;
+        background: #e8ddd8;
+      }
+
+      .sc-mega-or-label {
+        font-size: 10px;
+        font-weight: 800;
+        letter-spacing: 0.12em;
+        color: #a89690;
+      }
+
+      .sc-mega-prize-item {
+        font-size: 18px;
+        font-weight: 700;
+        color: #2c1810;
+        line-height: 1.3;
+        margin-top: 10px;
+      }
+
+      .sc-mega-prize-note {
+        font-size: 12px;
+        color: #7c6b65;
+        margin-top: 4px;
+      }
+
+      .sc-mega-divider {
+        width: 1px;
+        align-self: stretch;
+        background: #e8ddd8;
+        flex-shrink: 0;
+      }
+
+      .sc-mega-right {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .sc-mega-stat {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 13.5px;
+        color: #5a4535;
+        line-height: 1.4;
+      }
+
+      .sc-mega-stat-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #c9a84c;
+        flex-shrink: 0;
+      }
+
+      /* ─────────────────────────────
+     RULES / NOTES
+  ───────────────────────────── */
+      .sc-rules {
+        background: #fff;
+        border-radius: 16px;
+        padding: 36px 40px;
+        box-shadow: 0 2px 16px rgba(26, 5, 5, 0.07);
+        margin-bottom: 28px;
+      }
+
+      .sc-rules h3 {
+        font-family: Georgia, serif;
+        font-size: 20px;
+        color: #2c1810;
+        font-weight: 700;
+        margin-bottom: 20px;
+      }
+
+      .sc-rules-list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+      }
+
+      .sc-rule-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        font-size: 14px;
+        color: #4b3b38;
+        line-height: 1.65;
+      }
+
+      .sc-rule-icon {
+        width: 22px;
+        height: 22px;
+        background: #8b0000;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        margin-top: 1px;
+      }
+
+      .sc-important-box {
+        background: #fde8e8;
+        border: 1px solid rgba(139, 0, 0, 0.2);
+        border-radius: 10px;
+        padding: 16px 18px;
+        margin-top: 20px;
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        font-size: 13.5px;
+        color: #5a1010;
+        line-height: 1.65;
+      }
+
+      /* ─────────────────────────────
+     CTA
+  ───────────────────────────── */
+      .sc-cta {
+        background: linear-gradient(135deg, #8b0000 0%, #a50000 100%);
+        border-radius: 16px;
+        padding: 44px 40px;
+        text-align: center;
+        box-shadow: 0 8px 30px rgba(139, 0, 0, 0.3);
+        margin-bottom: 28px;
+      }
+
+      .sc-cta h2 {
+        font-family: Georgia, serif;
+        font-size: 28px;
+        color: #fff;
+        font-weight: 700;
+        margin-bottom: 10px;
+      }
+
+      .sc-cta p {
+        font-size: 15px;
+        color: rgba(255, 255, 255, 0.7);
+        margin-bottom: 28px;
+        line-height: 1.6;
+      }
+
+      .sc-cta-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: #c9a84c;
+        color: #1a0505;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: 700;
+        padding: 16px 36px;
+        border-radius: 10px;
+        transition:
+          background 0.2s ease,
+          transform 0.2s ease;
+      }
+
+      .sc-cta-btn:hover {
+        background: #b6913a;
+        transform: translateY(-2px);
+      }
+
+      /* ── Updated Split-CTA Layout ── */
+      .sc-cta-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        text-align: left;
+        margin-top: 24px;
+      }
+
+      .sc-cta-box {
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        border-radius: 12px;
+        padding: 24px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .sc-cta-box h3 {
+        font-family: Georgia, serif;
+        font-size: 18px;
+        color: #fff;
+        margin-bottom: 8px;
+      }
+
+      .sc-cta-box p {
+        font-size: 13.5px;
+        color: rgba(255, 255, 255, 0.65);
+        line-height: 1.5;
+        margin-bottom: 20px;
+      }
+
+      .sc-cta-box .sc-cta-btn {
+        width: 100%;
+        justify-content: center;
+        padding: 12px 20px;
+        font-size: 14px;
+      }
+
+      /* Secondary layout option for Telegram path */
+      .sc-cta-btn-alt {
+        background: #1a0505;
+        color: #fff;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .sc-cta-btn-alt:hover {
+        background: #2d0a0a;
+        transform: translateY(-2px);
+      }
+
+      /* Responsive adjustment for Mobile view */
+      @media (max-width: 680px) {
+        .sc-cta-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* ─────────────────────────────
+     HELP
+  ───────────────────────────── */
+      .sc-help {
+        background: #fff;
+        border-radius: 16px;
+        box-shadow: 0 2px 16px rgba(26, 5, 5, 0.07);
+        text-align: center;
+        padding: 30px 24px;
+      }
+
+      .sc-help p {
+        font-size: 13.5px;
+        color: #7c6b65;
+        line-height: 1.75;
+        margin-bottom: 14px;
+      }
+
+      .sc-tg-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: #1a0505;
+        color: #fff;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 600;
+        padding: 11px 24px;
+        border-radius: 8px;
+        transition: background 0.2s ease;
+      }
+
+      .sc-tg-btn:hover {
+        background: #2d0a0a;
+      }
+
+      /* ─────────────────────────────
+     RESPONSIVE
+  ───────────────────────────── */
+      @media (max-width: 680px) {
+        .sc-prizes-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .sc-champion-card {
+          flex-direction: column;
+          padding: 28px 24px;
+        }
+
+        .sc-champion-right {
+          width: 100%;
+        }
+
+        .sc-mega-body {
+          flex-direction: column;
+          gap: 20px;
+        }
+
+        .sc-mega-divider {
+          display: none;
+        }
+        .sc-mega-right {
+          border-top: 1px solid #e8ddd8;
+          padding-top: 20px;
+        }
+        .sc-mega-header {
+          padding: 18px 22px;
+        }
+        .sc-mega-body {
+          padding: 22px;
+        }
+
+        .sc-intro {
+          padding: 26px 22px;
+        }
+        .sc-rules {
+          padding: 28px 22px;
+        }
+        .sc-cta {
+          padding: 32px 22px;
+        }
+        .sc-hero {
+          padding: 48px 20px 72px;
+        }
+        .sc-count-num {
+          width: 62px;
+          height: 58px;
+          font-size: 26px;
+        }
+        .sc-champion-sales {
+          font-size: 38px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="sc-wrap">
+      <!-- ── HERO ── -->
+      <div class="sc-hero">
+        <div class="sc-hero-inner">
+          <div class="sc-eyebrow">
+            <!-- Lucide: trophy -->
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="13"
+              height="13"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round">
+              <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6" />
+              <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18" />
+              <path d="M4 22h16" />
+              <path
+                d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22" />
+              <path
+                d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22" />
+              <path d="M18 2H6v7a6 6 0 0 0 12 0Z" />
+            </svg>
+            SIM Sales Challenge 1.0
+          </div>
+
+          <h1>Promote SIM Blueprint.<br />Make Sales. <span>Win Big.</span></h1>
+
+          <p class="sc-tagline">
+            100 days of selling, competing, and earning rewards.<br />
+            The more you sell, the bigger the prize.
+          </p>
+
+          <div class="sc-date-pill">
+            <!-- Lucide: calendar -->
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round">
+              <rect width="18" height="18" x="3" y="4" rx="2" ry="2" />
+              <line x1="16" x2="16" y1="2" y2="6" />
+              <line x1="8" x2="8" y1="2" y2="6" />
+              <line x1="3" x2="21" y1="10" y2="10" />
+            </svg>
+            July 12, 2026 — October 20, 2026 &nbsp;·&nbsp; 100 Days
+          </div>
+
+          <!-- Live Countdown -->
+          <div class="sc-countdown">
+            <div class="sc-count-unit">
+              <div class="sc-count-num" id="sc-days">00</div>
+              <div class="sc-count-label">Days</div>
+            </div>
+            <div class="sc-count-sep">:</div>
+            <div class="sc-count-unit">
+              <div class="sc-count-num" id="sc-hours">00</div>
+              <div class="sc-count-label">Hours</div>
+            </div>
+            <div class="sc-count-sep">:</div>
+            <div class="sc-count-unit">
+              <div class="sc-count-num" id="sc-minutes">00</div>
+              <div class="sc-count-label">Minutes</div>
+            </div>
+            <div class="sc-count-sep">:</div>
+            <div class="sc-count-unit">
+              <div class="sc-count-num" id="sc-seconds">00</div>
+              <div class="sc-count-label">Seconds</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── BODY ── -->
+      <div class="sc-body">
+        <!-- INTRO LETTER -->
+        <div class="sc-section-label">
+          <!-- Lucide: message-square -->
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="13"
+            height="13"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round">
+            <path
+              d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+          </svg>
+          A Message to Our Affiliates
+        </div>
+
+        <div class="sc-intro">
+          <p><strong>Dear SIM Blueprint Affiliate,</strong></p>
+          <p>
+            The <strong>SIM Sales Challenge 1.0</strong> is finally here — and
+            we've loaded it with prizes that can genuinely change your life.
+          </p>
+          <p>
+            Whether you're going for the cash, the gadgets, or the top-tier
+            reward, this challenge is designed to push you, motivate you, and
+            reward you generously for every sale you make.
+          </p>
+
+          <div class="sc-highlight-pill">
+            <!-- Lucide: clock -->
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10" />
+              <polyline points="12 6 12 12 16 14" />
+            </svg>
+            Challenge runs July 12 – October 20, 2026 &nbsp;(100 Days)
+          </div>
+
+          <p>
+            You have 100 days to challenge yourself, make more sales than you
+            ever have, and push harder than you've ever pushed. Every tier you
+            hit, you win. No competition — just you against your own target.
+          </p>
+          <p>Take a look at the prizes we have lined up for you below.</p>
+        </div>
+
+        <!-- PRIZE TIERS HEADING -->
+        <div class="sc-section-label" style="margin-top: 8px">
+          <!-- Lucide: gift -->
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="13"
+            height="13"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round">
+            <polyline points="20 12 20 22 4 22 4 12" />
+            <rect width="20" height="5" x="2" y="7" />
+            <line x1="12" x2="12" y1="22" y2="7" />
+            <path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z" />
+            <path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z" />
+          </svg>
+          Prize Tiers — The More You Sell, The More You Win
+        </div>
+
+        <!-- CASH-ONLY TIERS (Entry) -->
+        <div class="sc-prizes-grid">
+          <!-- 30 Sales -->
+          <div class="sc-prize-card sc-tier--entry">
+            <div class="sc-card-top">
+              <div>
+                <div class="sc-sales-num">30</div>
+                <div class="sc-sales-label">Sales</div>
+              </div>
+              <div class="sc-tier-badge">Starter</div>
+            </div>
+            <div class="sc-card-body">
+              <div class="sc-prize-cash">₦70,000</div>
+              <div class="sc-prize-tag">Cash Prize</div>
+            </div>
+          </div>
+
+          <!-- 50 Sales -->
+          <div class="sc-prize-card sc-tier--entry">
+            <div class="sc-card-top">
+              <div>
+                <div class="sc-sales-num">50</div>
+                <div class="sc-sales-label">Sales</div>
+              </div>
+              <div class="sc-tier-badge">Starter</div>
+            </div>
+            <div class="sc-card-body">
+              <div class="sc-prize-cash">₦125,000</div>
+              <div class="sc-prize-tag">Cash Prize</div>
+            </div>
+          </div>
+
+          <!-- 70 Sales -->
+          <div class="sc-prize-card sc-tier--entry">
+            <div class="sc-card-top">
+              <div>
+                <div class="sc-sales-num">70</div>
+                <div class="sc-sales-label">Sales</div>
+              </div>
+              <div class="sc-tier-badge">Starter</div>
+            </div>
+            <div class="sc-card-body">
+              <div class="sc-prize-cash">₦175,000</div>
+              <div class="sc-prize-tag">Cash Prize</div>
+            </div>
+          </div>
+
+          <!-- 100 Sales -->
+          <div class="sc-prize-card sc-tier--entry">
+            <div class="sc-card-top">
+              <div>
+                <div class="sc-sales-num">100</div>
+                <div class="sc-sales-label">Sales</div>
+              </div>
+              <div class="sc-tier-badge">Starter</div>
+            </div>
+            <div class="sc-card-body">
+              <div class="sc-prize-cash">₦250,000</div>
+              <div class="sc-prize-tag">Cash Prize</div>
+            </div>
+          </div>
+
+          <!-- 150 Sales -->
+          <div class="sc-prize-card sc-tier--entry">
+            <div class="sc-card-top">
+              <div>
+                <div class="sc-sales-num">150</div>
+                <div class="sc-sales-label">Sales</div>
+              </div>
+              <div class="sc-tier-badge">Starter</div>
+            </div>
+            <div class="sc-card-body">
+              <div class="sc-prize-cash">₦375,000</div>
+              <div class="sc-prize-tag">Cash Prize</div>
+            </div>
+          </div>
+
+          <!-- 200 Sales -->
+          <div class="sc-prize-card sc-tier--entry">
+            <div class="sc-card-top">
+              <div>
+                <div class="sc-sales-num">200</div>
+                <div class="sc-sales-label">Sales</div>
+              </div>
+              <div class="sc-tier-badge">Starter</div>
+            </div>
+            <div class="sc-card-body">
+              <div class="sc-prize-cash">₦500,000</div>
+              <div class="sc-prize-tag">Cash Prize</div>
+            </div>
+          </div>
+        </div>
+        <!-- /entry grid -->
+
+        <!-- GADGET TIERS (Mid) -->
+        <div class="sc-prizes-grid">
+          <!-- 250 Sales -->
+          <div class="sc-prize-card sc-tier--mid">
+            <div class="sc-card-top">
+              <div>
+                <div class="sc-sales-num">250</div>
+                <div class="sc-sales-label">Sales</div>
+              </div>
+              <div class="sc-tier-badge">Pro</div>
+            </div>
+            <div class="sc-card-body">
+              <div class="sc-prize-cash">₦620,000</div>
+              <div class="sc-prize-tag">Cash Prize</div>
+              <div class="sc-or-row">
+                <div class="sc-or-line"></div>
+                <div class="sc-or-label">OR</div>
+                <div class="sc-or-line"></div>
+              </div>
+              <div class="sc-prize-item">Samsung Galaxy S22 Ultra</div>
+            </div>
+          </div>
+
+          <!-- 300 Sales -->
+          <div class="sc-prize-card sc-tier--mid">
+            <div class="sc-card-top">
+              <div>
+                <div class="sc-sales-num">300</div>
+                <div class="sc-sales-label">Sales</div>
+              </div>
+              <div class="sc-tier-badge">Pro</div>
+            </div>
+            <div class="sc-card-body">
+              <div class="sc-prize-cash">₦820,000</div>
+              <div class="sc-prize-tag">Cash Prize</div>
+              <div class="sc-or-row">
+                <div class="sc-or-line"></div>
+                <div class="sc-or-label">OR</div>
+                <div class="sc-or-line"></div>
+              </div>
+              <div class="sc-prize-item">HP Elite x360 Dragonfly G2</div>
+            </div>
+          </div>
+
+          <!-- 350 Sales -->
+          <div class="sc-prize-card sc-tier--mid">
+            <div class="sc-card-top">
+              <div>
+                <div class="sc-sales-num">350</div>
+                <div class="sc-sales-label">Sales</div>
+              </div>
+              <div class="sc-tier-badge">Pro</div>
+            </div>
+            <div class="sc-card-body">
+              <div class="sc-prize-cash">₦980,000</div>
+              <div class="sc-prize-tag">Cash Prize</div>
+              <div class="sc-or-row">
+                <div class="sc-or-line"></div>
+                <div class="sc-or-label">OR</div>
+                <div class="sc-or-line"></div>
+              </div>
+              <div class="sc-prize-item">Asus TUF Gaming A15</div>
+            </div>
+          </div>
+
+          <!-- 400 Sales -->
+          <div class="sc-prize-card sc-tier--mid">
+            <div class="sc-card-top">
+              <div>
+                <div class="sc-sales-num">400</div>
+                <div class="sc-sales-label">Sales</div>
+              </div>
+              <div class="sc-tier-badge">Pro</div>
+            </div>
+            <div class="sc-card-body">
+              <div class="sc-prize-cash">₦1,120,000</div>
+              <div class="sc-prize-tag">Cash Prize</div>
+              <div class="sc-or-row">
+                <div class="sc-or-line"></div>
+                <div class="sc-or-label">OR</div>
+                <div class="sc-or-line"></div>
+              </div>
+              <div class="sc-prize-item">Apple MacBook Air 2021 M1 13-Inch</div>
+            </div>
+          </div>
+
+          <!-- 500 Sales -->
+          <div class="sc-prize-card sc-tier--elite">
+            <div class="sc-card-top">
+              <div>
+                <div class="sc-sales-num">500</div>
+                <div class="sc-sales-label">Sales</div>
+              </div>
+              <div class="sc-tier-badge">Elite</div>
+            </div>
+            <div class="sc-card-body">
+              <div class="sc-prize-cash">₦1,400,000</div>
+              <div class="sc-prize-tag">Cash Prize</div>
+              <div class="sc-or-row">
+                <div class="sc-or-line"></div>
+                <div class="sc-or-label">OR</div>
+                <div class="sc-or-line"></div>
+              </div>
+              <div class="sc-prize-item">Brand New iPhone 15 Pro 256GB</div>
+            </div>
+          </div>
+
+          <!-- 600 Sales -->
+          <div class="sc-prize-card sc-tier--elite">
+            <div class="sc-card-top">
+              <div>
+                <div class="sc-sales-num">600</div>
+                <div class="sc-sales-label">Sales</div>
+              </div>
+              <div class="sc-tier-badge">Elite</div>
+            </div>
+            <div class="sc-card-body">
+              <div class="sc-prize-cash">₦1,700,000</div>
+              <div class="sc-prize-tag">Cash Prize</div>
+              <div class="sc-or-row">
+                <div class="sc-or-line"></div>
+                <div class="sc-or-label">OR</div>
+                <div class="sc-or-line"></div>
+              </div>
+              <div class="sc-prize-item">Brand New MacBook Air M3 13-Inch</div>
+            </div>
+          </div>
+        </div>
+        <!-- /mid-elite grid -->
+
+        <!-- CHAMPION CARD (1000 sales) -->
+        <div class="sc-champion-card">
+          <div class="sc-champion-left">
+            <div class="sc-champion-badge">
+              <!-- Lucide: star -->
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="11"
+                height="11"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round">
+                <polygon
+                  points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+              </svg>
+              Champion Tier
+            </div>
+            <div class="sc-champion-sales">1,000</div>
+            <div class="sc-champion-sales-label">Sales Required</div>
+            <div class="sc-champion-prize-cash">₦2,900,000</div>
+            <div class="sc-champion-prize-tag">Cash Prize</div>
+            <div class="sc-champion-or">
+              <div class="sc-champion-or-line"></div>
+              <div class="sc-champion-or-label">OR</div>
+              <div class="sc-champion-or-line"></div>
+            </div>
+            <div class="sc-champion-prize-item">
+              Brand New iPhone 17 Pro Max
+            </div>
+          </div>
+          <div class="sc-champion-right">
+            <div class="sc-champion-icon">
+              <!-- Lucide: smartphone -->
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="40"
+                height="40"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#c9a84c"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round">
+                <rect width="14" height="20" x="5" y="2" rx="2" ry="2" />
+                <path d="M12 18h.01" />
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- MEGA CARD (2800 sales) -->
+        <div class="sc-mega-card">
+          <div class="sc-mega-header">
+            <div class="sc-mega-header-left">
+              <div class="sc-mega-icon">
+                <!-- Lucide: car -->
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="22"
+                  height="22"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#1a0505"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <path
+                    d="M19 17H5a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h.5L7 5h10l1.5 2H19a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2Z" />
+                  <circle cx="7.5" cy="17" r="2.5" />
+                  <circle cx="16.5" cy="17" r="2.5" />
+                </svg>
+              </div>
+              <div>
+                <div class="sc-mega-title">MEGA Prize Tier</div>
+                <div class="sc-mega-sub">
+                  The biggest reward in SIM Challenge 1.0
+                </div>
+              </div>
+            </div>
+            <div class="sc-mega-sales-badge">
+              2,800
+              <span>Sales Required</span>
+            </div>
+          </div>
+          <div class="sc-mega-body">
+            <div>
+              <div class="sc-mega-cash">₦8,000,000</div>
+              <div class="sc-mega-cash-tag">Cash Prize</div>
+              <div class="sc-mega-or">
+                <div class="sc-mega-or-line"></div>
+                <div class="sc-mega-or-label">OR</div>
+                <div class="sc-mega-or-line"></div>
+              </div>
+              <div class="sc-mega-prize-item">2010 Toyota Corolla</div>
+              <div class="sc-mega-prize-note">Brand new, delivered to you</div>
+            </div>
+            <div class="sc-mega-divider"></div>
+            <div class="sc-mega-right">
+              <div class="sc-mega-stat">
+                <div class="sc-mega-stat-dot"></div>
+                This is the highest prize tier in the challenge
+              </div>
+              <div class="sc-mega-stat">
+                <div class="sc-mega-stat-dot"></div>
+                If you exceed 2,800 sales, you are rewarded for every tier you
+                cross
+              </div>
+              <div class="sc-mega-stat">
+                <div class="sc-mega-stat-dot"></div>
+                You choose: take the cash or take the car
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- RULES -->
+        <div class="sc-rules">
+          <div class="sc-section-label" style="margin-bottom: 18px">
+            <!-- Lucide: shield-check -->
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="13"
+              height="13"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+              <path d="m9 12 2 2 4-4" />
+            </svg>
+            Challenge Rules
+          </div>
+          <ul class="sc-rules-list">
+            <li class="sc-rule-item">
+              <div class="sc-rule-icon">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="12"
+                  height="12"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#fff"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+              </div>
+              <span
+                >The challenge runs from
+                <strong>July 12, 2026 to October 20, 2026</strong>. Only sales
+                made within this window count.</span
+              >
+            </li>
+            <li class="sc-rule-item">
+              <div class="sc-rule-icon">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="12"
+                  height="12"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#fff"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+              </div>
+              <span
+                ><strong>Everyone who hits a tier wins.</strong> This is not a
+                competition. If 500 affiliates hit 30 sales, all 500 get
+                rewarded.</span
+              >
+            </li>
+            <li class="sc-rule-item">
+              <div class="sc-rule-icon">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="12"
+                  height="12"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#fff"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+              </div>
+              <span
+                >If you <strong>exceed a tier</strong>, you are rewarded for
+                every tier you cross. For example, 320 sales earns you the
+                300-sales prize.</span
+              >
+            </li>
+            <li class="sc-rule-item">
+              <div class="sc-rule-icon">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="12"
+                  height="12"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#fff"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+              </div>
+              <span
+                >Only <strong>verified, completed sales</strong> through your
+                affiliate link count toward your total.</span
+              >
+            </li>
+            <li class="sc-rule-item">
+              <div class="sc-rule-icon">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="12"
+                  height="12"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#fff"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+              </div>
+              <span
+                >For <strong>Cash OR Gadget</strong> prizes — you choose which
+                you prefer at the time of claiming your reward.</span
+              >
+            </li>
+            <li class="sc-rule-item">
+              <div class="sc-rule-icon">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="12"
+                  height="12"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#fff"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+              </div>
+              <span
+                >Prizes are disbursed after the challenge ends and sales have
+                been verified. You will be contacted via the details on your
+                affiliate account.</span
+              >
+            </li>
+          </ul>
+
+          <div class="sc-important-box">
+            <!-- Lucide: alert-triangle -->
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#8b0000"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              style="flex-shrink: 0; margin-top: 1px">
+              <path
+                d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z" />
+              <path d="M12 9v4" />
+              <path d="M12 17h.01" />
+            </svg>
+            <span>
+              <strong>Important:</strong> This challenge is one prize per
+              affiliate account. Make sure all your sales are tracked through
+              your registered affiliate link for them to count.
+            </span>
+          </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="sc-cta">
+          <h2>Ready to Start Winning?</h2>
+          <p>
+            Choose the path below that matches your profile to get your tracking
+            link set up immediately.
+          </p>
+
+          <div class="sc-cta-grid">
+            <!-- Left Option: Marketplace Affiliates -->
+            <div class="sc-cta-box">
+              <div>
+                <h3>Experienced Affiliates</h3>
+                <p>
+                  Find <strong>SIM Blueprint</strong> directly on your preferred
+                  Affiliate Platform. We are live on <strong>Selar</strong>,
+                  <strong>Learnerflex</strong>, <strong>Earnerspay</strong>,
+                  <strong>Finthro</strong>, <strong>Stakecut</strong>,
+                  <strong>Promptearn</strong>, and <strong>Valpulse</strong>.
+                </p>
+                <p>
+                  Join our dedicated WhatsApp group for
+                  <strong>SIM Blueprint</strong> affiliates.
+                </p>
+              </div>
+              <a
+                class="sc-cta-btn"
+                href="https://chat.whatsapp.com/HVdoGrNnWG0EoPf5Xiq48S"
+                target="_blank"
+                rel="noopener">
+                <!-- Lucide: external-link -->
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="15"
+                  height="15"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <path
+                    d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                  <polyline points="15 3 21 3 21 9" />
+                  <line x1="10" x2="21" y1="14" y2="3" />
+                </svg>
+                Join Affiliate WhatsApp Group
+              </a>
+            </div>
+
+            <!-- Right Option: Students/Complete Beginners -->
+            <div class="sc-cta-box">
+              <div>
+                <h3>Students & Beginners</h3>
+                <p>New to affiliate platforms?</p>
+                <p>
+                  You will need a quick onboarding walkthrough to get your
+                  tracking configurations up and running without errors.
+                </p>
+              </div>
+              <a
+                class="sc-cta-btn sc-cta-btn-alt"
+                href="https://t.me/emperorofads?text=Hi%20Victor%2C%20I%20want%20to%20start%20promoting%20the%20SIM%20Blueprint%2C%20How%20do%20I%20go%20about%20it%3F"
+                target="_blank"
+                rel="noopener">
+                <!-- Lucide: send -->
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="15"
+                  height="15"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <line x1="22" y1="2" x2="11" y2="13" />
+                  <polygon points="22 2 15 22 11 13 2 9 22 2" />
+                </svg>
+                Get Setup Guidance
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- HELP -->
+        <div class="sc-help">
+          <p>
+            <strong style="color: #2c1810">Have Questions?</strong><br />
+            For any questions about the SIM Sales Challenge, reach out on
+            Telegram.
+          </p>
+          <a
+            class="sc-tg-btn"
+            href="https://t.me/emperorofads"
+            target="_blank"
+            rel="noopener">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="15"
+              height="15"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round">
+              <path d="m22 2-7 20-4-9-9-4Z" />
+              <path d="M22 2 11 13" />
+            </svg>
+            @emperorofads on Telegram
+          </a>
+        </div>
+      </div>
+      <!-- /sc-body -->
+    </div>
+    <!-- /sc-wrap -->
+
+    <!-- Countdown Script -->
+    <script>
+      (function () {
+        var target = new Date("2026-10-20T23:59:59").getTime();
+
+        function pad(n) {
+          return String(n).padStart(2, "0");
+        }
+
+        function tick() {
+          var now = new Date().getTime();
+          var diff = target - now;
+
+          if (diff <= 0) {
+            ["sc-days", "sc-hours", "sc-minutes", "sc-seconds"].forEach(
+              function (id) {
+                var el = document.getElementById(id);
+                if (el) el.textContent = "00";
+              },
+            );
+            return;
+          }
+
+          var d = Math.floor(diff / 86400000);
+          var h = Math.floor((diff % 86400000) / 3600000);
+          var m = Math.floor((diff % 3600000) / 60000);
+          var s = Math.floor((diff % 60000) / 1000);
+
+          var days = document.getElementById("sc-days");
+          var hours = document.getElementById("sc-hours");
+          var mins = document.getElementById("sc-minutes");
+          var secs = document.getElementById("sc-seconds");
+
+          if (days) days.textContent = pad(d);
+          if (hours) hours.textContent = pad(h);
+          if (mins) mins.textContent = pad(m);
+          if (secs) secs.textContent = pad(s);
+        }
+
+        tick();
+        setInterval(tick, 1000);
+      })();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,697 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SIM Affiliate Resource Center</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet" />
+
+    <style>
+      /* ── Reset ── */
+      .ar-wrap,
+      .ar-wrap * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      .ar-wrap {
+        font-family:
+          system-ui,
+          -apple-system,
+          "Segoe UI",
+          Roboto,
+          sans-serif;
+        background: #f9f5f0;
+        margin: 0 -20px;
+      }
+
+      /* ── HERO ── */
+      .ar-hero {
+        background: #1a0505;
+        padding: 64px 24px 90px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .ar-hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          ellipse 70% 60% at 50% 0%,
+          rgba(139, 0, 0, 0.4) 0%,
+          transparent 70%
+        );
+        pointer-events: none;
+      }
+
+      .ar-hero::after {
+        content: "";
+        position: absolute;
+        bottom: -1px;
+        left: 0;
+        right: 0;
+        height: 60px;
+        background: #f9f5f0;
+        border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+      }
+
+      .ar-hero-inner {
+        position: relative;
+        z-index: 1;
+        max-width: 620px;
+        margin: 0 auto;
+      }
+
+      .ar-eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: #c9a84c;
+        margin-bottom: 18px;
+      }
+
+      .ar-hero h1 {
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: clamp(28px, 5vw, 44px);
+        font-weight: 700;
+        color: #fff;
+        line-height: 1.2;
+        margin-bottom: 16px;
+      }
+
+      .ar-hero h1 span {
+        color: #c9a84c;
+      }
+
+      .ar-hero-body {
+        color: rgba(255, 255, 255, 0.65);
+        font-size: 14.5px;
+        line-height: 1.75;
+        max-width: 480px;
+        margin: 0 auto;
+      }
+
+      .ar-hero-body strong {
+        color: rgba(255, 255, 255, 0.88);
+      }
+
+      /* ── BODY ── */
+      .ar-body {
+        max-width: 880px;
+        margin: 0 auto;
+        padding: 56px 24px 64px;
+      }
+
+      .ar-section-label {
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: #8b0000;
+        margin-bottom: 22px;
+        display: flex;
+        align-items: center;
+        gap: 7px;
+      }
+
+      /* ── 2x2 CARD GRID ── */
+      .ar-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 22px;
+        margin-bottom: 36px;
+      }
+
+      .ar-card {
+        background: #fff;
+        border-radius: 16px;
+        box-shadow: 0 2px 16px rgba(26, 5, 5, 0.07);
+        padding: 32px 30px;
+        display: flex;
+        flex-direction: column;
+        transition:
+          transform 0.2s ease,
+          box-shadow 0.2s ease;
+        border-top: 3px solid transparent;
+      }
+
+      .ar-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 10px 28px rgba(26, 5, 5, 0.13);
+        border-top-color: #8b0000;
+      }
+
+      .ar-card-icon {
+        width: 52px;
+        height: 52px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 18px;
+        background: linear-gradient(135deg, #8b0000, #a50000);
+      }
+
+      /* alternate accent for variety - gold tone on cards 2 & 3 */
+      .ar-card--gold .ar-card-icon {
+        background: linear-gradient(135deg, #c9a84c, #b6913a);
+      }
+
+      .ar-card h3 {
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 19px;
+        color: #2c1810;
+        font-weight: 700;
+        margin-bottom: 8px;
+      }
+
+      .ar-card p {
+        font-size: 13.5px;
+        color: #7c6b65;
+        line-height: 1.65;
+        margin-bottom: 22px;
+        flex: 1;
+      }
+
+      .ar-card-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        background: #8b0000;
+        color: #fff;
+        text-decoration: none;
+        font-size: 13.5px;
+        font-weight: 600;
+        padding: 12px 20px;
+        border-radius: 8px;
+        transition: background 0.2s ease;
+      }
+
+      .ar-card-btn:hover {
+        background: #a50000;
+      }
+
+      .ar-card--gold .ar-card-btn {
+        background: #c9a84c;
+        color: #1a0505;
+      }
+
+      .ar-card--gold .ar-card-btn:hover {
+        background: #b6913a;
+      }
+
+      .ar-card-btn svg {
+        flex-shrink: 0;
+      }
+
+      /* ── HELP SECTION ── */
+      .ar-help {
+        background: #fff;
+        border-radius: 16px;
+        box-shadow: 0 2px 16px rgba(26, 5, 5, 0.07);
+        text-align: center;
+        padding: 32px 24px;
+      }
+
+      .ar-help h3 {
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 18px;
+        color: #2c1810;
+        font-weight: 700;
+        margin-bottom: 8px;
+      }
+
+      .ar-help p {
+        font-size: 13.5px;
+        color: #7c6b65;
+        line-height: 1.7;
+        max-width: 480px;
+        margin: 0 auto 18px;
+      }
+
+      .ar-tg-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: #1a0505;
+        color: #fff;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 600;
+        padding: 11px 24px;
+        border-radius: 8px;
+        transition: background 0.2s ease;
+      }
+
+      .ar-tg-btn:hover {
+        background: #2d0a0a;
+      }
+
+      /* ── COMMUNITY HUB BANNER ── */
+      .ar-community-banner {
+        background: linear-gradient(135deg, #1a0505, #2d0a0a);
+        border: 1px solid rgba(199, 168, 76, 0.2);
+        border-radius: 16px;
+        padding: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        margin-bottom: 36px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .ar-community-banner::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          circle at 100% 50%,
+          rgba(199, 168, 76, 0.1),
+          transparent 60%
+        );
+        pointer-events: none;
+      }
+
+      .ar-comm-content {
+        position: relative;
+        z-index: 1;
+        max-width: 540px;
+      }
+
+      .ar-comm-content h3 {
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 20px;
+        color: #fff;
+        margin-bottom: 6px;
+      }
+
+      .ar-comm-content p {
+        font-size: 13.5px;
+        color: rgba(255, 255, 255, 0.7);
+        line-height: 1.6;
+      }
+
+      .ar-comm-content p strong {
+        color: #c9a84c;
+      }
+
+      .ar-comm-action {
+        position: relative;
+        z-index: 1;
+        flex-shrink: 0;
+      }
+
+      .ar-comm-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: #c9a84c;
+        color: #1a0505;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 700;
+        padding: 14px 24px;
+        border-radius: 8px;
+        transition:
+          transform 0.2s ease,
+          background 0.2s ease;
+        box-shadow: 0 4px 14px rgba(199, 168, 76, 0.2);
+      }
+
+      .ar-comm-btn:hover {
+        background: #b6913a;
+        transform: translateY(-2px);
+      }
+
+      @media (max-width: 768px) {
+        .ar-community-banner {
+          flex-direction: column;
+          text-align: center;
+          padding: 28px 20px;
+          gap: 20px;
+        }
+        .ar-comm-btn {
+          width: 100%;
+          justify-content: center;
+        }
+      }
+
+      /* ── RESPONSIVE ── */
+      @media (max-width: 680px) {
+        .ar-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .ar-card {
+          padding: 26px 22px;
+        }
+
+        .ar-hero {
+          padding: 48px 20px 72px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="ar-wrap">
+      <!-- ── HERO ── -->
+      <div class="ar-hero">
+        <div class="ar-hero-inner">
+          <div class="ar-eyebrow">
+            <!-- Lucide: rocket -->
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="13"
+              height="13"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round">
+              <path
+                d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z" />
+              <path
+                d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z" />
+              <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0" />
+              <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5" />
+            </svg>
+            SIM Affiliate Resource Center
+          </div>
+
+          <h1>
+            Everything you need to<br />promote <span>SIM Blueprint</span>
+          </h1>
+
+          <p class="ar-hero-body">
+            Everything you need to successfully promote
+            <strong>Survey Income Machine (SIM) Blueprint</strong> is available
+            below. Simply click on any resource to get started.
+          </p>
+        </div>
+      </div>
+
+      <!-- ── BODY ── -->
+      <div class="ar-body">
+        <div class="ar-section-label">
+          <!-- Lucide: layout-grid -->
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="13"
+            height="13"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round">
+            <rect width="7" height="7" x="3" y="3" rx="1" />
+            <rect width="7" height="7" x="14" y="3" rx="1" />
+            <rect width="7" height="7" x="14" y="14" rx="1" />
+            <rect width="7" height="7" x="3" y="14" rx="1" />
+          </svg>
+          Promotional Resources
+        </div>
+
+        <!-- 2x2 RESOURCE GRID -->
+        <div class="ar-grid">
+          <!-- Card 1: Promotional Scripts -->
+          <div class="ar-card">
+            <div class="ar-card-icon">
+              <!-- Lucide: file-text -->
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#fff"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round">
+                <path
+                  d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" />
+                <path d="M14 2v4a2 2 0 0 0 2 2h4" />
+                <path d="M10 9H8" />
+                <path d="M16 13H8" />
+                <path d="M16 17H8" />
+              </svg>
+            </div>
+            <h3>Promotional Scripts</h3>
+            <p>
+              Need Proven High Converting Scripts to promote the SIM Blueprint?
+              Access the complete Script Vault here.
+            </p>
+            <a
+              class="ar-card-btn"
+              href="https://t.me/+_nCiMBS8QaE3ZTY0"
+              target="_blank"
+              rel="noopener">
+              <!-- Lucide: folder-open -->
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="15"
+                height="15"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round">
+                <path
+                  d="m6 14 1.5-2.9A2 2 0 0 1 9.24 10H20a2 2 0 0 1 1.94 2.5l-1.55 6a2 2 0 0 1-1.94 1.5H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.93a2 2 0 0 1 1.66.9l.82 1.2a2 2 0 0 0 1.66.9H18a2 2 0 0 1 2 2v2" />
+              </svg>
+              Open Script Vault
+            </a>
+          </div>
+
+          <!-- Card 2: Testimonials -->
+          <div class="ar-card ar-card--gold">
+            <div class="ar-card-icon">
+              <!-- Lucide: star -->
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#1a0505"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round">
+                <polygon
+                  points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+              </svg>
+            </div>
+            <h3>Testimonials</h3>
+            <p>
+              Looking for proof that Surveys works? Browse our collection of
+              student testimonials and success stories.
+            </p>
+            <a
+              class="ar-card-btn"
+              href="https://t.me/+QReso8r01dY1NmRk"
+              target="_blank"
+              rel="noopener">
+              <!-- Lucide: message-square -->
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="15"
+                height="15"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round">
+                <path
+                  d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+              </svg>
+              View Testimonials
+            </a>
+          </div>
+
+          <!-- Card 3: VSL -->
+          <div class="ar-card">
+            <div class="ar-card-icon">
+              <!-- Lucide: clapperboard / play -->
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#fff"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round">
+                <path
+                  d="M20.2 6 3 11l-.9-2.4c-.3-1.1.3-2.2 1.3-2.5l13.5-4c1.1-.3 2.2.3 2.5 1.3Z" />
+                <path d="m6.2 5.3 3.1 3.9" />
+                <path d="m12.4 3.4 3.1 4" />
+                <path d="M3 11h18v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z" />
+              </svg>
+            </div>
+            <h3>Video Sales Letter (VSL)</h3>
+            <p>
+              Share this VSL with prospects who want to understand how Survey
+              Income Machine works before purchasing.
+            </p>
+            <a class="ar-card-btn" href="#" target="_blank" rel="noopener">
+              <!-- Lucide: play -->
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="15"
+                height="15"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round">
+                <polygon points="6 3 20 12 6 21 6 3" />
+              </svg>
+              Watch VSL
+            </a>
+          </div>
+
+          <!-- Card 4: Sales Challenge -->
+          <div class="ar-card ar-card--gold">
+            <div class="ar-card-icon">
+              <!-- Lucide: trophy -->
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#1a0505"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6" />
+                <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18" />
+                <path d="M4 22h16" />
+                <path
+                  d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22" />
+                <path
+                  d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22" />
+                <path d="M18 2H6v7a6 6 0 0 0 12 0Z" />
+              </svg>
+            </div>
+            <h3>Sales Challenge</h3>
+            <p>
+              Want to earn extra rewards for promoting SIM Blueprint? Learn how
+              the SIM Sales Challenge works, the prizes available, and how to
+              qualify.
+            </p>
+            <a
+              class="ar-card-btn"
+              href="https://academy.swiftmarky.com/sim-sales-challenge/"
+              target="_blank"
+              rel="noopener">
+              <!-- Lucide: target -->
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="15"
+                height="15"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10" />
+                <circle cx="12" cy="12" r="6" />
+                <circle cx="12" cy="12" r="2" />
+              </svg>
+              View Sales Challenge
+            </a>
+          </div>
+        </div>
+
+        <!-- ── COMMUNITY HUB BANNER ── -->
+        <div class="ar-community-banner">
+          <div class="ar-comm-content">
+            <h3>Join the Official SIM Affiliate Inner Circle</h3>
+            <p>
+              Don't promote in isolation. Join our dedicated
+              <strong>WhatsApp Community</strong> to lock in instant access to
+              real-time updates, unreleased swipe files, and direct affiliate
+              support.
+            </p>
+          </div>
+          <div class="ar-comm-action">
+            <a
+              class="ar-comm-btn"
+              href="YOUR_WHATSAPP_GROUP_LINK_HERE"
+              target="_blank"
+              rel="noopener">
+              <!-- SVG: WhatsApp Icon -->
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round">
+                <path
+                  d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+              </svg>
+              Connect to the WhatsApp Group
+            </a>
+          </div>
+        </div>
+
+        <!-- ── HELP ── -->
+        <div class="ar-help">
+          <h3>Need Support?</h3>
+          <p>
+            If you have any questions about promoting Survey Income Machine
+            (SIM) Blueprint, send me a message on Telegram.
+          </p>
+          <a
+            class="ar-tg-btn"
+            href="https://t.me/emperorofads"
+            target="_blank"
+            rel="noopener">
+            <!-- Lucide: send -->
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="15"
+              height="15"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round">
+              <path d="m22 2-7 20-4-9-9-4Z" />
+              <path d="M22 2 11 13" />
+            </svg>
+            @emperorofads on Telegram
+          </a>
+        </div>
+      </div>
+      <!-- /ar-body -->
+    </div>
+    <!-- /ar-wrap -->
+  </body>
+</html>
